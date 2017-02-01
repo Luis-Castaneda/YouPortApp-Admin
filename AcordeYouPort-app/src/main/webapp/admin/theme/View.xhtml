@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ThemeViewDlg" widgetVar="ThemeViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{youPortBundle.ViewThemeTitle}" closeOnEscape="true">
+
+            <h:form id="ThemeViewForm">
+
+                <h:panelGroup id="display" style="text-align: left">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{themeController.selected != null}">
+
+                        <h:outputText value="#{youPortBundle.ViewThemeLabel_idTheme}"/>
+                        <h:outputText value="#{themeController.selected.idTheme}" title="#{youPortBundle.ViewThemeTitle_idTheme}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewThemeLabel_nameTheme}"/>
+                        <h:outputText value="#{themeController.selected.nameTheme}" title="#{youPortBundle.ViewThemeTitle_nameTheme}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewThemeLabel_description}"/>
+                        <h:outputText value="#{themeController.selected.description}" title="#{youPortBundle.ViewThemeTitle_description}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewThemeLabel_urlLogoBanner}"/>
+                        <h:outputText value="#{themeController.selected.urlLogoBanner}" title="#{youPortBundle.ViewThemeTitle_urlLogoBanner}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewThemeLabel_urlLogoFooter}"/>
+                        <h:outputText value="#{themeController.selected.urlLogoFooter}" title="#{youPortBundle.ViewThemeTitle_urlLogoFooter}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewThemeLabel_colorPreference}"/>
+                        <h:outputText value="#{themeController.selected.colorPreference}" title="#{youPortBundle.ViewThemeTitle_colorPreference}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewThemeLabel_enabled}"/>
+                        <h:selectBooleanCheckbox id="enabled" value="#{themeController.selected.enabled}" title="#{youPortBundle.EditThemeTitle_enabled}"  disabled="true"/>
+
+                        <h:outputText value="#{youPortBundle.ViewThemeLabel_urlBackground}"/>
+                        <h:outputText value="#{themeController.selected.urlBackground}" title="#{youPortBundle.ViewThemeTitle_urlBackground}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{youPortBundle.Close}" onclick="PF('ThemeViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

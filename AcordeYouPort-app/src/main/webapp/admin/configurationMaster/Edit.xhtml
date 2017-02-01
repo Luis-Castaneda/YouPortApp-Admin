@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="ConfigurationMasterEditDlg" widgetVar="ConfigurationMasterEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{youPortBundle.EditConfigurationMasterTitle}" closeOnEscape="true">
+
+            <h:form id="ConfigurationMasterEditForm">
+
+                <h:panelGroup id="display" style="text-align: left">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{configurationMasterController.selected != null}">
+
+
+                        <h:outputLabel value="#{youPortBundle.EditConfigurationMasterLabel_idConfigurationMaster}" for="idConfigurationMaster" />
+                        <h:outputText id="idConfigurationMaster" value="#{configurationMasterController.selected.idConfigurationMaster}" />
+
+                        <p:outputLabel value="#{youPortBundle.EditConfigurationMasterLabel_nameParameter}" for="nameParameter" />
+                        <p:inputText id="nameParameter" value="#{configurationMasterController.selected.nameParameter}" title="#{youPortBundle.EditConfigurationMasterTitle_nameParameter}" size="45" maxlength="100"/>
+
+                        <p:outputLabel value="#{youPortBundle.EditConfigurationMasterLabel_valueParameter}" for="valueParameter" />
+                        <p:inputText id="valueParameter" value="#{configurationMasterController.selected.valueParameter}" title="#{youPortBundle.EditConfigurationMasterTitle_valueParameter}" size="45" maxlength="100"/>
+
+                        <p:outputLabel value="#{youPortBundle.EditConfigurationMasterLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" style="width: 295px" id="description" value="#{configurationMasterController.selected.description}" title="#{youPortBundle.EditConfigurationMasterTitle_description}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{configurationMasterController.save}" value="#{youPortBundle.Save}" update="display,:ConfigurationMasterListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('ConfigurationMasterEditDialog'));">
+                        <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{youPortBundle.Cancel}" oncomplete="PF('ConfigurationMasterEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

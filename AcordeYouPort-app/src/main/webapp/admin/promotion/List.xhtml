@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="PromotionListForm">
+
+        <p:panel header="#{youPortBundle.ListPromotionTitle}">
+            <p:contextMenu id="PromotionDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{youPortBundle.Create}" onclick="document.getElementById('PromotionListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{youPortBundle.View}" onclick="document.getElementById('PromotionListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="#{youPortBundle.Edit}" onclick="document.getElementById('PromotionListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{youPortBundle.Delete}" onclick="document.getElementById('PromotionListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                <p:separator/>
+                <p:menuitem value="#{youPortBundle.PromotionMenuItem_idTypePromotion}" icon="ui-icon-search"  actionListener="#{promotionController.prepareIdTypePromotion}" update=":TypePromotionViewForm" oncomplete="PF('TypePromotionViewDialog').show()" disabled="#{empty promotionController.selected.idTypePromotion}"/>  
+                <p:menuitem value="#{youPortBundle.PromotionMenuItem_idCompany}" icon="ui-icon-search"  actionListener="#{promotionController.prepareIdCompany}" update=":CompanyViewForm" oncomplete="PF('CompanyViewDialog').show()" disabled="#{empty promotionController.selected.idCompany}"/>  
+            </p:contextMenu>
+
+            <table style="text-align: right; width: 100%; margin-bottom: 10px;">
+                <tr >
+                    <td  style="text-align: right;">  
+
+                        <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="#{youPortBundle.View}" update=":PromotionViewForm" oncomplete="PF('PromotionViewDialog').show()" disabled="#{empty promotionController.selected}"/>
+                        <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{youPortBundle.Edit}" update=":PromotionEditForm" oncomplete="PF('PromotionEditDialog').show()" disabled="#{empty promotionController.selected}"/>
+                        <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{youPortBundle.Delete}" actionListener="#{promotionController.delete}" update=":growl,datalist" disabled="#{empty promotionController.selected}">
+                            <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                        </p:commandButton>
+                        <p:commandButton id="homeButton"  icon="ui-icon-home"   value="#{youPortBundle.back_home}" action="#{userController.navigateToDashboard()}" />
+                        <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{youPortBundle.Create}" actionListener="#{promotionController.prepareCreate}" update=":PromotionCreateForm" oncomplete="PF('PromotionCreateDialog').show()"/>
+
+                    </td>
+                </tr>
+            </table>
+            <p:outputPanel style="text-align: left;">
+                <p:dataTable id="datalist"
+                             value="#{promotionController.items}"
+                             lazy="false"
+                             rowKey="#{item.idPromotion}"
+                             var="item"
+                             paginator="true"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             selectionMode="single"
+                             selection="#{promotionController.selected}">
+                    <!--
+                             To enable Lazy Loading, please copy/replace the following lines above,
+                             and be sure to replace the word HASH with the # symbol:
+                    
+                             value="HASH{promotionController.lazyItems}"
+                             lazy="true"
+                             rowKey="HASH{item.idPromotion}"  <<< Remove this line
+                    -->
+
+
+                    <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:PromotionDataTableContextMenu" listener="#{promotionController.resetParents}"/>
+                    <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:PromotionDataTableContextMenu" listener="#{promotionController.resetParents}"/>
+                    <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton" listener="#{promotionController.resetParents}"/>
+                    <p:ajax event="rowDblselect" onsuccess="document.getElementById('PromotionListForm:viewButton').click();"/>
+
+                    <p:column sortBy="#{item.idPromotion}" filterBy="#{item.idPromotion}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListPromotionTitle_idPromotion}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idPromotion}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.namePromotion}" filterBy="#{item.namePromotion}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListPromotionTitle_namePromotion}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.namePromotion}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.description}" filterBy="#{item.description}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListPromotionTitle_description}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.description}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.urlImagel}" filterBy="#{item.urlImagel}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListPromotionTitle_urlImagel}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.urlImagel}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.idTypePromotion.name}" filterBy="#{item.idTypePromotion.name}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListPromotionTitle_idTypePromotion}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idTypePromotion.name}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.idCompany.name}" filterBy="#{item.idCompany.name}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListPromotionTitle_idCompany}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idCompany.name}"/>
+                    </p:column>
+
+
+                </p:dataTable>
+
+            </p:outputPanel>
+
+
+
+        </p:panel>
+       <ui:include src="/WEB-INF/template/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

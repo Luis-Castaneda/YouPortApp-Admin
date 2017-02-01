@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TypePromotionCreateDlg" widgetVar="TypePromotionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{youPortBundle.CreateTypePromotionTitle}" closeOnEscape="true">
+
+            <h:form id="TypePromotionCreateForm">
+
+                <h:panelGroup id="display" rendered="#{typePromotionController.selected != null}" style="text-align: left">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{youPortBundle.CreateTypePromotionLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{typePromotionController.selected.name}" title="#{youPortBundle.CreateTypePromotionTitle_name}" size="45" maxlength="45"/>
+
+                        <p:outputLabel value="#{youPortBundle.CreateTypePromotionLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{typePromotionController.selected.description}" title="#{youPortBundle.CreateTypePromotionTitle_description}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{typePromotionController.saveNew}" value="#{youPortBundle.Save}" update="display,:TypePromotionListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('TypePromotionCreateDialog'));">
+                        <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{youPortBundle.Cancel}" oncomplete="PF('TypePromotionCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

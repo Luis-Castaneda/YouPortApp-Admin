@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="ViewEditDlg" widgetVar="ViewEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{youPortBundle.EditViewTitle}" closeOnEscape="true">
+
+            <h:form id="ViewEditForm">
+
+                <h:panelGroup id="display" style="text-align: left">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{viewController.selected != null}">
+
+
+                        <h:outputLabel value="#{youPortBundle.EditViewLabel_idView}" for="idView" />
+                        <h:outputText id="idView" value="#{viewController.selected.idView}" />
+
+                        <p:outputLabel value="#{youPortBundle.EditViewLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{viewController.selected.name}" title="#{youPortBundle.EditViewTitle_name}" size="45" maxlength="45"/>
+
+                        <p:outputLabel value="#{youPortBundle.EditViewLabel_url}" for="url" />
+                        <p:inputText id="url" value="#{viewController.selected.url}" title="#{youPortBundle.EditViewTitle_url}" size="45" maxlength="45"/>
+
+                        <p:outputLabel value="#{youPortBundle.EditViewLabel_typeView}" for="typeView" />
+                        <p:selectOneMenu id="typeView" value="#{viewController.selected.typeView}" required="true" requiredMessage="#{youPortBundle.EditViewRequiredMessage_typeView}" converter="typeViewConverter" style="width: 295px;">
+                            <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{typeViewController.items}"
+                                           var="typeViewItem"
+                                           itemValue="#{typeViewItem}"
+                                           itemLabel="#{typeViewItem.nameType.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{viewController.save}" value="#{youPortBundle.Save}" update="display,:ViewListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('ViewEditDialog'));">
+                        <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{youPortBundle.Cancel}" oncomplete="PF('ViewEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

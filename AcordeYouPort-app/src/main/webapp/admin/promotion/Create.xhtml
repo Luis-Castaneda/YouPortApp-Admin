@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PromotionCreateDlg" widgetVar="PromotionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{youPortBundle.CreatePromotionTitle}" closeOnEscape="true">
+
+            <h:form id="PromotionCreateForm" enctype="multipart/form-data">
+
+                <h:panelGroup id="display" rendered="#{promotionController.selected != null}" style="text-align: left">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{youPortBundle.CreatePromotionLabel_namePromotion}" for="namePromotion" />
+                        <p:inputText id="namePromotion" value="#{promotionController.selected.namePromotion}" title="#{youPortBundle.CreatePromotionTitle_namePromotion}" size="45" maxlength="100"/>
+
+                        <p:outputLabel value="#{youPortBundle.CreatePromotionLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" style="width: 297px;" id="description" value="#{promotionController.selected.description}" title="#{youPortBundle.CreatePromotionTitle_description}" />
+
+                        <p:outputLabel value="#{youPortBundle.CreatePromotionLabel_urlImagel}" for="urlImagel" />
+                        <h:panelGroup id="image">
+
+                            <h:panelGroup  >
+                                <div style="width: 100%; border: 1px solid #000000;" >
+                                    <div id="btnSeleccioneImage" 
+                                         style="width: 150px; height: 20px; vertical-align: middle; color: white; background-color: grey; cursor: pointer; margin: 4px 4px 4px 4px;" onclick="PF('dlg2').show();"
+                                         >
+                                        <h:outputText id="urlImagel" value="Seleccione archivo" style="margin-left: 20px;"/>
+                                    </div>
+                                </div>
+                                <h:panelGroup  rendered="#{promotionController.selected.urlImagel != null}">
+                                    <table  style="width: 100%; border: 1px solid #000000;" >
+                                        <tr>
+                                            <td style="width: 80%">  <h:outputText value="#{promotionController.selected.urlImagel}" style="margin-left: 20px; text-align: left"/></td>
+                                            <td  style="width: 20%">  
+                                                <p:commandLink 
+                                                    value="Delete"
+                                                    update="display"
+                                                    actionListener="#{promotionController.removeImage}"
+                                                    ajax="true"
+                                                    id="command"
+                                                    process="@this"
+                                                    style="text-align: right; width: 20px;"
+                                                    rendered="#{promotionController.fileImage != null}"/></td>
+                                        </tr>
+                                    </table>
+                                </h:panelGroup >
+                            </h:panelGroup >
+
+                            <p:tooltip for="urlImagel" value="#{promotionController.getComponentMessages('urlImagel', youPortBundle.CreateServicesHelpText_urlImage)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.CreatePromotionLabel_idTypePromotion}" for="idTypePromotion" />
+                        <p:selectOneMenu id="idTypePromotion" value="#{promotionController.selected.idTypePromotion}" required="true" requiredMessage="#{youPortBundle.CreatePromotionRequiredMessage_idTypePromotion}" converter="typePromotionConverter" style="width: 305px;">
+                            <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{typePromotionController.items}"
+                                           var="idTypePromotionItem"
+                                           itemValue="#{idTypePromotionItem}"
+                                           itemLabel="#{idTypePromotionItem.name.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{youPortBundle.CreatePromotionLabel_idCompany}" for="idCompany" />
+                        <p:selectOneMenu id="idCompany" value="#{promotionController.selected.idCompany}" required="true" requiredMessage="#{youPortBundle.CreatePromotionRequiredMessage_idCompany}" converter="companyConverter" style="width: 305px;">
+                            <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{companyController.items}"
+                                           var="idCompanyItem"
+                                           itemValue="#{idCompanyItem}"
+                                           itemLabel="#{idCompanyItem.name.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{promotionController.savePromotion('NEW')}" value="#{youPortBundle.Save}" update="display,:PromotionListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('PromotionCreateDialog'));">
+                        <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{youPortBundle.Cancel}" oncomplete="PF('PromotionCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+                
+                 <p:dialog header="#{youPortBundle.loadFile}" widgetVar="dlg2" modal="false" height="160" width="680" appendTo="@(body)"  >
+                    <p:fileUpload 
+                        id="urlImage"
+                        class="fileUploadImage"
+                        fileUploadListener="#{promotionController.uploadTemp}" 
+                        mode="advanced" 
+                        dragDropSupport="false"
+                        update="image" 
+                        sizeLimit="#{promotionController.sizeLimit}" 
+                        allowTypes="#{promotionController.allowTypes}"
+                        oncomplete="PF('dlg2').hide();">
+
+                    </p:fileUpload>
+                </p:dialog>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

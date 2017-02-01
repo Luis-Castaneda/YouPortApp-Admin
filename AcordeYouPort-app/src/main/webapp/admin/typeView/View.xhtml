@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TypeViewViewDlg" widgetVar="TypeViewViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{youPortBundle.ViewTypeViewTitle}" closeOnEscape="true">
+
+            <h:form id="TypeViewViewForm">
+
+                <h:panelGroup id="display" style="text-align: left">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{typeViewController.selected != null}">
+
+                        <h:outputText value="#{youPortBundle.ViewTypeViewLabel_idTypeView}"/>
+                        <h:outputText value="#{typeViewController.selected.idTypeView}" title="#{youPortBundle.ViewTypeViewTitle_idTypeView}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewTypeViewLabel_nameType}"/>
+                        <h:outputText value="#{typeViewController.selected.nameType}" title="#{youPortBundle.ViewTypeViewTitle_nameType}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewTypeViewLabel_description}"/>
+                        <h:outputText value="#{typeViewController.selected.description}" title="#{youPortBundle.ViewTypeViewTitle_description}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{youPortBundle.Close}" onclick="PF('TypeViewViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

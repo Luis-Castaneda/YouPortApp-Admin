@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="ContactEditDlg" widgetVar="ContactEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{youPortBundle.EditContactTitle}" closeOnEscape="true">
+
+            <h:form id="ContactEditForm">
+
+                <h:panelGroup id="display" style="text-align: left"> 
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{contactController.selected != null}">
+
+
+                        <h:outputLabel value="#{youPortBundle.EditContactLabel_idContact}" for="idContact" />
+                        <h:panelGroup>
+                            <h:outputText id="idContact" value="#{contactController.selected.idContact}" />
+                            <p:tooltip for="idContact" value="#{contactController.getComponentMessages('idContact', youPortBundle.EditContactHelpText_idContact)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditContactLabel_nameContact}" for="nameContact" />
+                        <h:panelGroup>
+                            <p:inputText id="nameContact" value="#{contactController.selected.nameContact}" title="#{youPortBundle.EditContactTitle_nameContact}" size="40" maxlength="45"/>
+                            <p:tooltip for="nameContact" value="#{contactController.getComponentMessages('nameContact', youPortBundle.EditContactHelpText_nameContact)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditContactLabel_phoneContact}" for="phoneContact" />
+                        <h:panelGroup>
+                            <p:inputText id="phoneContact" value="#{contactController.selected.phoneContact}" title="#{youPortBundle.EditContactTitle_phoneContact}" size="40" maxlength="45"/>
+                            <p:tooltip for="phoneContact" value="#{contactController.getComponentMessages('phoneContact', youPortBundle.EditContactHelpText_phoneContact)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditContactLabel_addressContact}" for="addressContact" />
+                        <h:panelGroup>
+                            <p:inputTextarea rows="4" cols="30" style="width: 265px" id="addressContact" value="#{contactController.selected.addressContact}" title="#{youPortBundle.EditContactTitle_addressContact}" />
+                            <p:tooltip for="addressContact" value="#{contactController.getComponentMessages('addressContact', youPortBundle.EditContactHelpText_addressContact)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditContactLabel_emailContact}" for="emailContact" />
+                        <h:panelGroup>
+                            <p:inputText id="emailContact" value="#{contactController.selected.emailContact}" title="#{youPortBundle.EditContactTitle_emailContact}" size="40" maxlength="60"/>
+                            <p:tooltip for="emailContact" value="#{contactController.getComponentMessages('emailContact', youPortBundle.EditContactHelpText_emailContact)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditContactLabel_fax}" for="fax" />
+                        <h:panelGroup>
+                            <p:inputText id="fax" value="#{contactController.selected.fax}" title="#{youPortBundle.EditContactTitle_fax}" size="40" maxlength="45"/>
+                            <p:tooltip for="fax" value="#{contactController.getComponentMessages('fax', youPortBundle.EditContactHelpText_fax)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditContactLabel_webSite}" for="webSite" />
+                        <h:panelGroup>
+                            <p:inputText id="webSite" value="#{contactController.selected.webSite}" title="#{youPortBundle.EditContactTitle_webSite}" size="40" maxlength="100"/>
+                            <p:tooltip for="webSite" value="#{contactController.getComponentMessages('webSite', youPortBundle.EditContactHelpText_webSite)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditContactLabel_idCompany}" for="idCompany" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="idCompany" value="#{contactController.selected.idCompany}" required="true" requiredMessage="#{youPortBundle.EditContactRequiredMessage_idCompany}" converter="companyConverter" style="width: 275px">
+                                <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{companyController.items}"
+                                               var="idCompanyItem"
+                                               itemValue="#{idCompanyItem}"
+                                               itemLabel="#{idCompanyItem.name.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                            <p:tooltip for="idCompany" value="#{contactController.getComponentMessages('idCompany', youPortBundle.EditContactHelpText_idCompany)}"/>
+                        </h:panelGroup>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{contactController.save}" value="#{youPortBundle.Save}" update="display,:ContactListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('ContactEditDialog'));">
+                        <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{youPortBundle.Cancel}" oncomplete="PF('ContactEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

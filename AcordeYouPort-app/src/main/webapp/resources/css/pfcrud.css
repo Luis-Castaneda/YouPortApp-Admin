@@ -1,0 +1,267 @@
+.ui-widget {
+    font-size: 12px !important;
+}
+.ui-layout-north {
+    z-index:20 !important;
+    overflow:visible !important;;
+}
+.ui-layout-north .ui-layout-unit-content {
+    overflow:visible !important;
+}
+.ui-widget-header {
+    text-align: center;
+    text-transform: uppercase;
+}
+.ui-datatable .ui-datatable-footer .footer-section {
+    text-align: left;
+}
+
+.column {
+    font-weight: bold;
+    background-color: menu;
+}
+
+// Estilos PortYou
+html {
+    height: 100%;
+}
+/* top elements */
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: url(/AcordeYouPort-app/faces/resources/images/bg.jpg) repeat-x center 0 #00356a;
+    font: 14px/1.55 Arial, Helvetica, sans-serif;
+    color: #2f2f2f;
+    height: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+/* links */
+a {
+    color: #1e7ec8;
+    text-decoration: underline;
+}
+a:hover {
+    color: #9EC068;
+    background-color: inherit;
+    text-decoration: none;
+}
+
+/* headers */
+.header-container {
+    display: block;
+    height: 90px;
+    vertical-align: middle !important;
+}
+.header .logo strong {
+    position: absolute;
+    top: -999em;
+    left: -999em;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -999em;
+    overflow: hidden;
+}
+.header {
+    text-align: right;
+    position: relative;
+    z-index: 10;
+    padding-bottom: 13px;
+}
+.header .tagline {
+    font: 16px 'UbuntuRegular';
+    color: #6e798c;
+    float: left;
+    padding: 43px 0 0 24px;
+}
+.header .logo {
+    float: left;
+    margin: 9px 0 0 9px;
+    text-decoration: none !important;
+}
+.logo {
+    float: left;
+}
+.top-block {
+    float: right;
+    padding: 10px;
+}
+.top-logout {
+    background: url(/AcordeYouPort-app/faces/resources/images/top-logout-bg.gif) repeat-x 0 0;
+    border: none;
+    height: 45px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    float: right;
+    margin-top: 20px;
+    min-width: 188px;
+}
+.btn-logout {
+    background: url(/AcordeYouPort-app/faces/resources/images/nav-bg.gif) repeat-x 0 0;
+    float: left;
+    margin: 0 16px 0 0;
+    color: #d5def2;
+    height: inherit;
+    padding: 10px 4px 0 4px;
+}
+
+.top-logout .items {
+    margin-right: 9px;
+    padding-top: 15px;
+}
+
+.wrapper {
+    width: 100%;
+    margin: auto;
+}
+
+/* Noscript Notice */
+.noscript { border:1px solid #ddd; border-width:0 0 1px; background:#ffff90; font-size:12px; line-height:1.25; text-align:center; color:#2f2f2f; }
+.noscript .noscript-inner { width:950px; margin:0 auto; padding:12px 0 12px; background:url(/AcordeYouPort-app/faces/resources/images/i_notice.gif) 20px 50% no-repeat; }
+.noscript p { margin:0; }
+
+.page {
+    border: none;
+    text-align: center;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: #052c53 0px 0px 4px;
+    -moz-box-shadow: #052c53 0px 0px 4px;
+    box-shadow: #052c53 0px 0px 4px;
+    background: #fff;
+    padding: 0 10px 12px;
+}
+
+
+/* Forms */
+form{
+    margin: 0;
+    padding: 0;
+}
+form.input-forms { 
+    max-width: 300px;
+    padding: 19px 29px 29px;
+    margin: 0 auto 20px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+input[type="text"] {
+    background-color: #fff !important;
+    background-image: none;
+    color: rgb(0, 0, 0);
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px rgba(255,255,255,0.7) inset;
+}
+input[type="submit"], button[type="submit"], button { 	
+    color: #eee; 
+    margin-top: 10px;
+    /*  padding: 3px 0;*/
+    background-color: #18a5cc;
+    border: none;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4d4d4d), to(#999999)); 
+    background:  -moz-linear-gradient(25% 75% 90deg,#999999, #4d4d4d); 
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;  
+    border-radius: 4px;
+    text-shadow: none;
+    vertical-align: middle;
+}
+input[type="submit"]:hover, button[type="submit"]:hover, button:hover {
+    -webkit-box-shadow: 0px 0px -20px #555;
+    -moz-box-shadow: 0px 0px -20px #aaa; 
+    box-shadow: 0px 0px -20px #555;		
+    cursor: pointer; 
+}
+#content{
+    padding: 20px 0;
+    margin-left: auto; 
+    margin-right: auto;
+}
+.login-panel{
+    background-color: white; 
+    width: 400px;
+    height: 340px;
+    margin: 10px;
+    padding: 5px;
+}
+.buttons-login {
+    text-align: right;
+}
+.absolute-center {
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.circulo {
+    width: 15px;
+    height: 15px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    border: 1px solid #555;
+}
+
+.ovalo{
+    color: white;
+    position: absolute;
+    left: 130px; 
+    padding: 0;
+    top: 0;
+    width: 100px;
+    text-align: center;
+    border-radius: 15px;
+
+}
+
+.ovaloQuote{
+    color: white;
+    position: absolute;
+    padding: 0;
+    top: 0;
+    text-align: center;
+    border-radius: 15px;
+
+}
+
+.buttonCondition{
+
+    width: 80px !important;
+    height: 25px !important;
+}
+
+.copyright{
+
+    padding: 15px;
+}
+
+.pedro >ul{
+
+    width: 170px !important;
+}
+
+.ui-fileupload-buttonbar > button {
+
+    margin: 0 !important;
+
+}
+
+
+.ui-fileupload-buttonbar{
+    text-align: left !important;
+}
+

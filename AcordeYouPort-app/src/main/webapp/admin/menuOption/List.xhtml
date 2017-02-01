@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="MenuOptionListForm">
+
+        <p:panel header="#{youPortBundle.ListMenuOptionTitle}">
+            <p:contextMenu id="MenuOptionDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{youPortBundle.Create}" onclick="document.getElementById('MenuOptionListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{youPortBundle.View}" onclick="document.getElementById('MenuOptionListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="#{youPortBundle.Edit}" onclick="document.getElementById('MenuOptionListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{youPortBundle.Delete}" onclick="document.getElementById('MenuOptionListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                <p:separator/>
+                <p:menuitem value="#{youPortBundle.MenuOptionMenuItem_view}" icon="ui-icon-search"  actionListener="#{menuOptionController.prepareView}" update=":ViewViewForm" oncomplete="PF('ViewViewDialog').show()" disabled="#{empty menuOptionController.selected.view}"/>  
+                <p:menuitem value="#{youPortBundle.MenuOptionMenuItem_menuType}" icon="ui-icon-search"  actionListener="#{menuOptionController.prepareMenuType}" update=":MenuTypeViewForm" oncomplete="PF('MenuTypeViewDialog').show()" disabled="#{empty menuOptionController.selected.menuType}"/>  
+            </p:contextMenu>
+
+            <table style="text-align: right; width: 100%; margin-bottom: 10px;">
+                <tr >
+                    <td  style="text-align: right;">  
+
+                        <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="#{youPortBundle.View}" update=":MenuOptionViewForm" oncomplete="PF('MenuOptionViewDialog').show()" disabled="#{empty menuOptionController.selected}"/>
+                        <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{youPortBundle.Edit}" update=":MenuOptionEditForm" oncomplete="PF('MenuOptionEditDialog').show()" disabled="#{empty menuOptionController.selected}"/>
+                        <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{youPortBundle.Delete}" actionListener="#{menuOptionController.delete}" update=":growl,datalist" disabled="#{empty menuOptionController.selected}">
+                            <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                        </p:commandButton>
+                        <p:commandButton id="homeButton"  icon="ui-icon-home"   value="#{youPortBundle.back_home}" action="#{userController.navigateToDashboard()}" />
+                        <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{youPortBundle.Create}" actionListener="#{menuOptionController.prepareCreate}" update=":MenuOptionCreateForm" oncomplete="PF('MenuOptionCreateDialog').show()"/>
+                    </td>
+                </tr>
+            </table>
+            <p:outputPanel style="text-align: left;">
+
+                <p:dataTable id="datalist"
+                             value="#{menuOptionController.items}"
+                             lazy="false"
+                             rowKey="#{item.menuOptionPK}"
+                             var="item"
+                             paginator="true"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             selectionMode="single"
+                             selection="#{menuOptionController.selected}">
+                    <!--
+                             To enable Lazy Loading, please copy/replace the following lines above,
+                             and be sure to replace the word HASH with the # symbol:
+                    
+                             value="HASH{menuOptionController.lazyItems}"
+                             lazy="true"
+                             rowKey="HASH{item.menuOptionPK}"  <<< Remove this line
+                    -->
+
+
+                    <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:MenuOptionDataTableContextMenu" listener="#{menuOptionController.resetParents}"/>
+                    <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:MenuOptionDataTableContextMenu" listener="#{menuOptionController.resetParents}"/>
+                    <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton" listener="#{menuOptionController.resetParents}"/>
+                    <p:ajax event="rowDblselect" onsuccess="document.getElementById('MenuOptionListForm:viewButton').click();"/>
+
+
+
+                    <p:column sortBy="#{item.name}" filterBy="#{item.name}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListMenuOptionTitle_name}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.name}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.descriptionLong}" filterBy="#{item.descriptionLong}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListMenuOptionTitle_descriptionLong}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.descriptionLong}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.descriptionShort}" filterBy="#{item.descriptionShort}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListMenuOptionTitle_descriptionShort}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.descriptionShort}"/>
+                    </p:column>
+
+                    
+                                        <p:column sortBy="#{item.urlImageNormal}" filterBy="#{item.urlImageNormal}">
+                                            <f:facet name="header">
+                                                <h:outputText value="#{youPortBundle.ListMenuOptionTitle_urlImageNormal}"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.urlImageNormal}"/>
+                                        </p:column>
+                   
+                 
+                    
+                                        <p:column sortBy="#{item.view.name}" filterBy="#{item.view.name}">
+                                            <f:facet name="header">
+                                                <h:outputText value="#{youPortBundle.ListMenuOptionTitle_view}"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.view.name}"/>
+                                        </p:column>
+                    
+                    
+                                        <p:column sortBy="#{item.menuType.nameType}" filterBy="#{item.menuType.nameType}">
+                                            <f:facet name="header">
+                                                <h:outputText value="#{youPortBundle.ListMenuOptionTitle_menuType}"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.menuType.nameType}"/>
+                                        </p:column>
+                    
+
+                </p:dataTable>
+            </p:outputPanel>
+
+
+        </p:panel>
+        <ui:include src="/WEB-INF/template/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

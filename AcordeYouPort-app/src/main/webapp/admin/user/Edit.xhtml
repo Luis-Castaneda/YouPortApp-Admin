@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="UserEditDlg" widgetVar="UserEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{youPortBundle.EditUserTitle}" closeOnEscape="true">
+
+            <h:form id="UserEditForm">
+
+                <h:panelGroup id="display" style="text-align: left">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{userController.selected != null}">
+
+
+                        <h:outputLabel value="#{youPortBundle.EditUserLabel_idUser}" for="idUser" />
+                        <h:panelGroup>
+                            <h:outputText id="idUser" value="#{userController.selected.idUser}" />
+                            <p:tooltip for="idUser" value="#{userController.getComponentMessages('idUser', youPortBundle.EditUserHelpText_idUser)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditUserLabel_name}" for="name" />
+                        <h:panelGroup>
+                            <p:inputText id="name" value="#{userController.selected.name}" title="#{youPortBundle.EditUserTitle_name}" size="45" maxlength="100"/>
+                            <p:tooltip for="name" value="#{userController.getComponentMessages('name', youPortBundle.EditUserHelpText_name)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditUserLabel_surname}" for="surname" />
+                        <h:panelGroup>
+                            <p:inputText id="surname" value="#{userController.selected.surname}" title="#{youPortBundle.EditUserTitle_surname}" size="45" maxlength="100"/>
+                            <p:tooltip for="surname" value="#{userController.getComponentMessages('surname', youPortBundle.EditUserHelpText_surname)}"/>
+                        </h:panelGroup>
+
+                      
+                        <p:outputLabel value="#{youPortBundle.EditUserLabel_password}" for="password" />
+                        <h:panelGroup>
+                            <p:inputText id="password" value="#{userController.selected.password}" title="#{youPortBundle.EditUserTitle_password}" size="45" maxlength="100"/>
+                            <p:tooltip for="password" value="#{userController.getComponentMessages('password', youPortBundle.EditUserHelpText_password)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditUserLabel_enabled}" for="enabled" />
+                        <h:panelGroup>
+                            <p:selectBooleanCheckbox id="enabled" value="#{userController.selected.enabled}" />
+                            <p:tooltip for="enabled" value="#{userController.getComponentMessages('enabled', youPortBundle.EditUserHelpText_enabled)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditUserLabel_email}" for="email" />
+                        <h:panelGroup>
+                            <p:inputText id="email" value="#{userController.selected.email}" title="#{youPortBundle.EditUserTitle_email}" size="45" maxlength="100"/>
+                            <p:tooltip for="email" value="#{userController.getComponentMessages('email', youPortBundle.EditUserHelpText_email)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditUserLabel_phone}" for="phone" />
+                        <h:panelGroup>
+                            <p:inputText id="phone" value="#{userController.selected.phone}" title="#{youPortBundle.EditUserTitle_phone}" size="45" maxlength="100"/>
+                            <p:tooltip for="phone" value="#{userController.getComponentMessages('phone', youPortBundle.EditUserHelpText_phone)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditUserLabel_idUserStatus}" for="idUserStatus" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="idUserStatus" value="#{userController.selected.idUserStatus}" required="true" requiredMessage="#{youPortBundle.EditUserRequiredMessage_idUserStatus}" converter="userStatusConverter" style="width: 295px">
+                                <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{userStatusController.items}"
+                                               var="idUserStatusItem"
+                                               itemValue="#{idUserStatusItem}"
+                                               itemLabel="#{idUserStatusItem.statusName.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                            <p:tooltip for="idUserStatus" value="#{userController.getComponentMessages('idUserStatus', youPortBundle.EditUserHelpText_idUserStatus)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditUserLabel_idUserType}" for="idUserType" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="idUserType" value="#{userController.selected.idUserType}" required="true" requiredMessage="#{youPortBundle.EditUserRequiredMessage_idUserType}" converter="userTypeConverter" style="width: 295px">
+                                <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{userTypeController.items}"
+                                               var="idUserTypeItem"
+                                               itemValue="#{idUserTypeItem}"
+                                               itemLabel="#{idUserTypeItem.description.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                            <p:tooltip for="idUserType" value="#{userController.getComponentMessages('idUserType', youPortBundle.EditUserHelpText_idUserType)}"/>
+                        </h:panelGroup>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{userController.save}" value="#{youPortBundle.Save}" update="display,:UserListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('UserEditDialog'));">
+                        <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{youPortBundle.Cancel}" oncomplete="PF('UserEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

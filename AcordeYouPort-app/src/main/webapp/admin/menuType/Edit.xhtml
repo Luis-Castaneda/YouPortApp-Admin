@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="MenuTypeEditDlg" widgetVar="MenuTypeEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{youPortBundle.EditMenuTypeTitle}" closeOnEscape="true">
+
+            <h:form id="MenuTypeEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{menuTypeController.selected != null}">
+
+
+                        <h:outputLabel value="#{youPortBundle.EditMenuTypeLabel_idMenutype}" for="idMenutype" />
+                        <h:outputText id="idMenutype" value="#{menuTypeController.selected.idMenutype}" />
+
+                        <p:outputLabel value="#{youPortBundle.EditMenuTypeLabel_nameType}" for="nameType" />
+                        <p:inputText id="nameType" value="#{menuTypeController.selected.nameType}" title="#{youPortBundle.EditMenuTypeTitle_nameType}" size="45" maxlength="45"/>
+
+                        <p:outputLabel value="#{youPortBundle.EditMenuTypeLabel_description}" for="description" />
+                        <p:inputText id="description" value="#{menuTypeController.selected.description}" title="#{youPortBundle.EditMenuTypeTitle_description}" size="200" maxlength="200"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{menuTypeController.save}" value="#{youPortBundle.Save}" update="display,:MenuTypeListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('MenuTypeEditDialog'));">
+                        <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{youPortBundle.Cancel}" oncomplete="PF('MenuTypeEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

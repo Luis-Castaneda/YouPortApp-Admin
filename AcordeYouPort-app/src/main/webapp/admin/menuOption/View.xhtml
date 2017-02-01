@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MenuOptionViewDlg" widgetVar="MenuOptionViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{youPortBundle.ViewMenuOptionTitle}" closeOnEscape="true">
+
+            <h:form id="MenuOptionViewForm">
+
+                <h:panelGroup id="display" style="text-align: left;">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{menuOptionController.selected != null}">
+
+                        <h:outputText value="#{youPortBundle.ViewMenuOptionLabel_menuOptionPK_idMenu}"/>
+                        <h:outputText value="#{menuOptionController.selected.menuOptionPK.idMenu}" title="#{youPortBundle.ViewMenuOptionTitle_menuOptionPK_idMenu}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewMenuOptionLabel_menuOptionPK_idView}"/>
+                        <h:outputText value="#{menuOptionController.selected.menuOptionPK.idView}" title="#{youPortBundle.ViewMenuOptionTitle_menuOptionPK_idView}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewMenuOptionLabel_menuOptionPK_idMenutype}"/>
+                        <h:outputText value="#{menuOptionController.selected.menuOptionPK.idMenutype}" title="#{youPortBundle.ViewMenuOptionTitle_menuOptionPK_idMenutype}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewMenuOptionLabel_name}"/>
+                        <h:outputText value="#{menuOptionController.selected.name}" title="#{youPortBundle.ViewMenuOptionTitle_name}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewMenuOptionLabel_descriptionLong}"/>
+                        <h:outputText value="#{menuOptionController.selected.descriptionLong}" title="#{youPortBundle.ViewMenuOptionTitle_descriptionLong}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewMenuOptionLabel_descriptionShort}"/>
+                        <h:outputText value="#{menuOptionController.selected.descriptionShort}" title="#{youPortBundle.ViewMenuOptionTitle_descriptionShort}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewMenuOptionLabel_urlImageNormal}"/>
+                        <h:outputText value="#{menuOptionController.selected.urlImageNormal}" title="#{youPortBundle.ViewMenuOptionTitle_urlImageNormal}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewMenuOptionLabel_enabled}"/>
+                        <h:selectBooleanCheckbox id="enabled" value="#{menuOptionController.selected.enabled}" title="#{youPortBundle.EditMenuOptionTitle_enabled}"  disabled="true"/>
+
+                        <h:outputText value="#{youPortBundle.ViewMenuOptionLabel_urlImageOver}"/>
+                        <h:outputText value="#{menuOptionController.selected.urlImageOver}" title="#{youPortBundle.ViewMenuOptionTitle_urlImageOver}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewMenuOptionLabel_view}"/>
+                        <h:outputText value="#{menuOptionController.selected.view.name}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewMenuOptionLabel_menuType}"/>
+                        <h:outputText value="#{menuOptionController.selected.menuType.nameType}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{youPortBundle.Close}" onclick="PF('MenuOptionViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

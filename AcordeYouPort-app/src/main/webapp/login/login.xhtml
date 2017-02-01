@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Maximus Login Page</title>
+        <h:outputStylesheet library="css" name="pfcrud.css"/>
+        <h:outputScript library="scripts" name="pfcrud.js"/>
+    </h:head>
+    <h:body>
+        <center>
+            <div class="login-panel absolute-center">
+                <img src="#{request.getContextPath()}/resources/images/logo3.png" id="logo_login"/>
+                <h:form id="login" class="input-forms">            
+                    <p:growl id="growl" showDetail="true" autoUpdate="true" life="5000" />
+
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputLabel for="username" value="Username:" />
+                        <p:inputText id="username" value="#{userLoginController.username}" required="true" label="username" />
+<!--                        <h:message for="username" />-->
+
+                        <h:outputLabel for="password" value="Password:" />
+                        <p:password id="password" value="#{userLoginController.password}" required="true" label="password" />
+<!--                        <h:message for="password" />-->
+                        <f:facet name="footer">
+                            <div  class="buttons-login">
+                                <p:commandButton value="Login" update="growl" action="#{userLoginController.login}" ajax="false"/>
+                            </div>
+                        </f:facet>
+
+                    </h:panelGrid>
+                </h:form>
+            </div>
+        </center>
+    </h:body>
+</html>

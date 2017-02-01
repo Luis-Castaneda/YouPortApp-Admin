@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ThemeCreateDlg" widgetVar="ThemeCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{youPortBundle.CreateThemeTitle}" closeOnEscape="true">
+
+            <h:form id="ThemeCreateForm">
+
+                <h:panelGroup id="display" rendered="#{themeController.selected != null}" style="text-align: left">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{youPortBundle.CreateThemeLabel_nameTheme}" for="nameTheme" />
+                        <h:panelGroup>
+                            <p:inputText id="nameTheme" value="#{themeController.selected.nameTheme}" title="#{youPortBundle.CreateThemeTitle_nameTheme}" size="45" maxlength="100"/>
+                            <p:tooltip for="nameTheme" value="#{themeController.getComponentMessages('nameTheme', youPortBundle.CreateThemeHelpText_nameTheme)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.CreateThemeLabel_description}" for="description" />
+                        <h:panelGroup>
+                            <p:inputTextarea id="description" value="#{themeController.selected.description}" title="#{youPortBundle.CreateThemeTitle_description}" rows="4" cols="30" style="width: 295px" />
+                            <p:tooltip for="description" value="#{themeController.getComponentMessages('description', youPortBundle.CreateThemeHelpText_description)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.CreateThemeLabel_urlLogoBanner}" for="urlLogoBanner" />
+                        <h:panelGroup>
+                            <p:inputText id="urlLogoBanner" value="#{themeController.selected.urlLogoBanner}" title="#{youPortBundle.CreateThemeTitle_urlLogoBanner}" size="45" maxlength="200"/>
+                            <p:tooltip for="urlLogoBanner" value="#{themeController.getComponentMessages('urlLogoBanner', youPortBundle.CreateThemeHelpText_urlLogoBanner)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.CreateThemeLabel_urlLogoFooter}" for="urlLogoFooter" />
+                        <h:panelGroup>
+                            <p:inputText id="urlLogoFooter" value="#{themeController.selected.urlLogoFooter}" title="#{youPortBundle.CreateThemeTitle_urlLogoFooter}" size="45" maxlength="200"/>
+                            <p:tooltip for="urlLogoFooter" value="#{themeController.getComponentMessages('urlLogoFooter', youPortBundle.CreateThemeHelpText_urlLogoFooter)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.CreateThemeLabel_colorPreference}" for="colorPreference" />
+                        <h:panelGroup>
+                            <p:colorPicker id="colorPreference" value="#{themeController.selected.colorPreference}" />    
+
+                            <p:tooltip for="colorPreference" value="#{themeController.getComponentMessages('colorPreference', youPortBundle.CreateThemeHelpText_colorPreference)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.CreateThemeLabel_enabled}" for="enabled" />
+                        <h:panelGroup>
+                            <p:selectBooleanCheckbox id="enabled" value="#{themeController.selected.enabled}" />
+                            <p:tooltip for="enabled" value="#{themeController.getComponentMessages('enabled', youPortBundle.CreateThemeHelpText_enabled)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.CreateThemeLabel_urlBackground}" for="urlBackground" />
+                        <h:panelGroup>
+                            <p:inputText id="urlBackground" value="#{themeController.selected.urlBackground}" title="#{youPortBundle.CreateThemeTitle_urlBackground}" size="45" maxlength="200"/>
+                            <p:tooltip for="urlBackground" value="#{themeController.getComponentMessages('urlBackground', youPortBundle.CreateThemeHelpText_urlBackground)}"/>
+                        </h:panelGroup>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{themeController.saveNew}" value="#{youPortBundle.Save}" update="display,:ThemeListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('ThemeCreateDialog'));">
+                        <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{youPortBundle.Cancel}" oncomplete="PF('ThemeCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

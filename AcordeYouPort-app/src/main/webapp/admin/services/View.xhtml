@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ServicesViewDlg" widgetVar="ServicesViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{youPortBundle.ViewServicesTitle}" closeOnEscape="true">
+
+            <h:form id="ServicesViewForm">
+
+                <h:panelGroup id="display" style="text-align: left">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{servicesController.selected != null}">
+
+                        <h:outputText value="#{youPortBundle.ViewServicesLabel_idServices}"/>
+                        <h:outputText value="#{servicesController.selected.idServices}" title="#{youPortBundle.ViewServicesTitle_idServices}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewServicesLabel_nameServices}"/>
+                        <h:outputText value="#{servicesController.selected.nameServices}" title="#{youPortBundle.ViewServicesTitle_nameServices}"/>
+                        
+                        <h:outputText value="#{youPortBundle.CreateServicesLabel_descriptionLong}"/>
+                        <h:outputText value="#{servicesController.selected.descriptionLong}" title="#{youPortBundle.CreateServicesTitle_descriptionLong}"/>
+                        
+                        <h:outputText value="#{youPortBundle.CreateServicesLabel_descriptionShort}"/>
+                        <h:outputText value="#{servicesController.selected.descriptionShort}" title="#{youPortBundle.CreateServicesTitle_descriptionShort}"/>
+                        
+                        <h:outputText value="#{youPortBundle.CreateServicesLabel_urlImage}"/>
+                        <h:outputText value="#{servicesController.selected.urlImage}" title="#{youPortBundle.CreateServicesTitle_urlImage}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewServicesLabel_enabled}"/>
+                        <h:selectBooleanCheckbox id="enabled" value="#{servicesController.selected.enabled}" title="#{youPortBundle.EditServicesTitle_enabled}"  disabled="true"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{youPortBundle.Close}" onclick="PF('ServicesViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

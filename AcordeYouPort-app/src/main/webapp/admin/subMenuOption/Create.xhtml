@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SubMenuOptionCreateDlg" widgetVar="SubMenuOptionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{youPortBundle.CreateSubMenuOptionTitle}" closeOnEscape="true">
+
+            <h:form id="SubMenuOptionCreateForm">
+
+                <h:panelGroup id="display" rendered="#{subMenuOptionController.selected != null}" style="text-align: left">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{youPortBundle.CreateSubMenuOptionLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{subMenuOptionController.selected.name}" title="#{youPortBundle.CreateSubMenuOptionTitle_name}" size="100" maxlength="100"/>
+
+                        <p:outputLabel value="#{youPortBundle.CreateSubMenuOptionLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{subMenuOptionController.selected.description}" title="#{youPortBundle.CreateSubMenuOptionTitle_description}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{subMenuOptionController.saveNew}" value="#{youPortBundle.Save}" update="display,:SubMenuOptionListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('SubMenuOptionCreateDialog'));">
+                        <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{youPortBundle.Cancel}" oncomplete="PF('SubMenuOptionCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

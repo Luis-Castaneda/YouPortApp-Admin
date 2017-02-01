@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="TypeViewListForm">
+
+        <p:panel header="#{youPortBundle.ListTypeViewTitle}">
+            <p:contextMenu id="TypeViewDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{youPortBundle.Create}" onclick="document.getElementById('TypeViewListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{youPortBundle.View}" onclick="document.getElementById('TypeViewListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="#{youPortBundle.Edit}" onclick="document.getElementById('TypeViewListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{youPortBundle.Delete}" onclick="document.getElementById('TypeViewListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                <p:separator/>
+                <p:menuitem value="#{youPortBundle.TypeViewMenuItem_viewList}" icon="ui-icon-search"  action="#{typeViewController.navigateViewList}" disabled="#{empty typeViewController.selected.viewList}" ajax="false"/>  
+            </p:contextMenu>
+
+            <table style="text-align: right; width: 100%; margin-bottom: 10px;">
+                <tr >
+                    <td  style="text-align: right;"> 
+
+                        <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="#{youPortBundle.View}" update=":TypeViewViewForm" oncomplete="PF('TypeViewViewDialog').show()" disabled="#{empty typeViewController.selected}"/>
+                        <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{youPortBundle.Edit}" update=":TypeViewEditForm" oncomplete="PF('TypeViewEditDialog').show()" disabled="#{empty typeViewController.selected}"/>
+                        <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{youPortBundle.Delete}" actionListener="#{typeViewController.delete}" update=":growl,datalist" disabled="#{empty typeViewController.selected}">
+                            <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                        </p:commandButton>
+                        <p:commandButton id="homeButton"  icon="ui-icon-home"   value="#{youPortBundle.back_home}" action="#{userController.navigateToDashboard()}" />
+                        <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{youPortBundle.Create}" actionListener="#{typeViewController.prepareCreate}" update=":TypeViewCreateForm" oncomplete="PF('TypeViewCreateDialog').show()"/>
+
+                    </td>
+                </tr>
+            </table>
+            <p:outputPanel style="text-align: left;">
+                <p:dataTable id="datalist"
+                             value="#{typeViewController.items}"
+                             lazy="false"
+                             rowKey="#{item.idTypeView}"
+                             var="item"
+                             paginator="true"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             selectionMode="single"
+                             selection="#{typeViewController.selected}">
+                    <!--
+                             To enable Lazy Loading, please copy/replace the following lines above,
+                             and be sure to replace the word HASH with the # symbol:
+                    
+                             value="HASH{typeViewController.lazyItems}"
+                             lazy="true"
+                             rowKey="HASH{item.idTypeView}"  <<< Remove this line
+                    -->
+
+
+                    <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:TypeViewDataTableContextMenu"/>
+                    <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:TypeViewDataTableContextMenu"/>
+                    <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton"/>
+                    <p:ajax event="rowDblselect" onsuccess="document.getElementById('TypeViewListForm:viewButton').click();"/>
+
+                    <p:column sortBy="#{item.idTypeView}" filterBy="#{item.idTypeView}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListTypeViewTitle_idTypeView}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idTypeView}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.nameType}" filterBy="#{item.nameType}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListTypeViewTitle_nameType}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.nameType}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.description}" filterBy="#{item.description}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListTypeViewTitle_description}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.description}"/>
+                    </p:column>
+
+
+                </p:dataTable>
+            </p:outputPanel>
+
+
+        </p:panel>
+        <ui:include src="/WEB-INF/template/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

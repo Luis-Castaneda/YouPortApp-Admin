@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="SubMenuOptionEditDlg" widgetVar="SubMenuOptionEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{youPortBundle.EditSubMenuOptionTitle}" closeOnEscape="true">
+
+            <h:form id="SubMenuOptionEditForm">
+
+                <h:panelGroup id="display" style="text-align: left">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{subMenuOptionController.selected != null}">
+
+
+                        <h:outputLabel value="#{youPortBundle.EditSubMenuOptionLabel_idSubMenuOption}" for="idSubMenuOption" />
+                        <h:outputText id="idSubMenuOption" value="#{subMenuOptionController.selected.idSubMenuOption}" />
+
+                        <p:outputLabel value="#{youPortBundle.EditSubMenuOptionLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{subMenuOptionController.selected.name}" title="#{youPortBundle.EditSubMenuOptionTitle_name}" size="100" maxlength="100"/>
+
+                        <p:outputLabel value="#{youPortBundle.EditSubMenuOptionLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{subMenuOptionController.selected.description}" title="#{youPortBundle.EditSubMenuOptionTitle_description}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{subMenuOptionController.save}" value="#{youPortBundle.Save}" update="display,:SubMenuOptionListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('SubMenuOptionEditDialog'));">
+                        <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{youPortBundle.Cancel}" oncomplete="PF('SubMenuOptionEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

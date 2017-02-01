@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="SectionCompanyListForm">
+
+        <p:panel header="#{youPortBundle.ListSectionCompanyTitle}">
+            <p:contextMenu id="SectionCompanyDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{youPortBundle.Create}" onclick="document.getElementById('SectionCompanyListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{youPortBundle.View}" onclick="document.getElementById('SectionCompanyListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="#{youPortBundle.Edit}" onclick="document.getElementById('SectionCompanyListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{youPortBundle.Delete}" onclick="document.getElementById('SectionCompanyListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                <p:separator/>
+                <p:menuitem value="#{youPortBundle.SectionCompanyMenuItem_idSection}" icon="ui-icon-search"  actionListener="#{sectionCompanyController.prepareIdSection}" update=":SectionMenuCompanyViewForm" oncomplete="PF('SectionMenuCompanyViewDialog').show()" disabled="#{empty sectionCompanyController.selected.idSection}"/>  
+                <p:menuitem value="#{youPortBundle.SectionCompanyMenuItem_idCompany}" icon="ui-icon-search"  actionListener="#{sectionCompanyController.prepareIdCompany}" update=":CompanyViewForm" oncomplete="PF('CompanyViewDialog').show()" disabled="#{empty sectionCompanyController.selected.idCompany}"/>  
+            </p:contextMenu>
+
+            <table style="text-align: right; width: 100%; margin-bottom: 10px;">
+                <tr >
+                    <td  style="text-align: right;"> 
+
+                        <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="#{youPortBundle.View}" update=":SectionCompanyViewForm" oncomplete="PF('SectionCompanyViewDialog').show()" disabled="#{empty sectionCompanyController.selected}"/>
+                        <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{youPortBundle.Edit}" update=":SectionCompanyEditForm" oncomplete="PF('SectionCompanyEditDialog').show()" disabled="#{empty sectionCompanyController.selected}"/>
+                        <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{youPortBundle.Delete}" actionListener="#{sectionCompanyController.delete}" update=":growl,datalist" disabled="#{empty sectionCompanyController.selected}">
+                            <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                        </p:commandButton>
+                        <p:commandButton id="homeButton"  icon="ui-icon-home"   value="#{youPortBundle.back_home}" action="#{userController.navigateToDashboard()}" />
+                        <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{youPortBundle.Create}" actionListener="#{sectionCompanyController.prepareCreate}" update=":SectionCompanyCreateForm" oncomplete="PF('SectionCompanyCreateDialog').show()"/>
+
+                    </td>
+                </tr>
+            </table>
+            <p:outputPanel style="text-align: left;">
+                <p:dataTable id="datalist"
+                             value="#{sectionCompanyController.items}"
+                             lazy="false"
+                             rowKey="#{item.idSectionCompany}"
+                             var="item"
+                             paginator="true"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             selectionMode="single"
+                             selection="#{sectionCompanyController.selected}">
+                    <!--
+                             To enable Lazy Loading, please copy/replace the following lines above,
+                             and be sure to replace the word HASH with the # symbol:
+                    
+                             value="HASH{sectionCompanyController.lazyItems}"
+                             lazy="true"
+                             rowKey="HASH{item.idSectionCompany}"  <<< Remove this line
+                    -->
+
+
+                    <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:SectionCompanyDataTableContextMenu" listener="#{sectionCompanyController.resetParents}"/>
+                    <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:SectionCompanyDataTableContextMenu" listener="#{sectionCompanyController.resetParents}"/>
+                    <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton" listener="#{sectionCompanyController.resetParents}"/>
+                    <p:ajax event="rowDblselect" onsuccess="document.getElementById('SectionCompanyListForm:viewButton').click();"/>
+
+                    <p:column sortBy="#{item.idSectionCompany}" filterBy="#{item.idSectionCompany}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListSectionCompanyTitle_idSectionCompany}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idSectionCompany}"/>
+                    </p:column>
+
+
+<!--                    <p:column sortBy="#{item.title}" filterBy="#{item.title}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListSectionCompanyTitle_title}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.title}"/>
+                    </p:column>-->
+
+
+
+                    <p:column sortBy="#{item.paragraph}" filterBy="#{item.paragraph}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListSectionCompanyTitle_paragraph}"/>
+                        </f:facet>
+                        <p:commandLink id="btnView" 
+                                       value="View Content"
+                                       action="#{sectionCompanyController.changeSelection(item)}"
+                                       oncomplete="PF('lighbox2').show()"
+                                       update=":SectionCompanyListForm"
+                                       >
+                        </p:commandLink>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.idSection.name}" filterBy="#{item.idSection.name}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListSectionCompanyTitle_idSection}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idSection.name}"/>
+                    </p:column>
+
+                    <p:column sortBy="#{item.idCompany.name}" filterBy="#{item.idCompany.name}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListSectionCompanyTitle_idCompany}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idCompany.name}"/>
+                    </p:column>
+
+
+                </p:dataTable>
+            </p:outputPanel>
+
+
+        </p:panel>
+        <p:dialog id="lighbox2" widgetVar="lighbox2" modal="true"  appendTo="@(body)"  height = "650" width="1100"  >
+
+            <h:outputText escape="false" value="#{sectionCompanyController.paragraph}" style="white-space: pre;" />
+
+        </p:dialog>
+        <ui:include src="/WEB-INF/template/confirmation.xhtml"/>
+    </h:form>
+
+
+
+</ui:composition>

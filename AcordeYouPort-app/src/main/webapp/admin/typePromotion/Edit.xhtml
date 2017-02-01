@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="TypePromotionEditDlg" widgetVar="TypePromotionEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{youPortBundle.EditTypePromotionTitle}" closeOnEscape="true">
+
+            <h:form id="TypePromotionEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{typePromotionController.selected != null}" style="text-align: left">
+
+
+                        <h:outputLabel value="#{youPortBundle.EditTypePromotionLabel_idTypePromotion}" for="idTypePromotion" />
+                        <h:outputText id="idTypePromotion" value="#{typePromotionController.selected.idTypePromotion}" />
+
+                        <p:outputLabel value="#{youPortBundle.EditTypePromotionLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{typePromotionController.selected.name}" title="#{youPortBundle.EditTypePromotionTitle_name}" size="45" maxlength="45"/>
+
+                        <p:outputLabel value="#{youPortBundle.EditTypePromotionLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{typePromotionController.selected.description}" title="#{youPortBundle.EditTypePromotionTitle_description}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{typePromotionController.save}" value="#{youPortBundle.Save}" update="display,:TypePromotionListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('TypePromotionEditDialog'));">
+                        <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{youPortBundle.Cancel}" oncomplete="PF('TypePromotionEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition>
+
+        <p:dialog id="SectionCompanyViewDlg" widgetVar="SectionCompanyViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{youPortBundle.ViewSectionCompanyTitle}" closeOnEscape="true">
+
+            <h:form id="SectionCompanyViewForm">
+
+                <h:panelGroup id="display" style="text-align: left">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{sectionCompanyController.selected != null}">
+
+                        <h:outputText value="#{youPortBundle.ViewSectionCompanyLabel_idSectionCompany}"/>
+                        <h:outputText value="#{sectionCompanyController.selected.idSectionCompany}" title="#{youPortBundle.ViewSectionCompanyTitle_idSectionCompany}"/>
+
+<!--                        <h:outputText value="#{youPortBundle.ViewSectionCompanyLabel_title}"/>
+                        <h:outputText value="#{sectionCompanyController.selected.title}" title="#{youPortBundle.ViewSectionCompanyTitle_title}"/>-->
+
+
+                        <h:outputText value="#{youPortBundle.ViewSectionCompanyLabel_paragraph}"/>
+
+                        <h:outputLink value="#" onclick="PF('lighbox2').show();">
+                            <h:outputText value="View Content" />
+                        </h:outputLink>
+
+                                     <!--<h:outputText value="#{sectionCompanyController.selected.paragraph}" title="#{youPortBundle.ViewSectionCompanyTitle_paragraph}"/>-->
+
+
+<!--                        <h:outputText value="#{youPortBundle.ViewSectionCompanyLabel_urlImage}"/>
+                        <h:outputText value="#{sectionCompanyController.selected.urlImage}" title="#{youPortBundle.ViewSectionCompanyTitle_urlImage}"/>-->
+
+
+                        <h:outputText value="#{youPortBundle.ViewSectionCompanyLabel_idSection}"/>
+                        <h:outputText value="#{sectionCompanyController.selected.idSection.name}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewSectionCompanyLabel_idCompany}"/>
+                        <h:outputText value="#{sectionCompanyController.selected.idCompany.name}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{youPortBundle.Close}" onclick="PF('SectionCompanyViewDialog').hide()"/>
+                </h:panelGroup>
+
+
+                <p:dialog id="lighbox2" widgetVar="lighbox2" modal="true"  appendTo="@(body)"  height = "650" width="1100">
+                    
+                        <h:outputText escape="false" value="#{sectionCompanyController.selected.paragraph}" style="white-space: pre;"/>
+                    
+                </p:dialog>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

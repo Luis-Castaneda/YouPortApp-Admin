@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CompanyViewDlg" widgetVar="CompanyViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{youPortBundle.ViewCompanyTitle}" closeOnEscape="true">
+
+            <h:form id="CompanyViewForm">
+
+                <h:panelGroup id="display" style="text-align: left">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{companyController.selected != null}">
+
+                        <h:outputText value="#{youPortBundle.ViewCompanyLabel_idCompany}"/>
+                        <h:outputText value="#{companyController.selected.idCompany}" title="#{youPortBundle.ViewCompanyTitle_idCompany}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewCompanyLabel_name}"/>
+                        <h:outputText value="#{companyController.selected.name}" title="#{youPortBundle.ViewCompanyTitle_name}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewCompanyLabel_address}"/>
+                        <h:outputText value="#{companyController.selected.address}" title="#{youPortBundle.ViewCompanyTitle_address}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewCompanyLabel_zipCode}"/>
+                        <h:outputText value="#{companyController.selected.zipCode}" title="#{youPortBundle.ViewCompanyTitle_zipCode}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewCompanyLabel_stateProvince}"/>
+                        <h:outputText value="#{companyController.selected.stateProvince}" title="#{youPortBundle.ViewCompanyTitle_stateProvince}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewCompanyLabel_city}"/>
+                        <h:outputText value="#{companyController.selected.idCity.provincia}" title="#{youPortBundle.ViewCompanyTitle_city}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewCompanyLabel_phoneOfficeOne}"/>
+                        <h:outputText value="#{companyController.selected.phoneOfficeOne}" title="#{youPortBundle.ViewCompanyTitle_phoneOfficeOne}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewCompanyLabel_phoneOfficeTwo}"/>
+                        <h:outputText value="#{companyController.selected.phoneOfficeTwo}" title="#{youPortBundle.ViewCompanyTitle_phoneOfficeTwo}"/>
+
+                        <p:outputLabel value="#{youPortBundle.CreateCompanyLabel_urlImage}"  />
+                        <h:outputText value="#{companyController.selected.urlImage}" title="#{youPortBundle.CreateCompanyTitle_urlImage}" />
+                           
+                         
+                        <p:outputLabel value="#{youPortBundle.CreateCompanyLabel_webSite}"  />
+                        <h:outputText value="#{companyController.selected.webSite}" title="#{youPortBundle.CreateCompanyTitle_webSite}" />
+                          
+                        <p:outputLabel value="#{youPortBundle.CreateCompanyLabel_fax}"  />
+                        <h:outputText value="#{companyController.selected.fax}" title="#{youPortBundle.CreateCompanyTitle_fax}" />
+                        
+                        <h:outputText value="#{youPortBundle.ViewCompanyLabel_idTheme}"/>
+                        <h:outputText value="#{companyController.selected.idTheme.nameTheme}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{youPortBundle.Close}" onclick="PF('CompanyViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

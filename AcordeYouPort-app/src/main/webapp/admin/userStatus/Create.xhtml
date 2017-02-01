@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UserStatusCreateDlg" widgetVar="UserStatusCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{youPortBundle.CreateUserStatusTitle}" closeOnEscape="true">
+
+            <h:form id="UserStatusCreateForm">
+
+                <h:panelGroup id="display" rendered="#{userStatusController.selected != null}" style="text-align: left">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{youPortBundle.CreateUserStatusLabel_statusName}" for="statusName" />
+                        <h:panelGroup>
+                            <p:inputText id="statusName" value="#{userStatusController.selected.statusName}" title="#{youPortBundle.CreateUserStatusTitle_statusName}" size="45" maxlength="100"/>
+                            <p:tooltip for="statusName" value="#{userStatusController.getComponentMessages('statusName', youPortBundle.CreateUserStatusHelpText_statusName)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.CreateUserStatusLabel_enabled}" for="enabled" />
+                        <h:panelGroup>
+                            <p:selectBooleanCheckbox id="enabled" value="#{userStatusController.selected.enabled}" />
+                            <p:tooltip for="enabled" value="#{userStatusController.getComponentMessages('enabled', youPortBundle.CreateUserStatusHelpText_enabled)}"/>
+                        </h:panelGroup>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{userStatusController.saveNew}" value="#{youPortBundle.Save}" update="display,:UserStatusListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('UserStatusCreateDialog'));">
+                        <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{youPortBundle.Cancel}" oncomplete="PF('UserStatusCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

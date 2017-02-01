@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="ContactListForm">
+
+        <p:panel header="#{youPortBundle.ListContactTitle}">
+            <p:contextMenu id="ContactDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{youPortBundle.Create}" onclick="document.getElementById('ContactListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{youPortBundle.View}" onclick="document.getElementById('ContactListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="#{youPortBundle.Edit}" onclick="document.getElementById('ContactListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{youPortBundle.Delete}" onclick="document.getElementById('ContactListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                <p:separator/>
+                <p:menuitem value="#{youPortBundle.ContactMenuItem_idCompany}" icon="ui-icon-search"  actionListener="#{contactController.prepareIdCompany}" update=":CompanyViewForm" oncomplete="PF('CompanyViewDialog').show()" disabled="#{empty contactController.selected.idCompany}"/>  
+            </p:contextMenu>
+            <table style="text-align: right; width: 100%; margin-bottom: 10px;">
+                <tr >
+                    <td  style="text-align: right;">  
+
+
+                        <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="#{youPortBundle.View}" update=":ContactViewForm" oncomplete="PF('ContactViewDialog').show()" disabled="#{empty contactController.selected}"/>
+                        <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{youPortBundle.Edit}" update=":ContactEditForm" oncomplete="PF('ContactEditDialog').show()" disabled="#{empty contactController.selected}"/>
+                        <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{youPortBundle.Delete}" actionListener="#{contactController.delete}" update=":growl,datalist" disabled="#{empty contactController.selected}">
+                            <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                        </p:commandButton>
+                        <p:commandButton id="homeButton"  icon="ui-icon-home"   value="#{youPortBundle.back_home}" action="#{userController.navigateToDashboard()}" />
+                        <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{youPortBundle.Create}" actionListener="#{contactController.prepareCreate}" update=":ContactCreateForm" oncomplete="PF('ContactCreateDialog').show()"/>
+                    </td>
+                </tr>
+            </table>
+            <p:outputPanel style="text-align: left;">
+                <p:dataTable id="datalist"
+                             value="#{contactController.items}"
+                             lazy="false"
+                             rowKey="#{item.idContact}"
+                             var="item"
+                             paginator="true"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             selectionMode="single"
+                             selection="#{contactController.selected}">
+                    <!--
+                             To enable Lazy Loading, please copy/replace the following lines above,
+                             and be sure to replace the word HASH with the # symbol:
+                    
+                             value="HASH{contactController.lazyItems}"
+                             lazy="true"
+                             rowKey="HASH{item.idContact}"  <<< Remove this line
+                    -->
+
+
+                    <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:ContactDataTableContextMenu" listener="#{contactController.resetParents}"/>
+                    <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:ContactDataTableContextMenu" listener="#{contactController.resetParents}"/>
+                    <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton" listener="#{contactController.resetParents}"/>
+                    <p:ajax event="rowDblselect" onsuccess="document.getElementById('ContactListForm:viewButton').click();"/>
+
+                    <p:column sortBy="#{item.idContact}" filterBy="#{item.idContact}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListContactTitle_idContact}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idContact}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.nameContact}" filterBy="#{item.nameContact}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListContactTitle_nameContact}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.nameContact}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.phoneContact}" filterBy="#{item.phoneContact}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListContactTitle_phoneContact}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.phoneContact}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.addressContact}" filterBy="#{item.addressContact}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListContactTitle_addressContact}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.addressContact}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.emailContact}" filterBy="#{item.emailContact}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListContactTitle_emailContact}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.emailContact}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.fax}" filterBy="#{item.fax}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListContactTitle_fax}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.fax}"/>
+                    </p:column>
+
+                    <!--
+                                        <p:column sortBy="#{item.webSite}" filterBy="#{item.webSite}">
+                                            <f:facet name="header">
+                                                <h:outputText value="#{youPortBundle.ListContactTitle_webSite}"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.webSite}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.idCompany.name}" filterBy="#{item.idCompany.name}">
+                                            <f:facet name="header">
+                                                <h:outputText value="#{youPortBundle.ListContactTitle_idCompany}"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.idCompany.name}"/>
+                                        </p:column>
+                    -->
+
+                </p:dataTable>
+            </p:outputPanel>
+
+
+        </p:panel>
+        <ui:include src="/WEB-INF/template/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

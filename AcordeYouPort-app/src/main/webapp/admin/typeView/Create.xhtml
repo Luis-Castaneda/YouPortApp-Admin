@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TypeViewCreateDlg" widgetVar="TypeViewCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{youPortBundle.CreateTypeViewTitle}" closeOnEscape="true">
+
+            <h:form id="TypeViewCreateForm" >
+
+                <h:panelGroup id="display" rendered="#{typeViewController.selected != null}" style="text-align: left;">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{youPortBundle.CreateTypeViewLabel_nameType}" for="nameType" />
+                        <p:inputText id="nameType" value="#{typeViewController.selected.nameType}" title="#{youPortBundle.CreateTypeViewTitle_nameType}" size="45" maxlength="45"/>
+
+                        <p:outputLabel value="#{youPortBundle.CreateTypeViewLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" style="width: 275px;" id="description" value="#{typeViewController.selected.description}" title="#{youPortBundle.CreateTypeViewTitle_description}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{typeViewController.saveNew}" value="#{youPortBundle.Save}" update="display,:TypeViewListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('TypeViewCreateDialog'));">
+                        <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{youPortBundle.Cancel}" oncomplete="PF('TypeViewCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

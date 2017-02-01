@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UserCreateDlg" widgetVar="UserCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{youPortBundle.CreateUserTitle}" closeOnEscape="true">
+
+            <h:form id="UserCreateForm">
+
+                <h:panelGroup id="display" rendered="#{userController.selected != null}" style="text-align: left">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{youPortBundle.CreateUserLabel_idUser}" for="id_user" />
+                        <h:panelGroup>
+                            <p:inputText id="id_user" value="#{userController.selected.idUser}" title="#{youPortBundle.CreateUserTitle_idUser}" size="45" maxlength="100"/>
+                            <p:tooltip for="id_user" value="#{userController.getComponentMessages('id_user', youPortBundle.CreateUserHelpText_idUser)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.CreateUserLabel_name}" for="name" />
+                        <h:panelGroup>
+                            <p:inputText id="name" value="#{userController.selected.name}" title="#{youPortBundle.CreateUserTitle_name}" size="45" maxlength="100"/>
+                            <p:tooltip for="name" value="#{userController.getComponentMessages('name', youPortBundle.CreateUserHelpText_name)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.CreateUserLabel_surname}" for="surname" />
+                        <h:panelGroup>
+                            <p:inputText id="surname" value="#{userController.selected.surname}" title="#{youPortBundle.CreateUserTitle_surname}" size="45" maxlength="100"/>
+                            <p:tooltip for="surname" value="#{userController.getComponentMessages('surname', youPortBundle.CreateUserHelpText_surname)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.CreateUserLabel_password}" for="password" />
+                        <h:panelGroup>
+                            <p:inputText id="password" value="#{userController.selected.password}" title="#{youPortBundle.CreateUserTitle_password}" size="45" maxlength="100"/>
+                            <p:tooltip for="password" value="#{userController.getComponentMessages('password', youPortBundle.CreateUserHelpText_password)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.CreateUserLabel_enabled}" for="enabled" />
+                        <h:panelGroup>
+                            <p:selectBooleanCheckbox id="enabled" value="#{userController.selected.enabled}" />
+                            <p:tooltip for="enabled" value="#{userController.getComponentMessages('enabled', youPortBundle.CreateUserHelpText_enabled)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.CreateUserLabel_email}" for="email" />
+                        <h:panelGroup>
+                            <p:inputText id="email" value="#{userController.selected.email}" title="#{youPortBundle.CreateUserTitle_email}" size="45" maxlength="100"/>
+                            <p:tooltip for="email" value="#{userController.getComponentMessages('email', youPortBundle.CreateUserHelpText_email)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.CreateUserLabel_phone}" for="phone" />
+                        <h:panelGroup>
+                            <p:inputText id="phone" value="#{userController.selected.phone}" title="#{youPortBundle.CreateUserTitle_phone}" size="45" maxlength="100"/>
+                            <p:tooltip for="phone" value="#{userController.getComponentMessages('phone', youPortBundle.CreateUserHelpText_phone)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.CreateUserLabel_idUserStatus}" for="idUserStatus" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="idUserStatus" value="#{userController.selected.idUserStatus}" required="true" requiredMessage="#{youPortBundle.CreateUserRequiredMessage_idUserStatus}" converter="userStatusConverter" style="width: 295px">
+                                <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{userStatusController.items}"
+                                               var="idUserStatusItem"
+                                               itemValue="#{idUserStatusItem}"
+                                               itemLabel="#{idUserStatusItem.statusName.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                            <p:tooltip for="idUserStatus" value="#{userController.getComponentMessages('idUserStatus', youPortBundle.CreateUserHelpText_idUserStatus)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.CreateUserLabel_idUserType}" for="idUserType" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="idUserType" value="#{userController.selected.idUserType}" required="true" requiredMessage="#{youPortBundle.CreateUserRequiredMessage_idUserType}" converter="userTypeConverter" style="width: 295px">
+                                <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{userTypeController.items}"
+                                               var="idUserTypeItem"
+                                               itemValue="#{idUserTypeItem}"
+                                               itemLabel="#{idUserTypeItem.description.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                            <p:tooltip for="idUserType" value="#{userController.getComponentMessages('idUserType', youPortBundle.CreateUserHelpText_idUserType)}"/>
+                        </h:panelGroup>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{userController.saveNew}" value="#{youPortBundle.Save}" update="display,:UserListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('UserCreateDialog'));">
+                        <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{youPortBundle.Cancel}" oncomplete="PF('UserCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="ThemeListForm">
+
+        <p:panel header="#{youPortBundle.ListThemeTitle}">
+            <p:contextMenu id="ThemeDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{youPortBundle.Create}" onclick="document.getElementById('ThemeListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{youPortBundle.View}" onclick="document.getElementById('ThemeListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="#{youPortBundle.Edit}" onclick="document.getElementById('ThemeListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{youPortBundle.Delete}" onclick="document.getElementById('ThemeListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                <p:separator/>
+                <p:menuitem value="#{youPortBundle.ThemeMenuItem_companyList}" icon="ui-icon-search"  action="#{themeController.navigateCompanyList}" disabled="#{empty themeController.selected.companyList}" ajax="false"/>  
+            </p:contextMenu>
+
+            <table style="text-align: right; width: 100%; margin-bottom: 10px;">
+                <tr >
+                    <td  style="text-align: right;"> 
+
+                        <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="#{youPortBundle.View}" update=":ThemeViewForm" oncomplete="PF('ThemeViewDialog').show()" disabled="#{empty themeController.selected}"/>
+                        <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{youPortBundle.Edit}" update=":ThemeEditForm" oncomplete="PF('ThemeEditDialog').show()" disabled="#{empty themeController.selected}"/>
+                        <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{youPortBundle.Delete}" actionListener="#{themeController.delete}" update=":growl,datalist" disabled="#{empty themeController.selected}">
+                            <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                        </p:commandButton>
+                        <p:commandButton id="homeButton"  icon="ui-icon-home"   value="#{youPortBundle.back_home}" action="#{userController.navigateToDashboard()}" />
+                        <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{youPortBundle.Create}" actionListener="#{themeController.prepareCreate}" update=":ThemeCreateForm" oncomplete="PF('ThemeCreateDialog').show()"/>
+
+                    </td>
+                </tr>
+            </table>
+            <p:outputPanel style="text-align: left;">
+                <p:dataTable id="datalist"
+                             value="#{themeController.items}"
+                             lazy="false"
+                             rowKey="#{item.idTheme}"
+                             var="item"
+                             paginator="true"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             selectionMode="single"
+                             selection="#{themeController.selected}">
+                    <!--
+                             To enable Lazy Loading, please copy/replace the following lines above,
+                             and be sure to replace the word HASH with the # symbol:
+                    
+                             value="HASH{themeController.lazyItems}"
+                             lazy="true"
+                             rowKey="HASH{item.idTheme}"  <<< Remove this line
+                    -->
+
+
+                    <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:ThemeDataTableContextMenu"/>
+                    <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:ThemeDataTableContextMenu"/>
+                    <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton"/>
+                    <p:ajax event="rowDblselect" onsuccess="document.getElementById('ThemeListForm:viewButton').click();"/>
+
+                    <p:column sortBy="#{item.idTheme}" filterBy="#{item.idTheme}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListThemeTitle_idTheme}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idTheme}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.nameTheme}" filterBy="#{item.nameTheme}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListThemeTitle_nameTheme}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.nameTheme}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.description}" filterBy="#{item.description}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListThemeTitle_description}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.description}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.urlLogoBanner}" filterBy="#{item.urlLogoBanner}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListThemeTitle_urlLogoBanner}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.urlLogoBanner}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.urlLogoFooter}" filterBy="#{item.urlLogoFooter}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListThemeTitle_urlLogoFooter}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.urlLogoFooter}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.colorPreference}" filterBy="#{item.colorPreference}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListThemeTitle_colorPreference}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.colorPreference}"/>
+                    </p:column>
+
+                    <!--
+                                        <p:column sortBy="#{item.enabled}" filterBy="#{item.enabled}">
+                                            <f:facet name="header">
+                                                <h:outputText value="#{youPortBundle.ListThemeTitle_enabled}"/>
+                                            </f:facet>
+                                            <h:selectBooleanCheckbox id="enabled" value="#{item.enabled}" title="#{youPortBundle.EditThemeTitle_enabled}"  disabled="true"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.urlBackground}" filterBy="#{item.urlBackground}">
+                                            <f:facet name="header">
+                                                <h:outputText value="#{youPortBundle.ListThemeTitle_urlBackground}"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.urlBackground}"/>
+                                        </p:column>
+                    -->
+
+                </p:dataTable>
+            </p:outputPanel>
+
+
+        </p:panel>
+        <ui:include src="/WEB-INF/template/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

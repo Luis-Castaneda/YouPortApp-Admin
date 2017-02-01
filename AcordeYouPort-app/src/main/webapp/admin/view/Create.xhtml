@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ViewCreateDlg" widgetVar="ViewCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{youPortBundle.CreateViewTitle}" closeOnEscape="true">
+
+            <h:form id="ViewCreateForm">
+
+                <h:panelGroup id="display" rendered="#{viewController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column"  style="text-align: left;">
+
+                        <p:outputLabel value="#{youPortBundle.CreateViewLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{viewController.selected.name}" title="#{youPortBundle.CreateViewTitle_name}" size="45" maxlength="45"/>
+
+                        <p:outputLabel value="#{youPortBundle.CreateViewLabel_url}" for="url" />
+                        <p:inputText id="url" value="#{viewController.selected.url}" title="#{youPortBundle.CreateViewTitle_url}" size="45" maxlength="45"/>
+
+                        <p:outputLabel value="#{youPortBundle.CreateViewLabel_typeView}" for="typeView" />
+                        <p:selectOneMenu id="typeView" value="#{viewController.selected.typeView}" required="true" requiredMessage="#{youPortBundle.CreateViewRequiredMessage_typeView}" converter="typeViewConverter" style="width: 295px;">
+                            <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{typeViewController.items}"
+                                           var="typeViewItem"
+                                           itemValue="#{typeViewItem}"
+                                           itemLabel="#{typeViewItem.nameType.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{viewController.saveNew}" value="#{youPortBundle.Save}" update="display,:ViewListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('ViewCreateDialog'));">
+                        <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{youPortBundle.Cancel}" oncomplete="PF('ViewCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="SectionCompanyEditDlg" widgetVar="SectionCompanyEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{youPortBundle.EditSectionCompanyTitle}" closeOnEscape="true">
+
+            <h:form id="SectionCompanyEditForm">
+                id="hidden" value="getElementById('')" 
+                <h:panelGroup id="display" style="text-align: left">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{sectionCompanyController.selected != null}">
+
+
+                        <h:outputLabel value="#{youPortBundle.EditSectionCompanyLabel_idSectionCompany}" for="idSectionCompany" />
+                        <h:panelGroup>
+                            <h:outputText id="idSectionCompany" value="#{sectionCompanyController.selected.idSectionCompany}" />
+                            <p:tooltip for="idSectionCompany" value="#{sectionCompanyController.getComponentMessages('idSectionCompany', youPortBundle.EditSectionCompanyHelpText_idSectionCompany)}"/>
+                        </h:panelGroup>
+
+<!--                        <p:outputLabel value="#{youPortBundle.EditSectionCompanyLabel_title}" for="title" />
+                        <h:panelGroup>
+                            <p:inputText id="title" value="#{sectionCompanyController.selected.title}" title="#{youPortBundle.EditSectionCompanyTitle_title}" size="45" maxlength="100"/>
+                            <p:tooltip for="title" value="#{sectionCompanyController.getComponentMessages('title', youPortBundle.EditSectionCompanyHelpText_title)}"/>
+                        </h:panelGroup>-->
+
+
+
+                        <p:outputLabel value="#{youPortBundle.EditSectionCompanyLabel_paragraph}" for="paragraph" />
+                        <h:panelGroup>
+                            <!--<p:inputTextarea rows="4" cols="30" style="width: 295px" id="paragraph" value="#{sectionCompanyController.selected.paragraph}" title="#{youPortBundle.EditSectionCompanyTitle_paragraph}" />-->
+                            <p:editor id="paragraph"  widgetVar="editorParagraph" value="#{sectionCompanyController.selected.paragraph}" width="800" height="320" />
+                            <p:fileUpload id="upload" 
+                                          fileUploadListener="#{sectionCompanyController.loadImageTemp}"
+                                          label="Insert image"
+                                          mode="advanced"
+                                          sizeLimit="#{sectionCompanyController.sizeLimit}"
+                                          allowTypes="#{sectionCompanyController.allowTypes}"
+                                          update="paragraph"
+                                          multiple="true"
+                                          dragDropSupport="false"
+                                          onstart="#{sectionCompanyController.fillOperation('edit')}"
+                                          oncomplete="PF('SectionCompanyCreateDialog').initPosition();" 
+                                          style="display:block;">
+                               
+                            </p:fileUpload>
+                            <p:tooltip for="paragraph" value="#{sectionCompanyController.getComponentMessages('paragraph', youPortBundle.EditSectionCompanyHelpText_paragraph)}"/>
+                        </h:panelGroup>
+
+
+
+<!--                        <p:outputLabel value="#{youPortBundle.EditSectionCompanyLabel_urlImage}" for="urlImage" />
+                        <h:panelGroup>
+                            <p:inputText id="urlImage" value="#{sectionCompanyController.selected.urlImage}" title="#{youPortBundle.EditSectionCompanyTitle_urlImage}" size="45" maxlength="100"/>
+                            <p:tooltip for="urlImage" value="#{sectionCompanyController.getComponentMessages('urlImage', youPortBundle.EditSectionCompanyHelpText_urlImage)}"/>
+                        </h:panelGroup>-->
+
+                        <p:outputLabel value="#{youPortBundle.EditSectionCompanyLabel_idSection}" for="idSection" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="idSection" value="#{sectionCompanyController.selected.idSection}" required="true" requiredMessage="#{youPortBundle.EditSectionCompanyRequiredMessage_idSection}" converter="sectionMenuCompanyConverter" style="width: 305px">
+                                <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{sectionMenuCompanyController.items}"
+                                               var="idSectionItem"
+                                               itemValue="#{idSectionItem}"
+                                               itemLabel="#{idSectionItem.name.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                            <p:tooltip for="idSection" value="#{sectionCompanyController.getComponentMessages('idSection', youPortBundle.EditSectionCompanyHelpText_idSection)}"/>
+                        </h:panelGroup>
+
+
+                        <p:outputLabel value="#{youPortBundle.EditSectionCompanyLabel_idCompany}" for="idCompany" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="idCompany" value="#{sectionCompanyController.selected.idCompany}" required="true" requiredMessage="#{youPortBundle.EditSectionCompanyRequiredMessage_idCompany}" converter="companyConverter" style="width: 305px">
+                                <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{companyController.items}"
+                                               var="companyItem"
+                                               itemValue="#{companyItem}"
+                                               itemLabel="#{companyItem.name.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                            <p:tooltip for="idCompany" value="#{sectionCompanyController.getComponentMessages('idCompany', youPortBundle.EditSectionCompanyHelpText_idCompany)}"/>
+                        </h:panelGroup>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{sectionCompanyController.saveSectionCompany('EDIT')}" value="#{youPortBundle.Save}" update="display,:SectionCompanyListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('SectionCompanyEditDialog'));">
+                        <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{youPortBundle.Cancel}" oncomplete="PF('SectionCompanyEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

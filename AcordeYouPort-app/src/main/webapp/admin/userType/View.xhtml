@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UserTypeViewDlg" widgetVar="UserTypeViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{youPortBundle.ViewUserTypeTitle}" closeOnEscape="true">
+
+            <h:form id="UserTypeViewForm">
+
+                <h:panelGroup id="display" style="text-align: left">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{userTypeController.selected != null}">
+
+                        <h:outputText value="#{youPortBundle.ViewUserTypeLabel_idUserType}"/>
+                        <h:outputText value="#{userTypeController.selected.idUserType}" title="#{youPortBundle.ViewUserTypeTitle_idUserType}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewUserTypeLabel_type}"/>
+                        <h:outputText value="#{userTypeController.selected.type}" title="#{youPortBundle.ViewUserTypeTitle_type}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewUserTypeLabel_description}"/>
+                        <h:outputText value="#{userTypeController.selected.description}" title="#{youPortBundle.ViewUserTypeTitle_description}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{youPortBundle.Close}" onclick="PF('UserTypeViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

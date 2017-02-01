@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="ServicesListForm">
+
+        <p:panel header="#{youPortBundle.ListServicesTitle}">
+            <p:contextMenu id="ServicesDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{youPortBundle.Create}" onclick="document.getElementById('ServicesListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{youPortBundle.View}" onclick="document.getElementById('ServicesListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="#{youPortBundle.Edit}" onclick="document.getElementById('ServicesListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{youPortBundle.Delete}" onclick="document.getElementById('ServicesListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                <p:separator/>
+                <p:menuitem value="#{youPortBundle.ServicesMenuItem_servicesCompanyList}" icon="ui-icon-search"  action="#{servicesController.navigateServicesCompanyList}" disabled="#{empty servicesController.selected.servicesCompanyList}" ajax="false"/>  
+            </p:contextMenu>
+            <table style="text-align: right; width: 100%; margin-bottom: 10px;">
+                <tr >
+                    <td  style="text-align: right;"> 
+
+                        <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="#{youPortBundle.View}" update=":ServicesViewForm" oncomplete="PF('ServicesViewDialog').show()" disabled="#{empty servicesController.selected}"/>
+                        <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{youPortBundle.Edit}" update=":ServicesEditForm" oncomplete="PF('ServicesEditDialog').show()" disabled="#{empty servicesController.selected}"/>
+                        <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{youPortBundle.Delete}" actionListener="#{servicesController.delete}" update=":growl,datalist" disabled="#{empty servicesController.selected}">
+                            <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                        </p:commandButton>
+                        <p:commandButton id="homeButton"  icon="ui-icon-home"   value="#{youPortBundle.back_home}" action="#{userController.navigateToDashboard()}" />
+                        <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{youPortBundle.Create}" actionListener="#{servicesController.prepareCreate}" update=":ServicesCreateForm" oncomplete="PF('ServicesCreateDialog').show()"/>
+                    </td>
+                </tr>
+            </table>
+            <p:outputPanel style="text-align: left;">
+                <p:dataTable id="datalist"
+                             value="#{servicesController.items}"
+                             lazy="false"
+                             rowKey="#{item.idServices}"
+                             var="item"
+                             paginator="true"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             selectionMode="single"
+                             selection="#{servicesController.selected}">
+                    <!--
+                             To enable Lazy Loading, please copy/replace the following lines above,
+                             and be sure to replace the word HASH with the # symbol:
+                    
+                             value="HASH{servicesController.lazyItems}"
+                             lazy="true"
+                             rowKey="HASH{item.idServices}"  <<< Remove this line
+                    -->
+
+
+                    <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:ServicesDataTableContextMenu"/>
+                    <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:ServicesDataTableContextMenu"/>
+                    <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton"/>
+                    <p:ajax event="rowDblselect" onsuccess="document.getElementById('ServicesListForm:viewButton').click();"/>
+
+                    <p:column sortBy="#{item.idServices}" filterBy="#{item.idServices}" style="width:120px;">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListServicesTitle_idServices}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idServices}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.nameServices}" filterBy="#{item.nameServices}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListServicesTitle_nameServices}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.nameServices}"/>
+                    </p:column>
+                    
+                     <p:column sortBy="#{item.descriptionShort}" filterBy="#{item.descriptionShort}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListServicesTitle_descriptionShort}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.descriptionShort}"/>
+                    </p:column>
+                    
+                     <p:column sortBy="#{item.descriptionLong}" filterBy="#{item.descriptionLong}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListServicesTitle_descriptionLong}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.descriptionLong}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.enabled}" filterBy="#{item.enabled}" style="width:120px;">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListServicesTitle_enabled}"/>
+                        </f:facet>
+                        <h:selectBooleanCheckbox id="enabled" value="#{item.enabled}" title="#{youPortBundle.EditServicesTitle_enabled}"  disabled="true"/>
+                    </p:column>
+                    
+                    <p:column sortBy="#{item.urlImage}" filterBy="#{item.urlImage}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListServicesTitle_urlImage}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.urlImage}"/>
+                    </p:column>
+
+
+                </p:dataTable>
+            </p:outputPanel>
+
+
+        </p:panel>
+        <ui:include src="/WEB-INF/template/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

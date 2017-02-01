@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="UserTypeEditDlg" widgetVar="UserTypeEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{youPortBundle.EditUserTypeTitle}" closeOnEscape="true">
+
+            <h:form id="UserTypeEditForm">
+
+                <h:panelGroup id="display" style="text-align: left">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{userTypeController.selected != null}">
+
+
+                        <h:outputLabel value="#{youPortBundle.EditUserTypeLabel_idUserType}" for="idUserType" />
+                        <h:panelGroup>
+                            <h:outputText id="idUserType" value="#{userTypeController.selected.idUserType}" />
+                            <p:tooltip for="idUserType" value="#{userTypeController.getComponentMessages('idUserType', youPortBundle.EditUserTypeHelpText_idUserType)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditUserTypeLabel_type}" for="type" />
+                        <h:panelGroup>
+                            <p:inputText id="type" value="#{userTypeController.selected.type}" title="#{youPortBundle.EditUserTypeTitle_type}" size="45" maxlength="100"/>
+                            <p:tooltip for="type" value="#{userTypeController.getComponentMessages('type', youPortBundle.EditUserTypeHelpText_type)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditUserTypeLabel_description}" for="description" />
+                        <h:panelGroup>
+                            <p:inputText id="description" value="#{userTypeController.selected.description}" title="#{youPortBundle.EditUserTypeTitle_description}" size="45" maxlength="100"/>
+                            <p:tooltip for="description" value="#{userTypeController.getComponentMessages('description', youPortBundle.EditUserTypeHelpText_description)}"/>
+                        </h:panelGroup>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{userTypeController.save}" value="#{youPortBundle.Save}" update="display,:UserTypeListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('UserTypeEditDialog'));">
+                        <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{youPortBundle.Cancel}" oncomplete="PF('UserTypeEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

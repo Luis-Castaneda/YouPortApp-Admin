@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="UserStatusEditDlg" widgetVar="UserStatusEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{youPortBundle.EditUserStatusTitle}" closeOnEscape="true">
+
+            <h:form id="UserStatusEditForm">
+
+                <h:panelGroup id="display" style="text-align: left">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{userStatusController.selected != null}">
+
+
+                        <h:outputLabel value="#{youPortBundle.EditUserStatusLabel_idUserStatus}" for="idUserStatus" />
+                        <h:panelGroup>
+                            <h:outputText id="idUserStatus" value="#{userStatusController.selected.idUserStatus}" />
+                            <p:tooltip for="idUserStatus" value="#{userStatusController.getComponentMessages('idUserStatus', youPortBundle.EditUserStatusHelpText_idUserStatus)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditUserStatusLabel_statusName}" for="statusName" />
+                        <h:panelGroup>
+                            <p:inputText id="statusName" value="#{userStatusController.selected.statusName}" title="#{youPortBundle.EditUserStatusTitle_statusName}" size="45" maxlength="100"/>
+                            <p:tooltip for="statusName" value="#{userStatusController.getComponentMessages('statusName', youPortBundle.EditUserStatusHelpText_statusName)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditUserStatusLabel_enabled}" for="enabled" />
+                        <h:panelGroup>
+                            <p:selectBooleanCheckbox id="enabled" value="#{userStatusController.selected.enabled}" />
+                            <p:tooltip for="enabled" value="#{userStatusController.getComponentMessages('enabled', youPortBundle.EditUserStatusHelpText_enabled)}"/>
+                        </h:panelGroup>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{userStatusController.save}" value="#{youPortBundle.Save}" update="display,:UserStatusListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('UserStatusEditDialog'));">
+                        <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{youPortBundle.Cancel}" oncomplete="PF('UserStatusEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

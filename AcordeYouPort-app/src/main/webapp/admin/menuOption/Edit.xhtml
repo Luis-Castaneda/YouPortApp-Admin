@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="MenuOptionEditDlg" widgetVar="MenuOptionEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{youPortBundle.EditMenuOptionTitle}" closeOnEscape="true">
+
+            <h:form id="MenuOptionEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{menuOptionController.selected != null}" style="text-align: left;">
+
+
+<!--                        <h:outputLabel value="#{youPortBundle.EditMenuOptionLabel_menuOptionPK_idMenu}" for="menuOptionPK_idMenu" />
+                        <h:outputText id="menuOptionPK_idMenu" value="#{menuOptionController.selected.menuOptionPK.idMenu}" />
+
+
+                        <h:outputLabel value="#{youPortBundle.EditMenuOptionLabel_menuOptionPK_idView}" for="menuOptionPK_idView" />
+                        <h:outputText id="menuOptionPK_idView" value="#{menuOptionController.selected.menuOptionPK.idView}" />
+
+
+                        <h:outputLabel value="#{youPortBundle.EditMenuOptionLabel_menuOptionPK_idMenutype}" for="menuOptionPK_idMenutype" />
+                        <h:outputText id="menuOptionPK_idMenutype" value="#{menuOptionController.selected.menuOptionPK.idMenutype}" />-->
+
+                        <p:outputLabel value="#{youPortBundle.EditMenuOptionLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{menuOptionController.selected.name}" title="#{youPortBundle.EditMenuOptionTitle_name}" size="45" maxlength="100"/>
+
+                        <p:outputLabel value="#{youPortBundle.EditMenuOptionLabel_descriptionLong}" for="descriptionLong" />
+                        <p:inputTextarea id="descriptionLong" value="#{menuOptionController.selected.descriptionLong}" title="#{youPortBundle.EditMenuOptionTitle_descriptionLong}" style="width: 297px"  maxlength="200"/>
+
+                        <p:outputLabel value="#{youPortBundle.EditMenuOptionLabel_descriptionShort}" for="descriptionShort" />
+                        <p:inputText id="descriptionShort" value="#{menuOptionController.selected.descriptionShort}" title="#{youPortBundle.EditMenuOptionTitle_descriptionShort}" size="45" maxlength="30"/>
+
+                        <p:outputLabel value="#{youPortBundle.EditMenuOptionLabel_urlImageNormal}" for="urlImageNormal" />
+                        <h:panelGroup id="imageNormal">
+
+                            <h:panelGroup  >
+                                <div style="width: 100%; border: 1px solid #000000;" >
+                                    <div id="btnSeleccioneImageNormal" 
+                                         style="width: 150px; height: 20px; vertical-align: middle; color: white; background-color: grey; cursor: pointer; margin: 4px 4px 4px 4px;" onclick="PF('dlg1').show();" 
+                                         >
+                                        <h:outputText id="urlImageNormal" value="Seleccione archivo" style="margin-left: 20px;"/>
+                                    </div>
+                                </div>
+                                <h:panelGroup  rendered="#{menuOptionController.selected.urlImageNormal != null}">
+                                    <table  style="width: 100%; border: 1px solid #000000;" >
+                                        <tr>
+                                            <td style="width: 80%">  <h:outputText value="#{menuOptionController.selected.urlImageNormal}" style="margin-left: 20px; text-align: left"/></td>
+                                            <td  style="width: 20%">  
+                                                <p:commandLink 
+                                                    value="Delete"
+                                                    update="display"
+                                                    actionListener="#{menuOptionController.removeImage('NORMAL')}"
+                                                    ajax="true"
+                                                    process="@this"
+                                                    id="deleteNormal"
+                                                    style="text-align: right; width: 20px;"
+                                                    rendered="#{menuOptionController.fileImageNormal != null}"/></td>
+                                        </tr>
+                                    </table>
+                                </h:panelGroup >
+                            </h:panelGroup >
+
+                            <p:tooltip for="urlImageNormal" value="#{menuOptionController.getComponentMessages('urlImageNormal', youPortBundle.CreateCompanyHelpText_urlImage)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditMenuOptionLabel_enabled}" for="enabled" />
+                        <p:selectBooleanCheckbox id="enabled" value="#{menuOptionController.selected.enabled}" />
+
+                        <p:outputLabel value="#{youPortBundle.EditMenuOptionLabel_urlImageOver}" for="urlImageOver" />
+                        <h:panelGroup id="imageOver">
+
+                            <h:panelGroup  >
+                                <div style="width: 100%; border: 1px solid #000000;" >
+                                    <div id="btnSeleccioneImageOver" 
+                                         style="width: 150px; height: 20px; vertical-align: middle; color: white; background-color: grey; cursor: pointer; margin: 4px 4px 4px 4px;" onclick="PF('dlg2').show();"
+                                         >
+                                        <h:outputText id="urlImageOver" value="Seleccione archivo" style="margin-left: 20px;"/>
+                                    </div>
+                                </div>
+                                <h:panelGroup  rendered="#{menuOptionController.selected.urlImageOver != null}">
+                                    <table  style="width: 100%; border: 1px solid #000000;" >
+                                        <tr>
+                                            <td style="width: 80%">  <h:outputText value="#{menuOptionController.selected.urlImageOver}" style="margin-left: 20px; text-align: left"/></td>
+                                            <td  style="width: 20%">  
+                                                <p:commandLink 
+                                                    value="Delete"
+                                                    update="display"
+                                                    actionListener="#{menuOptionController.removeImage('OVER')}"
+                                                    ajax="true"
+                                                    process="@this"
+                                                    id="deleteOver"
+                                                    style="text-align: right; width: 20px;"
+                                                    rendered="#{menuOptionController.fileImageOver != null}"/></td>
+                                        </tr>
+                                    </table>
+                                </h:panelGroup >
+                            </h:panelGroup >
+
+                            <p:tooltip for="urlImageOver" value="#{menuOptionController.getComponentMessages('urlImageOver', youPortBundle.CreateCompanyHelpText_urlImage)}"/>
+                        </h:panelGroup>
+
+
+                        <h:outputLabel value="#{youPortBundle.EditMenuOptionLabel_view}" for="view" />
+
+                        <p:selectOneMenu id="view" value="#{menuOptionController.selected.view}" required="true" requiredMessage="#{youPortBundle.EditMenuOptionRequiredMessage_view}" converter="viewConverter" style="width: 300px;" disabled="true">
+                            <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{viewController.items}"
+                                           var="viewItem"
+                                           itemValue="#{viewItem}"
+                                           itemLabel="#{viewItem.name.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+
+
+
+                        <h:outputLabel value="#{youPortBundle.EditMenuOptionLabel_menuType}" for="menuType" />
+
+                        <p:selectOneMenu id="menuType" value="#{menuOptionController.selected.menuType}" required="true" requiredMessage="#{youPortBundle.EditMenuOptionRequiredMessage_menuType}" converter="menuTypeConverter" style="width: 300px;" disabled="true">
+                            <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{menuTypeController.items}"
+                                           var="menuTypeItem"
+                                           itemValue="#{menuTypeItem}"
+                                           itemLabel="#{menuTypeItem.nameType.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{menuOptionController.saveMenuOption('EDIT')}" value="#{youPortBundle.Save}" update="display,:MenuOptionListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('MenuOptionEditDialog'));">
+                        <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{youPortBundle.Cancel}" oncomplete="PF('MenuOptionEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+                <p:dialog header="#{youPortBundle.loadFile}" widgetVar="dlg1" modal="false" height="160" width="680" appendTo="@(body)"  >
+                    <p:fileUpload 
+                        class="fileUploadImage"
+                        fileUploadListener="#{menuOptionController.uploadTempImageNormal}" 
+                        mode="advanced" 
+                        dragDropSupport="false"
+                        update="imageNormal" 
+                        sizeLimit="#{menuOptionController.sizeLimit}" 
+                        allowTypes="#{menuOptionController.allowTypes}"
+                        oncomplete="PF('dlg1').hide();">
+
+                    </p:fileUpload>
+                </p:dialog>
+
+                <p:dialog header="#{youPortBundle.loadFile}" widgetVar="dlg2" modal="false" height="160" width="680" appendTo="@(body)"  >
+                    <p:fileUpload 
+                        class="fileUploadImage"
+                        fileUploadListener="#{menuOptionController.uploadTempImageOver}" 
+                        mode="advanced" 
+                        dragDropSupport="false"
+                        update="imageOver" 
+                        sizeLimit="#{menuOptionController.sizeLimit}" 
+                        allowTypes="#{menuOptionController.allowTypes}"
+                        oncomplete="PF('dlg2').hide();">
+
+                    </p:fileUpload>
+                </p:dialog>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

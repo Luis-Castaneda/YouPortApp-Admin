@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="SectionMenuCompanyListForm">
+
+        <p:panel header="#{youPortBundle.ListSectionMenuCompanyTitle}">
+            <p:contextMenu id="SectionMenuCompanyDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{youPortBundle.Create}" onclick="document.getElementById('SectionMenuCompanyListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{youPortBundle.View}" onclick="document.getElementById('SectionMenuCompanyListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="#{youPortBundle.Edit}" onclick="document.getElementById('SectionMenuCompanyListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{youPortBundle.Delete}" onclick="document.getElementById('SectionMenuCompanyListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                <p:separator/>
+                <p:menuitem value="#{youPortBundle.SectionMenuCompanyMenuItem_sectionCompanyList}" icon="ui-icon-search"  action="#{sectionMenuCompanyController.navigateSectionCompanyList}" disabled="#{empty sectionMenuCompanyController.selected.sectionCompanyList}" ajax="false"/>  
+            </p:contextMenu>
+
+            <table style="text-align: right; width: 100%; margin-bottom: 10px;">
+                <tr >
+                    <td  style="text-align: right;"> 
+
+                        <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="#{youPortBundle.View}" update=":SectionMenuCompanyViewForm" oncomplete="PF('SectionMenuCompanyViewDialog').show()" disabled="#{empty sectionMenuCompanyController.selected}"/>
+                        <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{youPortBundle.Edit}" update=":SectionMenuCompanyEditForm" oncomplete="PF('SectionMenuCompanyEditDialog').show()" disabled="#{empty sectionMenuCompanyController.selected}"/>
+                        <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{youPortBundle.Delete}" actionListener="#{sectionMenuCompanyController.delete}" update=":growl,datalist" disabled="#{empty sectionMenuCompanyController.selected}">
+                            <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                        </p:commandButton>
+                        <p:commandButton id="homeButton"  icon="ui-icon-home"   value="#{youPortBundle.back_home}" action="#{userController.navigateToDashboard()}" />
+                        <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{youPortBundle.Create}" actionListener="#{sectionMenuCompanyController.prepareCreate}" update=":SectionMenuCompanyCreateForm" oncomplete="PF('SectionMenuCompanyCreateDialog').show()"/>
+                    </td>
+                </tr>
+            </table>
+            <p:outputPanel style="text-align: left;">
+                <p:dataTable id="datalist"
+                             value="#{sectionMenuCompanyController.items}"
+                             lazy="false"
+                             rowKey="#{item.idSection}"
+                             var="item"
+                             paginator="true"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             paginatorPosition="botton"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             selectionMode="single"
+                             selection="#{sectionMenuCompanyController.selected}">
+                    <!--
+                             To enable Lazy Loading, please copy/replace the following lines above,
+                             and be sure to replace the word HASH with the # symbol:
+                    
+                             value="HASH{sectionMenuCompanyController.lazyItems}"
+                             lazy="true"
+                             rowKey="HASH{item.idSection}"  <<< Remove this line
+                    -->
+
+
+                    <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:SectionMenuCompanyDataTableContextMenu" />
+                    <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:SectionMenuCompanyDataTableContextMenu" />
+                    <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton" />
+                    <p:ajax event="rowDblselect" onsuccess="document.getElementById('SectionMenuCompanyListForm:viewButton').click();"/>
+
+                    <p:column sortBy="#{item.idSection}" filterBy="#{item.idSection}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListSectionMenuCompanyTitle_idSection}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idSection}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.name}" filterBy="#{item.name}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListSectionMenuCompanyTitle_name}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.name}"/>
+                    </p:column>
+
+                    <p:column sortBy="#{item.description}" filterBy="#{item.description}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListSectionMenuCompanyTitle_description}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.description}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.enabled}" filterBy="#{item.enabled}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListSectionMenuCompanyTitle_enabled}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.enabled}"/>
+                    </p:column>
+
+
+                </p:dataTable>
+            </p:outputPanel>
+
+
+        </p:panel>
+        <ui:include src="/WEB-INF/template/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

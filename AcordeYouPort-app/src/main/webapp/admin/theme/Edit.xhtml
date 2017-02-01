@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="ThemeEditDlg" widgetVar="ThemeEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{youPortBundle.EditThemeTitle}" closeOnEscape="true">
+
+            <h:form id="ThemeEditForm">
+
+                <h:panelGroup id="display" style="text-align: left">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{themeController.selected != null}">
+
+
+                        <h:outputLabel value="#{youPortBundle.EditThemeLabel_idTheme}" for="idTheme" />
+                        <h:panelGroup>
+                            <h:outputText id="idTheme" value="#{themeController.selected.idTheme}" />
+                            <p:tooltip for="idTheme" value="#{themeController.getComponentMessages('idTheme', youPortBundle.EditThemeHelpText_idTheme)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditThemeLabel_nameTheme}" for="nameTheme" />
+                        <h:panelGroup>
+                            <p:inputText id="nameTheme" value="#{themeController.selected.nameTheme}" title="#{youPortBundle.EditThemeTitle_nameTheme}" size="45" maxlength="45"/>
+                            <p:tooltip for="nameTheme" value="#{themeController.getComponentMessages('nameTheme', youPortBundle.EditThemeHelpText_nameTheme)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditThemeLabel_description}" for="description" />
+                        <h:panelGroup>
+                            <p:inputTextarea id="description" value="#{themeController.selected.description}" title="#{youPortBundle.EditThemeTitle_description}" rows="4" cols="30" style="width: 295px"  maxlength="100"/>
+                            <p:tooltip for="description" value="#{themeController.getComponentMessages('description', youPortBundle.EditThemeHelpText_description)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditThemeLabel_urlLogoBanner}" for="urlLogoBanner" />
+                        <h:panelGroup>
+                            <p:inputText id="urlLogoBanner" value="#{themeController.selected.urlLogoBanner}" title="#{youPortBundle.EditThemeTitle_urlLogoBanner}" size="45" maxlength="200"/>
+                            <p:tooltip for="urlLogoBanner" value="#{themeController.getComponentMessages('urlLogoBanner', youPortBundle.EditThemeHelpText_urlLogoBanner)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditThemeLabel_urlLogoFooter}" for="urlLogoFooter" />
+                        <h:panelGroup>
+                            <p:inputText id="urlLogoFooter" value="#{themeController.selected.urlLogoFooter}" title="#{youPortBundle.EditThemeTitle_urlLogoFooter}" size="45" maxlength="200"/>
+                            <p:tooltip for="urlLogoFooter" value="#{themeController.getComponentMessages('urlLogoFooter', youPortBundle.EditThemeHelpText_urlLogoFooter)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditThemeLabel_colorPreference}" for="colorPreference" />
+                        <h:panelGroup>
+                             <p:colorPicker id="colorPreference" value="#{themeController.selected.colorPreference}" />    
+                            <p:tooltip for="colorPreference" value="#{themeController.getComponentMessages('colorPreference', youPortBundle.EditThemeHelpText_colorPreference)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditThemeLabel_enabled}" for="enabled" />
+                        <h:panelGroup>
+                            <p:selectBooleanCheckbox id="enabled" value="#{themeController.selected.enabled}" />
+                            <p:tooltip for="enabled" value="#{themeController.getComponentMessages('enabled', youPortBundle.EditThemeHelpText_enabled)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditThemeLabel_urlBackground}" for="urlBackground" />
+                        <h:panelGroup>
+                            <p:inputText id="urlBackground" value="#{themeController.selected.urlBackground}" title="#{youPortBundle.EditThemeTitle_urlBackground}" size="45" maxlength="200"/>
+                            <p:tooltip for="urlBackground" value="#{themeController.getComponentMessages('urlBackground', youPortBundle.EditThemeHelpText_urlBackground)}"/>
+                        </h:panelGroup>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{themeController.save}" value="#{youPortBundle.Save}" update="display,:ThemeListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('ThemeEditDialog'));">
+                        <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{youPortBundle.Cancel}" oncomplete="PF('ThemeEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

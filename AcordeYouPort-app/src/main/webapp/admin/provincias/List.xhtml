@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="ProvinciasListForm">
+
+        <p:panel header="#{youPortBundle.ListProvinciasTitle}">
+            <p:contextMenu id="ProvinciasDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{youPortBundle.Create}" onclick="document.getElementById('ProvinciasListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{youPortBundle.View}" onclick="document.getElementById('ProvinciasListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="#{youPortBundle.Edit}" onclick="document.getElementById('ProvinciasListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{youPortBundle.Delete}" onclick="document.getElementById('ProvinciasListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                <p:separator/>
+                <p:menuitem value="#{youPortBundle.ProvinciasMenuItem_municipiosList}" icon="ui-icon-search"  action="#{provinciasController.navigateMunicipiosList}" disabled="#{empty provinciasController.selected.municipiosList}" ajax="false"/>  
+                <p:menuitem value="#{youPortBundle.ProvinciasMenuItem_companyLocationList}" icon="ui-icon-search"  action="#{provinciasController.navigateCompanyLocationList}" disabled="#{empty provinciasController.selected.companyLocationList}" ajax="false"/>  
+                <p:menuitem value="#{youPortBundle.ProvinciasMenuItem_companyList}" icon="ui-icon-search"  action="#{provinciasController.navigateCompanyList}" disabled="#{empty provinciasController.selected.companyList}" ajax="false"/>  
+            </p:contextMenu>
+            <p:dataTable id="datalist"
+                         value="#{provinciasController.items}"
+                         lazy="false"
+                         rowKey="#{item.idProvincia}"
+                         var="item"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50"
+                         selectionMode="single"
+                         selection="#{provinciasController.selected}">
+                <!--
+                         To enable Lazy Loading, please copy/replace the following lines above,
+                         and be sure to replace the word HASH with the # symbol:
+                
+                         value="HASH{provinciasController.lazyItems}"
+                         lazy="true"
+                         rowKey="HASH{item.idProvincia}"  <<< Remove this line
+                -->
+
+
+                <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:ProvinciasDataTableContextMenu"/>
+                <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:ProvinciasDataTableContextMenu"/>
+                <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton"/>
+                <p:ajax event="rowDblselect" onsuccess="document.getElementById('ProvinciasListForm:viewButton').click();"/>
+
+                <p:column sortBy="#{item.idProvincia}" filterBy="#{item.idProvincia}">
+                    <f:facet name="header">
+                        <h:outputText value="#{youPortBundle.ListProvinciasTitle_idProvincia}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idProvincia}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.provincia}" filterBy="#{item.provincia}">
+                    <f:facet name="header">
+                        <h:outputText value="#{youPortBundle.ListProvinciasTitle_provincia}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.provincia}"/>
+                </p:column>
+
+
+            </p:dataTable>
+
+            <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{youPortBundle.Create}" actionListener="#{provinciasController.prepareCreate}" update=":ProvinciasCreateForm" oncomplete="PF('ProvinciasCreateDialog').show()"/>
+            <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="#{youPortBundle.View}" update=":ProvinciasViewForm" oncomplete="PF('ProvinciasViewDialog').show()" disabled="#{empty provinciasController.selected}"/>
+            <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{youPortBundle.Edit}" update=":ProvinciasEditForm" oncomplete="PF('ProvinciasEditDialog').show()" disabled="#{empty provinciasController.selected}"/>
+            <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{youPortBundle.Delete}" actionListener="#{provinciasController.delete}" update=":growl,datalist" disabled="#{empty provinciasController.selected}">
+                <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+            </p:commandButton>
+
+        </p:panel>
+        <ui:include src="/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

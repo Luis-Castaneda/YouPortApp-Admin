@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ConfigurationMasterViewDlg" widgetVar="ConfigurationMasterViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{youPortBundle.ViewConfigurationMasterTitle}" closeOnEscape="true">
+
+            <h:form id="ConfigurationMasterViewForm">
+
+                <h:panelGroup id="display" style="text-align: left">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{configurationMasterController.selected != null}">
+
+                        <h:outputText value="#{youPortBundle.ViewConfigurationMasterLabel_idConfigurationMaster}"/>
+                        <h:outputText value="#{configurationMasterController.selected.idConfigurationMaster}" title="#{youPortBundle.ViewConfigurationMasterTitle_idConfigurationMaster}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewConfigurationMasterLabel_nameParameter}"/>
+                        <h:outputText value="#{configurationMasterController.selected.nameParameter}" title="#{youPortBundle.ViewConfigurationMasterTitle_nameParameter}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewConfigurationMasterLabel_valueParameter}"/>
+                        <h:outputText value="#{configurationMasterController.selected.valueParameter}" title="#{youPortBundle.ViewConfigurationMasterTitle_valueParameter}"/>
+
+                        <h:outputText value="#{youPortBundle.ViewConfigurationMasterLabel_description}"/>
+                        <h:outputText value="#{configurationMasterController.selected.description}" title="#{youPortBundle.ViewConfigurationMasterTitle_description}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{youPortBundle.Close}" onclick="PF('ConfigurationMasterViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

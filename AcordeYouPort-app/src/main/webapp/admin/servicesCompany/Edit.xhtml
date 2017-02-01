@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="ServicesCompanyEditDlg" widgetVar="ServicesCompanyEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{youPortBundle.EditServicesCompanyTitle}" closeOnEscape="true">
+
+            <h:form id="ServicesCompanyEditForm">
+
+                <h:panelGroup id="display" style="text-align: left;" >
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{servicesCompanyController.selected != null}" style="text-align: left">
+
+
+                        <h:outputLabel value="#{youPortBundle.EditServicesCompanyLabel_idServicesCompany}" for="idServicesCompany" />
+                        <h:panelGroup>
+                            <h:outputText id="idServicesCompany" value="#{servicesCompanyController.selected.idServicesCompany}" />
+                            <p:tooltip for="idServicesCompany" value="#{servicesCompanyController.getComponentMessages('idServicesCompany', youPortBundle.EditServicesCompanyHelpText_idServicesCompany)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditServicesCompanyLabel_idCompany}" for="idCompany" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="idCompany" value="#{servicesCompanyController.selected.idCompany}" required="true" requiredMessage="#{youPortBundle.EditServicesCompanyRequiredMessage_idCompany}" converter="companyConverter" style="width: 295px">
+                                <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{companyController.items}"
+                                               var="idCompanyItem"
+                                               itemValue="#{idCompanyItem}"
+                                               itemLabel="#{idCompanyItem.name.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                            <p:tooltip for="idCompany" value="#{servicesCompanyController.getComponentMessages('idCompany', youPortBundle.EditServicesCompanyHelpText_idCompany)}"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{youPortBundle.EditServicesCompanyLabel_idServices}" for="idServices" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="idServices" value="#{servicesCompanyController.selected.idServices}" required="true" requiredMessage="#{youPortBundle.EditServicesCompanyRequiredMessage_idServices}" converter="servicesConverter" style="width: 295px">
+                                <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{servicesController.items}"
+                                               var="idServicesItem"
+                                               itemValue="#{idServicesItem}"
+                                               itemLabel="#{idServicesItem.nameServices.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                            <p:tooltip for="idServices" value="#{servicesCompanyController.getComponentMessages('idServices', youPortBundle.EditServicesCompanyHelpText_idServices)}"/>
+                        </h:panelGroup>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{servicesCompanyController.save}" value="#{youPortBundle.Save}" update="display,:ServicesCompanyListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('ServicesCompanyEditDialog'));">
+                        <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{youPortBundle.Cancel}" oncomplete="PF('ServicesCompanyEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="ViewListForm">
+
+        <p:panel header="#{youPortBundle.ListViewTitle}">
+            <p:contextMenu id="ViewDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{youPortBundle.Create}" onclick="document.getElementById('ViewListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{youPortBundle.View}" onclick="document.getElementById('ViewListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="#{youPortBundle.Edit}" onclick="document.getElementById('ViewListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{youPortBundle.Delete}" onclick="document.getElementById('ViewListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                <p:separator/>
+                <p:menuitem value="#{youPortBundle.ViewMenuItem_typeView}" icon="ui-icon-search"  actionListener="#{viewController.prepareTypeView}" update=":TypeViewViewForm" oncomplete="PF('TypeViewViewDialog').show()" disabled="#{empty viewController.selected.typeView}"/>  
+                <p:menuitem value="#{youPortBundle.ViewMenuItem_categoryMenuList}" icon="ui-icon-search"  action="#{viewController.navigateCategoryMenuList}" disabled="#{empty viewController.selected.categoryMenuList}" ajax="false"/>  
+            </p:contextMenu>
+
+            <table style="text-align: right; width: 100%; margin-bottom: 10px;">
+                <tr >
+                    <td  style="text-align: right;"> 
+
+                        <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="#{youPortBundle.View}" update=":ViewViewForm" oncomplete="PF('ViewViewDialog').show()" disabled="#{empty viewController.selected}"/>
+                        <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{youPortBundle.Edit}" update=":ViewEditForm" oncomplete="PF('ViewEditDialog').show()" disabled="#{empty viewController.selected}"/>
+                        <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{youPortBundle.Delete}" actionListener="#{viewController.delete}" update=":growl,datalist" disabled="#{empty viewController.selected}">
+                            <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                        </p:commandButton>
+                        <p:commandButton id="homeButton"  icon="ui-icon-home"   value="#{youPortBundle.back_home}" action="#{userController.navigateToDashboard()}" />
+                        <p:commandButton id="createButton"    icon="ui-icon-plus"   value="#{youPortBundle.Create}" actionListener="#{viewController.prepareCreate}" update=":ViewCreateForm" oncomplete="PF('ViewCreateDialog').show()"/>
+                    </td>
+                </tr>
+            </table>
+            <p:outputPanel style="text-align: left;">
+                <p:dataTable id="datalist"
+                             value="#{viewController.items}"
+                             lazy="false"
+                             rowKey="#{item.idView}"
+                             var="item"
+                             paginator="true"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             selectionMode="single"
+                             selection="#{viewController.selected}">
+                    <!--
+                             To enable Lazy Loading, please copy/replace the following lines above,
+                             and be sure to replace the word HASH with the # symbol:
+                    
+                             value="HASH{viewController.lazyItems}"
+                             lazy="true"
+                             rowKey="HASH{item.idView}"  <<< Remove this line
+                    -->
+
+
+                    <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:ViewDataTableContextMenu" listener="#{viewController.resetParents}"/>
+                    <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:ViewDataTableContextMenu" listener="#{viewController.resetParents}"/>
+                    <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton" listener="#{viewController.resetParents}"/>
+                    <p:ajax event="rowDblselect" onsuccess="document.getElementById('ViewListForm:viewButton').click();"/>
+
+                    <p:column sortBy="#{item.idView}" filterBy="#{item.idView}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListViewTitle_idView}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idView}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.name}" filterBy="#{item.name}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListViewTitle_name}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.name}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.url}" filterBy="#{item.url}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListViewTitle_url}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.url}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.typeView.nameType}" filterBy="#{item.typeView.nameType}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.ListViewTitle_typeView}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.typeView.nameType}"/>
+                    </p:column>
+
+
+                </p:dataTable>
+            </p:outputPanel>
+
+
+        </p:panel>
+        <ui:include src="/WEB-INF/template/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>
