@@ -48,7 +48,7 @@
                                              value="#{companyController.selected.idCity}" 
                                              required="true" 
                                              requiredMessage="#{youPortBundle.EditCompanyHelpText_Provincia}" 
-                                             converter="provinciasConverter" 
+                                             converter="#{provinciasConverter}" 
                                              style="width: 275px;">
                                 <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
                                 <f:selectItems value="#{companyController.provinciasList}"
@@ -125,7 +125,7 @@
                                              value="#{companyController.selected.idTheme}" 
                                              required="true" 
                                              requiredMessage="#{youPortBundle.CreateCompanyRequiredMessage_idTheme}" 
-                                             converter="themeConverter" 
+                                             converter="#{themeConverter}" 
                                              style="width: 272px;">
                                 <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
                                 <f:selectItems value="#{themeController.items}"

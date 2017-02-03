@@ -55,7 +55,7 @@
                         </h:panelGroup>
 
                         <p:outputLabel value="#{youPortBundle.CreatePromotionLabel_idTypePromotion}" for="idTypePromotion" />
-                        <p:selectOneMenu id="idTypePromotion" value="#{promotionController.selected.idTypePromotion}" required="true" requiredMessage="#{youPortBundle.CreatePromotionRequiredMessage_idTypePromotion}" converter="typePromotionConverter" style="width: 305px;">
+                        <p:selectOneMenu id="idTypePromotion" value="#{promotionController.selected.idTypePromotion}" required="true" requiredMessage="#{youPortBundle.CreatePromotionRequiredMessage_idTypePromotion}" converter="#{typePromotionConverter}" style="width: 305px;">
                             <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
                             <f:selectItems value="#{typePromotionController.items}"
                                            var="idTypePromotionItem"
@@ -66,7 +66,7 @@
                         </p:selectOneMenu>
 
                         <p:outputLabel value="#{youPortBundle.CreatePromotionLabel_idCompany}" for="idCompany" />
-                        <p:selectOneMenu id="idCompany" value="#{promotionController.selected.idCompany}" required="true" requiredMessage="#{youPortBundle.CreatePromotionRequiredMessage_idCompany}" converter="companyConverter" style="width: 305px;">
+                        <p:selectOneMenu id="idCompany" value="#{promotionController.selected.idCompany}" required="true" requiredMessage="#{youPortBundle.CreatePromotionRequiredMessage_idCompany}" converter="#{companyConverter}" style="width: 305px;">
                             <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
                             <f:selectItems value="#{companyController.items}"
                                            var="idCompanyItem"

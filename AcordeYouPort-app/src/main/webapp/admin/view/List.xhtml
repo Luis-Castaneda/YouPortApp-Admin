@@ -16,7 +16,7 @@
                 <p:menuitem value="#{youPortBundle.Delete}" onclick="document.getElementById('ViewListForm:deleteButton').click();" icon="ui-icon-trash"/>
                 <p:separator/>
                 <p:menuitem value="#{youPortBundle.ViewMenuItem_typeView}" icon="ui-icon-search"  actionListener="#{viewController.prepareTypeView}" update=":TypeViewViewForm" oncomplete="PF('TypeViewViewDialog').show()" disabled="#{empty viewController.selected.typeView}"/>  
-                <p:menuitem value="#{youPortBundle.ViewMenuItem_categoryMenuList}" icon="ui-icon-search"  action="#{viewController.navigateCategoryMenuList}" disabled="#{empty viewController.selected.categoryMenuList}" ajax="false"/>  
+                <p:menuitem value="#{youPortBundle.ViewMenuItem_menuOptionList}" icon="ui-icon-search"  action="#{viewController.navigateMenuOptionList}" disabled="#{empty viewController.selected.menuOptionList}" ajax="false"/>  
             </p:contextMenu>
 
             <table style="text-align: right; width: 100%; margin-bottom: 10px;">

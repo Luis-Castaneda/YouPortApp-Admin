@@ -10,7 +10,7 @@
 
         <p:dialog id="MenuOptionCreateDlg" widgetVar="MenuOptionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{youPortBundle.CreateMenuOptionTitle}" closeOnEscape="true">
 
-            <h:form id="MenuOptionCreateForm">
+            <h:form id="MenuOptionCreateForm" enctype="multipart/form-data">
 
                 <h:panelGroup id="display" rendered="#{menuOptionController.selected != null}"  style="text-align: left">
                     <p:panelGrid columns="2" columnClasses="column" >
@@ -95,7 +95,7 @@
                         </h:panelGroup>
 
                         <p:outputLabel value="#{youPortBundle.CreateMenuOptionLabel_view}" for="view" />
-                        <p:selectOneMenu id="view" value="#{menuOptionController.selected.view}" required="true" requiredMessage="#{youPortBundle.CreateMenuOptionRequiredMessage_view}" converter="viewConverter" style="width: 300px;">
+                        <p:selectOneMenu id="view" value="#{menuOptionController.selected.view}" required="true" requiredMessage="#{youPortBundle.CreateMenuOptionRequiredMessage_view}" converter="#{viewConverter}" style="width: 300px;">
                             <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
                             <f:selectItems value="#{viewController.items}"
                                            var="viewItem"
@@ -106,7 +106,7 @@
                         </p:selectOneMenu>
 
                         <p:outputLabel value="#{youPortBundle.CreateMenuOptionLabel_menuType}" for="menuType" />
-                        <p:selectOneMenu id="menuType" value="#{menuOptionController.selected.menuType}" required="true" requiredMessage="#{youPortBundle.CreateMenuOptionRequiredMessage_menuType}" converter="menuTypeConverter" style="width: 300px;">
+                        <p:selectOneMenu id="menuType" value="#{menuOptionController.selected.menuType}" required="true" requiredMessage="#{youPortBundle.CreateMenuOptionRequiredMessage_menuType}" converter="#{menuTypeConverter}" style="width: 300px;">
                             <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
                             <f:selectItems value="#{menuTypeController.items}"
                                            var="menuTypeItem"

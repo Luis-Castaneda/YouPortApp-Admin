@@ -7,7 +7,7 @@
 package com.youport.acordeyouport.app.facade;
 
 import com.youport.acordeyouport.app.facade.AbstractFacade;
-import com.youport.acordeyouport.app.entity.SubMenuOptions;
+import com.youport.acordeyouport.app.entity.SubMenuOption;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,7 +17,7 @@ import javax.persistence.PersistenceContext;
  * @author Luis Castañeda <luis.castaneda at acorde.com.ve>
  */
 @Stateless
-public class SubMenuOptionFacade extends AbstractFacade<SubMenuOptions> {
+public class SubMenuOptionFacade extends AbstractFacade<SubMenuOption> {
     @PersistenceContext(unitName = "com.youport_AcordeYouPort-app_war_0PU")
     private EntityManager em;
 
@@ -27,7 +27,7 @@ public class SubMenuOptionFacade extends AbstractFacade<SubMenuOptions> {
     }
 
     public SubMenuOptionFacade() {
-        super(SubMenuOptions.class);
+        super(SubMenuOption.class);
     }
 
 }

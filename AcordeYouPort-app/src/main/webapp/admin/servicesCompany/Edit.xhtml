@@ -23,7 +23,7 @@
 
                         <p:outputLabel value="#{youPortBundle.EditServicesCompanyLabel_idCompany}" for="idCompany" />
                         <h:panelGroup>
-                            <p:selectOneMenu id="idCompany" value="#{servicesCompanyController.selected.idCompany}" required="true" requiredMessage="#{youPortBundle.EditServicesCompanyRequiredMessage_idCompany}" converter="companyConverter" style="width: 295px">
+                            <p:selectOneMenu id="idCompany" value="#{servicesCompanyController.selected.idCompany}" required="true" requiredMessage="#{youPortBundle.EditServicesCompanyRequiredMessage_idCompany}" converter="#{companyConverter}" style="width: 295px">
                                 <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
                                 <f:selectItems value="#{companyController.items}"
                                                var="idCompanyItem"
@@ -37,7 +37,7 @@
 
                         <p:outputLabel value="#{youPortBundle.EditServicesCompanyLabel_idServices}" for="idServices" />
                         <h:panelGroup>
-                            <p:selectOneMenu id="idServices" value="#{servicesCompanyController.selected.idServices}" required="true" requiredMessage="#{youPortBundle.EditServicesCompanyRequiredMessage_idServices}" converter="servicesConverter" style="width: 295px">
+                            <p:selectOneMenu id="idServices" value="#{servicesCompanyController.selected.idServices}" required="true" requiredMessage="#{youPortBundle.EditServicesCompanyRequiredMessage_idServices}" converter="#{servicesConverter}" style="width: 295px">
                                 <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
                                 <f:selectItems value="#{servicesController.items}"
                                                var="idServicesItem"

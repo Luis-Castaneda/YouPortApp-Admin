@@ -60,7 +60,7 @@
 
                         <p:outputLabel value="#{youPortBundle.EditUserLabel_idUserStatus}" for="idUserStatus" />
                         <h:panelGroup>
-                            <p:selectOneMenu id="idUserStatus" value="#{userController.selected.idUserStatus}" required="true" requiredMessage="#{youPortBundle.EditUserRequiredMessage_idUserStatus}" converter="userStatusConverter" style="width: 295px">
+                            <p:selectOneMenu id="idUserStatus" value="#{userController.selected.idUserStatus}" required="true" requiredMessage="#{youPortBundle.EditUserRequiredMessage_idUserStatus}" converter="#{userStatusConverter}" style="width: 295px">
                                 <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
                                 <f:selectItems value="#{userStatusController.items}"
                                                var="idUserStatusItem"
@@ -74,7 +74,7 @@
 
                         <p:outputLabel value="#{youPortBundle.EditUserLabel_idUserType}" for="idUserType" />
                         <h:panelGroup>
-                            <p:selectOneMenu id="idUserType" value="#{userController.selected.idUserType}" required="true" requiredMessage="#{youPortBundle.EditUserRequiredMessage_idUserType}" converter="userTypeConverter" style="width: 295px">
+                            <p:selectOneMenu id="idUserType" value="#{userController.selected.idUserType}" required="true" requiredMessage="#{youPortBundle.EditUserRequiredMessage_idUserType}" converter="#{userTypeConverter}" style="width: 295px">
                                 <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
                                 <f:selectItems value="#{userTypeController.items}"
                                                var="idUserTypeItem"

@@ -40,17 +40,7 @@
             <to-view-id>/admin/index.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
-    <navigation-rule>
-        <from-view-id>/admin/categoryMenu/index.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>indexGeneric</from-outcome>
-            <to-view-id>/generic/index.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>indexAdmin</from-outcome>
-            <to-view-id>/admin/index.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
+
     <navigation-rule>
         <from-view-id>/admin/company/index.xhtml</from-view-id>
         <navigation-case>

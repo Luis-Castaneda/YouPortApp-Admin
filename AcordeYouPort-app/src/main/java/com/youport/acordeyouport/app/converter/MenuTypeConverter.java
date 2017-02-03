@@ -5,13 +5,15 @@ import com.youport.acordeyouport.app.facade.MenuTypeFacade;
 import com.youport.acordeyouport.app.facade.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.faces.convert.FacesConverter;
+import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import javax.inject.Named;
 
-@FacesConverter(value = "menuTypeConverter")
+@Named(value = "menuTypeConverter")
+@ManagedBean
 public class MenuTypeConverter implements Converter {
 
     @Inject

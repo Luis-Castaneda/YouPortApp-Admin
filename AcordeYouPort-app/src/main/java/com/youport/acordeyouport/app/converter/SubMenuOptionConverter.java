@@ -1,17 +1,19 @@
 package com.youport.acordeyouport.app.converter;
 
-import com.youport.acordeyouport.app.entity.SubMenuOptions;
+import com.youport.acordeyouport.app.entity.SubMenuOption;
 import com.youport.acordeyouport.app.facade.SubMenuOptionFacade;
 import com.youport.acordeyouport.app.facade.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.faces.convert.FacesConverter;
+import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import javax.inject.Named;
 
-@FacesConverter(value = "subMenuOptionConverter")
+@Named(value = "subMenuOptionConverter")
+@ManagedBean
 public class SubMenuOptionConverter implements Converter {
 
     @Inject
@@ -43,11 +45,11 @@ public class SubMenuOptionConverter implements Converter {
                 || (object instanceof String && ((String) object).length() == 0)) {
             return null;
         }
-        if (object instanceof SubMenuOptions) {
-            SubMenuOptions o = (SubMenuOptions) object;
+        if (object instanceof SubMenuOption) {
+            SubMenuOption o = (SubMenuOption) object;
             return getStringKey(o.getIdSubMenuOption());
         } else {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), SubMenuOptions.class.getName()});
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), SubMenuOption.class.getName()});
             return null;
         }
     }

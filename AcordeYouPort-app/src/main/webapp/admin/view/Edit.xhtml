@@ -25,7 +25,7 @@
                         <p:inputText id="url" value="#{viewController.selected.url}" title="#{youPortBundle.EditViewTitle_url}" size="45" maxlength="45"/>
 
                         <p:outputLabel value="#{youPortBundle.EditViewLabel_typeView}" for="typeView" />
-                        <p:selectOneMenu id="typeView" value="#{viewController.selected.typeView}" required="true" requiredMessage="#{youPortBundle.EditViewRequiredMessage_typeView}" converter="typeViewConverter" style="width: 295px;">
+                        <p:selectOneMenu id="typeView" value="#{viewController.selected.typeView}" required="true" requiredMessage="#{youPortBundle.EditViewRequiredMessage_typeView}" converter="#{typeViewConverter}" style="width: 295px;">
                             <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
                             <f:selectItems value="#{typeViewController.items}"
                                            var="typeViewItem"

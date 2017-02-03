@@ -59,7 +59,7 @@
 
                         <p:outputLabel value="#{youPortBundle.EditContactLabel_idCompany}" for="idCompany" />
                         <h:panelGroup>
-                            <p:selectOneMenu id="idCompany" value="#{contactController.selected.idCompany}" required="true" requiredMessage="#{youPortBundle.EditContactRequiredMessage_idCompany}" converter="companyConverter" style="width: 275px">
+                            <p:selectOneMenu id="idCompany" value="#{contactController.selected.idCompany}" required="true" requiredMessage="#{youPortBundle.EditContactRequiredMessage_idCompany}" converter="#{companyConverter}" style="width: 275px">
                                 <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
                                 <f:selectItems value="#{companyController.items}"
                                                var="idCompanyItem"

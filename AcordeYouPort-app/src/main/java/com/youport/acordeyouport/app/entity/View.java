@@ -51,7 +51,7 @@ public class View implements Serializable {
     @Size(max = 45)
     @Column(name = "Url")
     private String url;
-    @JoinColumn(name = "Id_Type_View", referencedColumnName = "Id_Type_View", insertable = false, updatable = false)
+    @JoinColumn(name = "Id_Type_View", referencedColumnName = "Id_Type_View")
     @ManyToOne(optional = false)
     private TypeView typeView;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "view")

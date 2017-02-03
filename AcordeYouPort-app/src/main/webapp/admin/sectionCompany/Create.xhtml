@@ -52,7 +52,7 @@
 
                         <p:outputLabel value="#{youPortBundle.CreateSectionCompanyLabel_idSection}" for="idSection" />
                         <h:panelGroup>
-                            <p:selectOneMenu id="idSection" value="#{sectionCompanyController.selected.idSection}" required="true" requiredMessage="#{youPortBundle.CreateSectionCompanyRequiredMessage_idSection}" converter="sectionMenuCompanyConverter" style="width: 305px">
+                            <p:selectOneMenu id="idSection" value="#{sectionCompanyController.selected.idSection}" required="true" requiredMessage="#{youPortBundle.CreateSectionCompanyRequiredMessage_idSection}" converter="#{sectionMenuCompanyConverter}" style="width: 305px">
                                 <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/> 
                                 <f:selectItems value="#{sectionMenuCompanyController.items}"
                                                var="idSectionItem"
@@ -66,7 +66,7 @@
 
                         <p:outputLabel value="#{youPortBundle.CreateSectionCompanyLabel_idCompany}" for="idCompany" />
                         <h:panelGroup>
-                            <p:selectOneMenu id="idCompany" value="#{sectionCompanyController.selected.idCompany}" required="true" requiredMessage="#{youPortBundle.CreateSectionCompanyRequiredMessage_idCompany}" converter="companyConverter" style="width: 305px">
+                            <p:selectOneMenu id="idCompany" value="#{sectionCompanyController.selected.idCompany}" required="true" requiredMessage="#{youPortBundle.CreateSectionCompanyRequiredMessage_idCompany}" converter="#{companyConverter}" style="width: 305px">
                                 <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/> 
                                 <f:selectItems value="#{companyController.items}"
                                                var="companyItem"
