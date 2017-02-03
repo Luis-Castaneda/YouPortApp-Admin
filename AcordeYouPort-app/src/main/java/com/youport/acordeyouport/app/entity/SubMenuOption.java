@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -27,11 +29,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "sub_menu_options")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "SubMenuOptions.findAll", query = "SELECT s FROM SubMenuOptions s"),
-    @NamedQuery(name = "SubMenuOptions.findByIdSubMenuOption", query = "SELECT s FROM SubMenuOptions s WHERE s.idSubMenuOption = :idSubMenuOption"),
-    @NamedQuery(name = "SubMenuOptions.findByName", query = "SELECT s FROM SubMenuOptions s WHERE s.name = :name"),
-    @NamedQuery(name = "SubMenuOptions.findByDescription", query = "SELECT s FROM SubMenuOptions s WHERE s.description = :description")})
+    @NamedQuery(name = "SubMenuOption.findAll", query = "SELECT s FROM SubMenuOption s"),
+    @NamedQuery(name = "SubMenuOption.findByIdSubMenuOption", query = "SELECT s FROM SubMenuOption s WHERE s.idSubMenuOption = :idSubMenuOption"),
+    @NamedQuery(name = "SubMenuOption.findByName", query = "SELECT s FROM SubMenuOption s WHERE s.name = :name"),
+    @NamedQuery(name = "SubMenuOption.findByDescription", query = "SELECT s FROM SubMenuOption s WHERE s.description = :description")})
 public class SubMenuOption implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,6 +47,15 @@ public class SubMenuOption implements Serializable {
     @Size(max = 500)
     @Column(name = "Description")
     private String description;
+    
+    @JoinColumn(name = "Id_View", referencedColumnName = "Id_View")
+    @ManyToOne(optional = false)
+    private View idView;
+     
+     
+    @JoinColumn(name = "Id_Menu", referencedColumnName = "Id_Menu")
+    @ManyToOne(optional = false)
+    private MenuOption idMenu;
 
     public SubMenuOption() {
     }
@@ -98,7 +110,23 @@ public class SubMenuOption implements Serializable {
 
     @Override
     public String toString() {
-        return "com.youport.acordeyouport.app.bean.controller.SubMenuOptions[ idSubMenuOption=" + idSubMenuOption + " ]";
+        return "com.youport.acordeyouport.app.bean.controller.SubMenuOption[ idSubMenuOption=" + idSubMenuOption + " ]";
+    }
+
+    public MenuOption getIdMenu() {
+        return idMenu;
+    }
+
+    public void setIdMenu(MenuOption idMenu) {
+        this.idMenu = idMenu;
+    }
+
+    public View getIdView() {
+        return idView;
+    }
+
+    public void setIdView(View idView) {
+        this.idView = idView;
     }
 
 }

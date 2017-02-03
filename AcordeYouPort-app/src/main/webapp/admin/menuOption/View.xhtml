@@ -16,13 +16,13 @@
                     <p:panelGrid columns="2" columnClasses="column" rendered="#{menuOptionController.selected != null}">
 
                         <h:outputText value="#{youPortBundle.ViewMenuOptionLabel_menuOptionPK_idMenu}"/>
-                        <h:outputText value="#{menuOptionController.selected.menuOptionPK.idMenu}" title="#{youPortBundle.ViewMenuOptionTitle_menuOptionPK_idMenu}"/>
+                        <h:outputText value="#{menuOptionController.selected.idMenu}" title="#{youPortBundle.ViewMenuOptionTitle_menuOptionPK_idMenu}"/>
 
                         <h:outputText value="#{youPortBundle.ViewMenuOptionLabel_menuOptionPK_idView}"/>
-                        <h:outputText value="#{menuOptionController.selected.menuOptionPK.idView}" title="#{youPortBundle.ViewMenuOptionTitle_menuOptionPK_idView}"/>
+                        <h:outputText value="#{menuOptionController.selected.view.name}" title="#{youPortBundle.ViewMenuOptionTitle_menuOptionPK_idView}"/>
 
                         <h:outputText value="#{youPortBundle.ViewMenuOptionLabel_menuOptionPK_idMenutype}"/>
-                        <h:outputText value="#{menuOptionController.selected.menuOptionPK.idMenutype}" title="#{youPortBundle.ViewMenuOptionTitle_menuOptionPK_idMenutype}"/>
+                        <h:outputText value="#{menuOptionController.selected.menuType.nameType}" title="#{youPortBundle.ViewMenuOptionTitle_menuOptionPK_idMenutype}"/>
 
                         <h:outputText value="#{youPortBundle.ViewMenuOptionLabel_name}"/>
                         <h:outputText value="#{menuOptionController.selected.name}" title="#{youPortBundle.ViewMenuOptionTitle_name}"/>

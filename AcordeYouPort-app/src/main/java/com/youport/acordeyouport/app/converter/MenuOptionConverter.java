@@ -6,7 +6,6 @@ import com.youport.acordeyouport.app.facade.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
-import javax.faces.convert.FacesConverter;
 import javax.inject.Inject;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -31,23 +30,15 @@ public class MenuOptionConverter implements Converter {
         return this.ejbFacade.find(getKey(value));
     }
 
-    com.youport.acordeyouport.app.entity.MenuOptionPK getKey(String value) {
-        com.youport.acordeyouport.app.entity.MenuOptionPK key;
-        String values[] = value.split(SEPARATOR_ESCAPED);
-        key = new com.youport.acordeyouport.app.entity.MenuOptionPK();
-        key.setIdMenu(Integer.parseInt(values[0]));
-        key.setIdView(Integer.parseInt(values[1]));
-        key.setIdMenutype(Integer.parseInt(values[2]));
+    java.lang.Integer getKey(String value) {
+        java.lang.Integer key;
+        key = Integer.valueOf(value);
         return key;
     }
 
-    String getStringKey(com.youport.acordeyouport.app.entity.MenuOptionPK value) {
+    String getStringKey(Integer value) {
         StringBuffer sb = new StringBuffer();
-        sb.append(value.getIdMenu());
-        sb.append(SEPARATOR);
-        sb.append(value.getIdView());
-        sb.append(SEPARATOR);
-        sb.append(value.getIdMenutype());
+        sb.append(value);
         return sb.toString();
     }
 
@@ -59,7 +50,7 @@ public class MenuOptionConverter implements Converter {
         }
         if (object instanceof MenuOption) {
             MenuOption o = (MenuOption) object;
-            return getStringKey(o.getMenuOptionPK());
+            return getStringKey(o.getIdMenu());
         } else {
             Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), MenuOption.class.getName()});
             return null;

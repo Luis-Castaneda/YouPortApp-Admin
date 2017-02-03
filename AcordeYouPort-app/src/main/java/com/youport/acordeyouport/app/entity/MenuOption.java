@@ -7,16 +7,24 @@
 package com.youport.acordeyouport.app.entity;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -27,19 +35,26 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "MenuOption.findAll", query = "SELECT m FROM MenuOption m"),
-    @NamedQuery(name = "MenuOption.findByIdMenu", query = "SELECT m FROM MenuOption m WHERE m.menuOptionPK.idMenu = :idMenu"),
+    @NamedQuery(name = "MenuOption.findByIdMenu", query = "SELECT m FROM MenuOption m WHERE m.idMenu = :idMenu"),
     @NamedQuery(name = "MenuOption.findByName", query = "SELECT m FROM MenuOption m WHERE m.name = :name"),
     @NamedQuery(name = "MenuOption.findByDescriptionLong", query = "SELECT m FROM MenuOption m WHERE m.descriptionLong = :descriptionLong"),
     @NamedQuery(name = "MenuOption.findByDescriptionShort", query = "SELECT m FROM MenuOption m WHERE m.descriptionShort = :descriptionShort"),
     @NamedQuery(name = "MenuOption.findByUrlImageNormal", query = "SELECT m FROM MenuOption m WHERE m.urlImageNormal = :urlImageNormal"),
     @NamedQuery(name = "MenuOption.findByEnabled", query = "SELECT m FROM MenuOption m WHERE m.enabled = :enabled"),
-    @NamedQuery(name = "MenuOption.findByIdView", query = "SELECT m FROM MenuOption m WHERE m.menuOptionPK.idView = :idView"),
-    @NamedQuery(name = "MenuOption.findByIdMenutype", query = "SELECT m FROM MenuOption m WHERE m.menuOptionPK.idMenutype = :idMenutype"),
+    @NamedQuery(name = "MenuOption.findByIdView", query = "SELECT m FROM MenuOption m WHERE m.view = :view"),
+    @NamedQuery(name = "MenuOption.findByIdMenutype", query = "SELECT m FROM MenuOption m WHERE m.menuType = :menuType"),
     @NamedQuery(name = "MenuOption.findByUrlImageOver", query = "SELECT m FROM MenuOption m WHERE m.urlImageOver = :urlImageOver")})
 public class MenuOption implements Serializable {
+
+   
+
+    
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected MenuOptionPK menuOptionPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "Id_Menu")
+    private Integer idMenu;
     @Size(max = 100)
     @Column(name = "Name")
     private String name;
@@ -57,30 +72,17 @@ public class MenuOption implements Serializable {
     @Size(max = 100)
     @Column(name = "Url_Image_Over")
     private String urlImageOver;
-    @JoinColumn(name = "Id_View", referencedColumnName = "Id_View", insertable = false, updatable = false)
+    @JoinColumn(name = "Id_View", referencedColumnName = "Id_View")
     @ManyToOne(optional = false)
     private View view;
-    @JoinColumn(name = "Id_Menu_type", referencedColumnName = "Id_Menu_type", insertable = false, updatable = false)
+    @JoinColumn(name = "Id_Menu_type", referencedColumnName = "Id_Menu_type")
     @ManyToOne(optional = false)
     private MenuType menuType;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idMenu")
+    private List<SubMenuOption> subMenuOptionList;
 
     public MenuOption() {
-    }
-
-    public MenuOption(MenuOptionPK menuOptionPK) {
-        this.menuOptionPK = menuOptionPK;
-    }
-
-    public MenuOption(int idMenu, int idView, int idMenutype) {
-        this.menuOptionPK = new MenuOptionPK(idMenu, idView, idMenutype);
-    }
-
-    public MenuOptionPK getMenuOptionPK() {
-        return menuOptionPK;
-    }
-
-    public void setMenuOptionPK(MenuOptionPK menuOptionPK) {
-        this.menuOptionPK = menuOptionPK;
     }
 
     public String getName() {
@@ -147,10 +149,32 @@ public class MenuOption implements Serializable {
         this.menuType = menuType;
     }
 
+
+    @XmlTransient
+    public List<SubMenuOption> getSubMenuOptionList() {
+        return subMenuOptionList;
+    }
+
+    public void setSubMenuOptionList(List<SubMenuOption> subMenuOptionList) {
+        this.subMenuOptionList = subMenuOptionList;
+    }
+
+    public MenuOption(Integer idMenu) {
+        this.idMenu = idMenu;
+    }
+
+    public Integer getIdMenu() {
+        return idMenu;
+    }
+
+    public void setIdMenu(Integer idMenu) {
+        this.idMenu = idMenu;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (menuOptionPK != null ? menuOptionPK.hashCode() : 0);
+        hash += (idMenu != null ? idMenu.hashCode() : 0);
         return hash;
     }
 
@@ -161,7 +185,7 @@ public class MenuOption implements Serializable {
             return false;
         }
         MenuOption other = (MenuOption) object;
-        if ((this.menuOptionPK == null && other.menuOptionPK != null) || (this.menuOptionPK != null && !this.menuOptionPK.equals(other.menuOptionPK))) {
+        if ((this.idMenu == null && other.idMenu != null) || (this.idMenu != null && !this.idMenu.equals(other.idMenu))) {
             return false;
         }
         return true;
@@ -169,7 +193,7 @@ public class MenuOption implements Serializable {
 
     @Override
     public String toString() {
-        return "com.youport.acordeyouport.app.entity.MenuOption[ menuOptionPK=" + menuOptionPK + " ]";
+        return "com.youport.acordeyouport.app.entity.MenuOption[ idMenu=" + idMenu + " ]";
     }
 
 }

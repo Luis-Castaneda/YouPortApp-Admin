@@ -107,7 +107,7 @@
 
                         <h:outputLabel value="#{youPortBundle.EditMenuOptionLabel_view}" for="view" />
 
-                        <p:selectOneMenu id="view" value="#{menuOptionController.selected.view}" required="true" requiredMessage="#{youPortBundle.EditMenuOptionRequiredMessage_view}" converter="#{viewConverter}" style="width: 300px;" disabled="true">
+                        <p:selectOneMenu id="view" value="#{menuOptionController.selected.view}" required="true" requiredMessage="#{youPortBundle.EditMenuOptionRequiredMessage_view}" converter="#{viewConverter}" style="width: 300px;">
                             <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
                             <f:selectItems value="#{viewController.items}"
                                            var="viewItem"
@@ -121,7 +121,7 @@
 
                         <h:outputLabel value="#{youPortBundle.EditMenuOptionLabel_menuType}" for="menuType" />
 
-                        <p:selectOneMenu id="menuType" value="#{menuOptionController.selected.menuType}" required="true" requiredMessage="#{youPortBundle.EditMenuOptionRequiredMessage_menuType}" converter="#{menuTypeConverter}" style="width: 300px;" disabled="true">
+                        <p:selectOneMenu id="menuType" value="#{menuOptionController.selected.menuType}" required="true" requiredMessage="#{youPortBundle.EditMenuOptionRequiredMessage_menuType}" converter="#{menuTypeConverter}" style="width: 300px;" >
                             <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
                             <f:selectItems value="#{menuTypeController.items}"
                                            var="menuTypeItem"

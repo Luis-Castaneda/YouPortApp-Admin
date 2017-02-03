@@ -39,6 +39,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "View.findByIdTypeView", query = "SELECT v FROM View v WHERE v.typeView = :typeView")})
 public class View implements Serializable {
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idView")
+    private List<SubMenuOption> subMenuOptionList;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -128,6 +131,15 @@ public class View implements Serializable {
 
     public void setMenuOptionList(List<MenuOption> menuOptionList) {
         this.menuOptionList = menuOptionList;
+    }
+
+    @XmlTransient
+    public List<SubMenuOption> getSubMenuOptionList() {
+        return subMenuOptionList;
+    }
+
+    public void setSubMenuOptionList(List<SubMenuOption> subMenuOptionList) {
+        this.subMenuOptionList = subMenuOptionList;
     }
 
 }

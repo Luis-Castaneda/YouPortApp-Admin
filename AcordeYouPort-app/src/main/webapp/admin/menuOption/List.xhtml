@@ -38,7 +38,7 @@
                 <p:dataTable id="datalist"
                              value="#{menuOptionController.items}"
                              lazy="false"
-                             rowKey="#{item.menuOptionPK}"
+                             rowKey="#{item.idMenu}"
                              var="item"
                              paginator="true"
                              rows="10"
@@ -51,7 +51,7 @@
                     
                              value="HASH{menuOptionController.lazyItems}"
                              lazy="true"
-                             rowKey="HASH{item.menuOptionPK}"  <<< Remove this line
+                             rowKey="HASH{item.idMenu}"  <<< Remove this line
                     -->
 
 

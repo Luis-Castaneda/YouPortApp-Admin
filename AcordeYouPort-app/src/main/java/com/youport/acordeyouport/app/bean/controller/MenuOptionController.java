@@ -44,17 +44,7 @@ public class MenuOptionController extends AbstractController<MenuOption> {
         setFileImageOver(null);
     }
 
-    @Override
-    protected void setEmbeddableKeys() {
-        this.getSelected().getMenuOptionPK().setIdView(this.getSelected().getView().getIdView());
-        this.getSelected().getMenuOptionPK().setIdMenutype(this.getSelected().getMenuType().getIdMenutype());
-    }
-
-    @Override
-    protected void initializeEmbeddableKey() {
-        this.getSelected().setMenuOptionPK(new com.youport.acordeyouport.app.entity.MenuOptionPK());
-    }
-
+    
     /**
      * Resets the "selected" attribute of any parent Entity controllers.
      */
