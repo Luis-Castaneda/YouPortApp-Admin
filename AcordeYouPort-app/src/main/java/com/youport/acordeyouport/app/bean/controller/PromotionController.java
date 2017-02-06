@@ -6,7 +6,9 @@ import com.youport.acordeyouport.app.enums.ConditionType;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
@@ -29,6 +31,8 @@ public class PromotionController extends AbstractController<Promotion> {
     private TypePromotionController idTypePromotionController;
     @Inject
     private CompanyController idCompanyController;
+
+    protected ResourceBundle bundle = ResourceBundle.getBundle("/YouPortBundle");
 
     public PromotionController() {
         // Inform the Abstract parent controller of the concrete Promotion Entity
@@ -75,7 +79,7 @@ public class PromotionController extends AbstractController<Promotion> {
     }
 
     /**
-     * Medodo encargado de crear el archivo JPG en el contexto de la
+     * Medodo encargado de crear el archivo Imagen en el contexto de la
      * aplicacion.... desde esta ubicacion podran ser accedidos via web atraves
      * de la url absoluta
      *
@@ -96,34 +100,37 @@ public class PromotionController extends AbstractController<Promotion> {
 
         File newFile = new File(faces.getExternalContext().getRealPath(UPLOAD_DIRECTORY_IMAGE_RELATIVE) + File.separator + file.getFileName());
         try {
-            if (newFile.createNewFile()) {
+            if (!newFile.createNewFile()) {
+                String nameGenerated = "file_generated" + System.currentTimeMillis();
+                newFile = new File(faces.getExternalContext().getRealPath(UPLOAD_DIRECTORY_IMAGE_RELATIVE) + File.separator + nameGenerated + "." + fileExtension);
+                getSelected().setUrlImagel(nameGenerated);
+            }
 
-                FileOutputStream output = new FileOutputStream(newFile);
+            FileOutputStream output = new FileOutputStream(newFile);
 
-                byte[] buffer = new byte[BUFFER];
+            byte[] buffer = new byte[BUFFER];
 
-                int bulk;
+            int bulk;
 
-                InputStream input = file.getInputstream();
+            InputStream input = file.getInputstream();
 
-                while (true) {
-                    bulk = input.read(buffer);
+            while (true) {
+                bulk = input.read(buffer);
 
-                    if (bulk < 0) {
-                        break;
-                    }
-
-                    output.write(buffer, 0, bulk);
-                    output.flush();
+                if (bulk < 0) {
+                    break;
                 }
 
-                output.close();
-                input.close();
-
+                output.write(buffer, 0, bulk);
+                output.flush();
             }
+
+            output.close();
+            input.close();
 
         } catch (Exception ex) {
             ex.printStackTrace();
+            FacesContext.getCurrentInstance().addMessage("", new FacesMessage(bundle.getString("Error_file_created")));
         }
 
     }

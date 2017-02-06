@@ -7,7 +7,9 @@ import com.youport.acordeyouport.app.enums.ImageType;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
@@ -32,6 +34,9 @@ public class MenuOptionController extends AbstractController<MenuOption> {
     @Inject
     private MenuTypeController menuTypeController;
 
+    protected ResourceBundle bundle = ResourceBundle.getBundle("/YouPortBundle");
+    private String nameGenerated;
+
     public MenuOptionController() {
         // Inform the Abstract parent controller of the concrete MenuOption Entity
         super(MenuOption.class);
@@ -44,7 +49,6 @@ public class MenuOptionController extends AbstractController<MenuOption> {
         setFileImageOver(null);
     }
 
-    
     /**
      * Resets the "selected" attribute of any parent Entity controllers.
      */
@@ -78,7 +82,7 @@ public class MenuOptionController extends AbstractController<MenuOption> {
     }
 
     /**
-     * Medodo encargado de crear el archivo JPG en el contexto de la
+     * Medodo encargado de crear el archivo imagen en el contexto de la
      * aplicacion.... desde esta ubicacion podran ser accedidos via web atraves
      * de la url absoluta
      *
@@ -96,36 +100,39 @@ public class MenuOptionController extends AbstractController<MenuOption> {
             directory.mkdir();
         }
 
-        File newFile = new File(faces.getExternalContext().getRealPath(UPLOAD_DIRECTORY_IMAGE_RELATIVE) + File.separator + file.getFileName() + "." + fileExtension);
+        File newFile = new File(faces.getExternalContext().getRealPath(UPLOAD_DIRECTORY_IMAGE_RELATIVE) + File.separator + file.getFileName());
         try {
-            if (newFile.createNewFile()) {
-
-                FileOutputStream output = new FileOutputStream(newFile);
-
-                byte[] buffer = new byte[BUFFER];
-
-                int bulk;
-
-                InputStream input = file.getInputstream();
-
-                while (true) {
-                    bulk = input.read(buffer);
-
-                    if (bulk < 0) {
-                        break;
-                    }
-
-                    output.write(buffer, 0, bulk);
-                    output.flush();
-                }
-
-                output.close();
-                input.close();
+            if (!newFile.createNewFile()) {
+                nameGenerated = "file_generated" + System.currentTimeMillis();
+                newFile = new File(faces.getExternalContext().getRealPath(UPLOAD_DIRECTORY_IMAGE_RELATIVE) + File.separator + nameGenerated + "." + fileExtension);
 
             }
 
+            FileOutputStream output = new FileOutputStream(newFile);
+
+            byte[] buffer = new byte[BUFFER];
+
+            int bulk;
+
+            InputStream input = file.getInputstream();
+
+            while (true) {
+                bulk = input.read(buffer);
+
+                if (bulk < 0) {
+                    break;
+                }
+
+                output.write(buffer, 0, bulk);
+                output.flush();
+            }
+
+            output.close();
+            input.close();
+
         } catch (Exception ex) {
             ex.printStackTrace();
+            FacesContext.getCurrentInstance().addMessage("", new FacesMessage(bundle.getString("Error_file_created")));
         }
 
     }
@@ -181,11 +188,11 @@ public class MenuOptionController extends AbstractController<MenuOption> {
         if (super.getSelected() != null) {
             if (getFileImageNormal() != null) {
                 upload(getFileImageNormal());
-                getSelected().setUrlImageNormal(getFileImageNormal().getFileName());
+                getSelected().setUrlImageNormal(nameGenerated != null ? nameGenerated : getFileImageNormal().getFileName());
             }
             if (getFileImageOver() != null) {
                 upload(getFileImageOver());
-                getSelected().setUrlImageOver(getFileImageOver().getFileName());
+                getSelected().setUrlImageOver(nameGenerated != null ? nameGenerated : getFileImageOver().getFileName());
             }
             if (condition != null && ConditionType.NEW.getNameCondition().equals(condition)) {
                 saveNew(null);
@@ -211,6 +218,14 @@ public class MenuOptionController extends AbstractController<MenuOption> {
 
     public void setFileImageNormal(UploadedFile fileImageNormal) {
         this.fileImageNormal = fileImageNormal;
+    }
+
+    public String getNameGenerated() {
+        return nameGenerated;
+    }
+
+    public void setNameGenerated(String nameGenerated) {
+        this.nameGenerated = nameGenerated;
     }
 
 }

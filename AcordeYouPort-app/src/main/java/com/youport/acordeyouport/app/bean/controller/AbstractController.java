@@ -221,9 +221,13 @@ public abstract class AbstractController<T> implements Serializable {
                     } else {
                         String msg = cause.getLocalizedMessage();
                         if (msg.length() > 0) {
-                            JsfUtil.addErrorMessage(msg);
+                            if (msg.contains("Duplicate")) {
+                                JsfUtil.addErrorMessage(ResourceBundle.getBundle("/YouPortBundle").getString("PersistenceDuplicate"));
+                            } else {
+                                JsfUtil.addErrorMessage(msg);
+                            }
                         } else {
-                            JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+                            JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/YouPortBundle").getString("PersistenceErrorOccured"));
                         }
                     }
                 }
@@ -318,8 +322,8 @@ public abstract class AbstractController<T> implements Serializable {
         }
         return index;
     }
-    
-     public String getSizeLimit() {
+
+    public String getSizeLimit() {
         return this.configurationMasterParameter.getParameter(ConfigurationMasterParameter.CONF_SIZE_LIMIT_FILE_UPLOAD);
     }
 

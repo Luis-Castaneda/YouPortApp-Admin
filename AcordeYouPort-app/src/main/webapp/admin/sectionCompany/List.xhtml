@@ -83,7 +83,7 @@
                         </f:facet>
                         <p:commandLink id="btnView" 
                                        value="View Content"
-                                       action="#{sectionCompanyController.changeSelection(item)}"
+                                       actionListener="#{sectionCompanyController.changeSelection(item)}"
                                        oncomplete="PF('lighbox2').show()"
                                        update=":SectionCompanyListForm"
                                        >
@@ -111,9 +111,9 @@
 
 
         </p:panel>
-        <p:dialog id="lighbox2" widgetVar="lighbox2" modal="true"  appendTo="@(body)"  height = "650" width="1100"  >
+        <p:dialog id="lighbox2" widgetVar="lighbox2" modal="true"  appendTo="@(body)"  height = "650" width="1100"  header="#{youPortBundle.ViewSectionCompanyTitle}" closeOnEscape="true">
 
-            <h:outputText escape="false" value="#{sectionCompanyController.paragraph}" style="white-space: pre;" />
+            <h:outputText escape="false" value="#{sectionCompanyController.selected.paragraph}" style="white-space: pre;" />
 
         </p:dialog>
         <ui:include src="/WEB-INF/template/confirmation.xhtml"/>
