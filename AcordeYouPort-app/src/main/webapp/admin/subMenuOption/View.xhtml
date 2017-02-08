@@ -23,6 +23,12 @@
 
                         <h:outputText value="#{youPortBundle.ViewSubMenuOptionLabel_description}"/>
                         <h:outputText value="#{subMenuOptionController.selected.description}" title="#{youPortBundle.ViewSubMenuOptionTitle_description}"/>
+                        
+                        <h:outputText value="#{youPortBundle.CreateSubMenuOptionLabel_view}"/>
+                        <h:outputText value="#{subMenuOptionController.selected.idView.name}" title="#{youPortBundle.CreateSubMenuOptionTitle_view}"/>
+                        
+                        <h:outputText value="#{youPortBundle.CreateSubMenuOptionLabel_menu}"/>
+                        <h:outputText value="#{subMenuOptionController.selected.idMenu.name}" title="#{youPortBundle.CreateSubMenuOptionTitle_menu}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{youPortBundle.Close}" onclick="PF('SubMenuOptionViewDialog').hide()"/>
                 </h:panelGroup>

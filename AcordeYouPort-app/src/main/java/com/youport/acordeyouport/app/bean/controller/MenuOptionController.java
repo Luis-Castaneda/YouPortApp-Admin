@@ -80,6 +80,19 @@ public class MenuOptionController extends AbstractController<MenuOption> {
             menuTypeController.setSelected(this.getSelected().getMenuType());
         }
     }
+    
+     /**
+     * Sets the "items" attribute with a collection of Contact entities that are
+     * retrieved from submenu and returns the navigation outcome.
+     *
+     * @return navigation outcome for Contact page
+     */
+    public String navigateSubMEnuList() {
+        if (this.getSelected() != null) {
+            FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("SubMenuOption_items", this.getSelected().getSubMenuOptionList());
+        }
+        return "/admin/subMenuOption/index";
+    }
 
     /**
      * Medodo encargado de crear el archivo imagen en el contexto de la

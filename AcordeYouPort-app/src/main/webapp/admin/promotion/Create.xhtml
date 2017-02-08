@@ -10,7 +10,7 @@
 
         <p:dialog id="PromotionCreateDlg" widgetVar="PromotionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{youPortBundle.CreatePromotionTitle}" closeOnEscape="true">
 
-            <h:form id="PromotionCreateForm" enctype="multipart/form-data">
+            <h:form id="PromotionCreateForm">
 
                 <h:panelGroup id="display" rendered="#{promotionController.selected != null}" style="text-align: left">
                     <p:panelGrid columns="2" columnClasses="column">

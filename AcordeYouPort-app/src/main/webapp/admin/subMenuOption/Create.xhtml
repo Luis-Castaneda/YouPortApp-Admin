@@ -20,6 +20,28 @@
 
                         <p:outputLabel value="#{youPortBundle.CreateSubMenuOptionLabel_description}" for="description" />
                         <p:inputTextarea rows="4" cols="30" style="width: 297px;" id="description" value="#{subMenuOptionController.selected.description}" title="#{youPortBundle.CreateSubMenuOptionTitle_description}" />
+                        
+                         <p:outputLabel value="#{youPortBundle.CreateSubMenuOptionLabel_view}" for="view" />
+                         <p:selectOneMenu id="view" value="#{subMenuOptionController.selected.idView}" required="true" requiredMessage="#{youPortBundle.CreateSubMenuOptionRequiredMessage_View}" converter="#{viewConverter}" style="width: 295px;">
+                            <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{viewController.items}"
+                                           var="viewItem"
+                                           itemValue="#{viewItem}"
+                                           itemLabel="#{viewItem.name.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+                         
+                          <p:outputLabel value="#{youPortBundle.CreateSubMenuOptionLabel_menu}" for="menu" />
+                          <p:selectOneMenu id="menu" value="#{subMenuOptionController.selected.idMenu}" required="true" requiredMessage="#{youPortBundle.CreateSubMenuOptionRequiredMessage_Menu}" converter="#{menuOptionConverter}" style="width: 295px;">
+                            <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{menuOptionController.items}"
+                                           var="menuItem"
+                                           itemValue="#{menuItem}"
+                                           itemLabel="#{menuItem.name.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{subMenuOptionController.saveNew}" value="#{youPortBundle.Save}" update="display,:SubMenuOptionListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('SubMenuOptionCreateDialog'));">
                         <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>

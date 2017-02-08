@@ -17,6 +17,7 @@
                 <p:separator/>
                 <p:menuitem value="#{youPortBundle.MenuOptionMenuItem_view}" icon="ui-icon-search"  actionListener="#{menuOptionController.prepareView}" update=":ViewViewForm" oncomplete="PF('ViewViewDialog').show()" disabled="#{empty menuOptionController.selected.view}"/>  
                 <p:menuitem value="#{youPortBundle.MenuOptionMenuItem_menuType}" icon="ui-icon-search"  actionListener="#{menuOptionController.prepareMenuType}" update=":MenuTypeViewForm" oncomplete="PF('MenuTypeViewDialog').show()" disabled="#{empty menuOptionController.selected.menuType}"/>  
+                <p:menuitem value="#{youPortBundle.MenuOptionMenuItem_subMenuOptionList}" icon="ui-icon-search"  action="#{menuOptionController.navigateSubMEnuList()}" disabled="#{empty menuOptionController.selected.subMenuOptionList}" ajax="false"/>  
             </p:contextMenu>
 
             <table style="text-align: right; width: 100%; margin-bottom: 10px;">

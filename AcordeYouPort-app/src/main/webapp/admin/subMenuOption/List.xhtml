@@ -14,6 +14,9 @@
                 <p:menuitem value="#{youPortBundle.View}" onclick="document.getElementById('SubMenuOptionListForm:viewButton').click();" icon="ui-icon-search"/>
                 <p:menuitem value="#{youPortBundle.Edit}" onclick="document.getElementById('SubMenuOptionListForm:editButton').click();" icon="ui-icon-pencil"/>
                 <p:menuitem value="#{youPortBundle.Delete}" onclick="document.getElementById('SubMenuOptionListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                
+                <p:menuitem value="#{youPortBundle.SubMenuOptionMenuItem_view}" icon="ui-icon-search"  actionListener="#{subMenuOptionController.prepareView}" update=":ViewViewForm" oncomplete="PF('ViewViewDialog').show()" disabled="#{empty subMenuOptionController.selected.idView}"/>  
+                <p:menuitem value="#{youPortBundle.SubMenuOptionMenuItem_menu}" icon="ui-icon-search"  actionListener="#{subMenuOptionController.prepareMenuOption}" update=":MenuOptionViewForm" oncomplete="PF('MenuOptionViewDialog').show()" disabled="#{empty subMenuOptionController.selected.idMenu}"/>  
             </p:contextMenu>
 
             <table style="text-align: right; width: 100%; margin-bottom: 10px;">
@@ -52,11 +55,12 @@
                     -->
 
 
-                    <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:SubMenuOptionDataTableContextMenu"/>
-                    <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:SubMenuOptionDataTableContextMenu"/>
-                    <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton"/>
+                    <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:SubMenuOptionDataTableContextMenu" listener="#{menuOptionController.resetParents}"/>
+                    <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:SubMenuOptionDataTableContextMenu" listener="#{menuOptionController.resetParents}"/>
+                    <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton" listener="#{menuOptionController.resetParents}"/>
                     <p:ajax event="rowDblselect" onsuccess="document.getElementById('SubMenuOptionListForm:viewButton').click();"/>
-
+                    
+                    
                     <p:column sortBy="#{item.idSubMenuOption}" filterBy="#{item.idSubMenuOption}">
                         <f:facet name="header">
                             <h:outputText value="#{youPortBundle.ListSubMenuOptionTitle_idSubMenuOption}"/>
@@ -78,6 +82,20 @@
                             <h:outputText value="#{youPortBundle.ListSubMenuOptionTitle_description}"/>
                         </f:facet>
                         <h:outputText value="#{item.description}"/>
+                    </p:column>
+                    
+                     <p:column sortBy="#{item.idMenu.name}" filterBy="#{item.idMenu.name}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.CreateSubMenuOptionTitle_menu}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idMenu.name}"/>
+                    </p:column>
+                    
+                     <p:column sortBy="#{item.idView.name}" filterBy="#{item.idView.name}">
+                        <f:facet name="header">
+                            <h:outputText value="#{youPortBundle.CreateSubMenuOptionTitle_view}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idView.name}"/>
                     </p:column>
 
 
