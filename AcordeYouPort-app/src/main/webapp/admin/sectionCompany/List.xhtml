@@ -62,7 +62,7 @@
 
                     <p:column sortBy="#{item.idSectionCompany}" filterBy="#{item.idSectionCompany}">
                         <f:facet name="header">
-                            <h:outputText value="#{youPortBundle.ListSectionCompanyTitle_idSectionCompany}"/>
+                            <h:outputText value="#{youPortBundle.CreateSectionCompanyTitle_idSectionCompany}"/>
                         </f:facet>
                         <h:outputText value="#{item.idSectionCompany}"/>
                     </p:column>
@@ -70,7 +70,7 @@
 
 <!--                    <p:column sortBy="#{item.title}" filterBy="#{item.title}">
                         <f:facet name="header">
-                            <h:outputText value="#{youPortBundle.ListSectionCompanyTitle_title}"/>
+                            <h:outputText value="#{youPortBundle.CreateSectionCompanyTitle_title}"/>
                         </f:facet>
                         <h:outputText value="#{item.title}"/>
                     </p:column>-->
@@ -79,13 +79,13 @@
 
                     <p:column sortBy="#{item.paragraph}" filterBy="#{item.paragraph}">
                         <f:facet name="header">
-                            <h:outputText value="#{youPortBundle.ListSectionCompanyTitle_paragraph}"/>
+                            <h:outputText value="#{youPortBundle.CreateSectionCompanyTitle_paragraph}"/>
                         </f:facet>
                         <p:commandLink id="btnView" 
                                        value="View Content"
                                        actionListener="#{sectionCompanyController.changeSelection(item)}"
                                        oncomplete="PF('lighbox2').show()"
-                                       update=":SectionCompanyListForm"
+                                       update=":SectionCompanyCreateForm"
                                        >
                         </p:commandLink>
                     </p:column>
@@ -93,14 +93,14 @@
 
                     <p:column sortBy="#{item.idSection.name}" filterBy="#{item.idSection.name}">
                         <f:facet name="header">
-                            <h:outputText value="#{youPortBundle.ListSectionCompanyTitle_idSection}"/>
+                            <h:outputText value="#{youPortBundle.CreateSectionCompanyTitle_idSection}"/>
                         </f:facet>
                         <h:outputText value="#{item.idSection.name}"/>
                     </p:column>
 
                     <p:column sortBy="#{item.idCompany.name}" filterBy="#{item.idCompany.name}">
                         <f:facet name="header">
-                            <h:outputText value="#{youPortBundle.ListSectionCompanyTitle_idCompany}"/>
+                            <h:outputText value="#{youPortBundle.CreateCompanyTitle_idCompany}"/>
                         </f:facet>
                         <h:outputText value="#{item.idCompany.name}"/>
                     </p:column>

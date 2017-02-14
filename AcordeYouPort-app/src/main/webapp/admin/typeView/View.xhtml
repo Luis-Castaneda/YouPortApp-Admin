@@ -15,14 +15,14 @@
                 <h:panelGroup id="display" style="text-align: left">
                     <p:panelGrid columns="2" columnClasses="column" rendered="#{typeViewController.selected != null}">
 
-                        <h:outputText value="#{youPortBundle.ViewTypeViewLabel_idTypeView}"/>
-                        <h:outputText value="#{typeViewController.selected.idTypeView}" title="#{youPortBundle.ViewTypeViewTitle_idTypeView}"/>
+                        <h:outputText value="#{youPortBundle.CreateTypeViewLabel_idTypeView}"/>
+                        <h:outputText value="#{typeViewController.selected.idTypeView}" title="#{youPortBundle.CreateTypeViewTitle_idTypeView}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewTypeViewLabel_nameType}"/>
-                        <h:outputText value="#{typeViewController.selected.nameType}" title="#{youPortBundle.ViewTypeViewTitle_nameType}"/>
+                        <h:outputText value="#{youPortBundle.CreateTypeViewLabel_nameType}"/>
+                        <h:outputText value="#{typeViewController.selected.nameType}" title="#{youPortBundle.CreateTypeViewTitle_nameType}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewTypeViewLabel_description}"/>
-                        <h:outputText value="#{typeViewController.selected.description}" title="#{youPortBundle.ViewTypeViewTitle_description}"/>
+                        <h:outputText value="#{youPortBundle.CreateTypeViewLabel_description}"/>
+                        <h:outputText value="#{typeViewController.selected.description}" title="#{youPortBundle.CreateTypeViewTitle_description}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{youPortBundle.Close}" onclick="PF('TypeViewViewDialog').hide()"/>
                 </h:panelGroup>

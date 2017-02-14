@@ -17,16 +17,16 @@
                     <p:growl id="growl" showDetail="true" autoUpdate="true" life="5000" />
 
                     <h:panelGrid columns="2" cellpadding="5">
-                        <h:outputLabel for="username" value="Username:" />
+                        <h:outputLabel for="username" value="Usuario:" />
                         <p:inputText id="username" value="#{userLoginController.username}" required="true" label="username" />
 <!--                        <h:message for="username" />-->
 
-                        <h:outputLabel for="password" value="Password:" />
+                        <h:outputLabel for="password" value="Contraseña:" />
                         <p:password id="password" value="#{userLoginController.password}" required="true" label="password" />
 <!--                        <h:message for="password" />-->
                         <f:facet name="footer">
                             <div  class="buttons-login">
-                                <p:commandButton value="Login" update="growl" action="#{userLoginController.login}" ajax="false"/>
+                                <p:commandButton value="Entrar" update="growl" action="#{userLoginController.login}" ajax="false"/>
                             </div>
                         </f:facet>
 

@@ -15,22 +15,22 @@
                     <p:panelGrid  columns="2" columnClasses="column" rendered="#{userStatusController.selected != null}">
 
 
-                        <h:outputLabel value="#{youPortBundle.EditUserStatusLabel_idUserStatus}" for="idUserStatus" />
+                        <h:outputLabel value="#{youPortBundle.CreateUserStatusLabel_idUserStatus}" for="idUserStatus" />
                         <h:panelGroup>
                             <h:outputText id="idUserStatus" value="#{userStatusController.selected.idUserStatus}" />
-                            <p:tooltip for="idUserStatus" value="#{userStatusController.getComponentMessages('idUserStatus', youPortBundle.EditUserStatusHelpText_idUserStatus)}"/>
+                            <p:tooltip for="idUserStatus" value="#{userStatusController.getComponentMessages('idUserStatus', youPortBundle.CreateUserStatusHelpText_idUserStatus)}"/>
                         </h:panelGroup>
 
-                        <p:outputLabel value="#{youPortBundle.EditUserStatusLabel_statusName}" for="statusName" />
+                        <p:outputLabel value="#{youPortBundle.CreateUserStatusLabel_statusName}" for="statusName" />
                         <h:panelGroup>
-                            <p:inputText id="statusName" value="#{userStatusController.selected.statusName}" title="#{youPortBundle.EditUserStatusTitle_statusName}" size="45" maxlength="100"/>
-                            <p:tooltip for="statusName" value="#{userStatusController.getComponentMessages('statusName', youPortBundle.EditUserStatusHelpText_statusName)}"/>
+                            <p:inputText id="statusName" value="#{userStatusController.selected.statusName}" title="#{youPortBundle.CreateUserStatusTitle_statusName}" size="45" maxlength="100"/>
+                            <p:tooltip for="statusName" value="#{userStatusController.getComponentMessages('statusName', youPortBundle.CreateUserStatusHelpText_statusName)}"/>
                         </h:panelGroup>
 
-                        <p:outputLabel value="#{youPortBundle.EditUserStatusLabel_enabled}" for="enabled" />
+                        <p:outputLabel value="#{youPortBundle.CreateUserStatusLabel_enabled}" for="enabled" />
                         <h:panelGroup>
                             <p:selectBooleanCheckbox id="enabled" value="#{userStatusController.selected.enabled}" />
-                            <p:tooltip for="enabled" value="#{userStatusController.getComponentMessages('enabled', youPortBundle.EditUserStatusHelpText_enabled)}"/>
+                            <p:tooltip for="enabled" value="#{userStatusController.getComponentMessages('enabled', youPortBundle.CreateUserStatusHelpText_enabled)}"/>
                         </h:panelGroup>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{userStatusController.save}" value="#{youPortBundle.Save}" update="display,:UserStatusListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('UserStatusEditDialog'));">

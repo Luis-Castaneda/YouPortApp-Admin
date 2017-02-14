@@ -40,14 +40,14 @@
                         </h:panelGroup>
 
 
-                        <p:outputLabel value="#{youPortBundle.EditCompanyLabel_Provincia}" for="idCity" />
+                        <p:outputLabel value="#{youPortBundle.CreateCompanyLabel_Provincia}" for="idCity" />
                         <h:panelGroup>
-                            <!--<p:inputText id="city" value="#{companyController.selected.city}" title="#{youPortBundle.EditCompanyTitle_Provincia}" size="40" maxlength="45"/>-->
+                            <!--<p:inputText id="city" value="#{companyController.selected.city}" title="#{youPortBundle.CreateCompanyTitle_Provincia}" size="40" maxlength="45"/>-->
 
                             <p:selectOneMenu id="idCity" 
                                              value="#{companyController.selected.idCity}" 
                                              required="true" 
-                                             requiredMessage="#{youPortBundle.EditCompanyHelpText_Provincia}" 
+                                             requiredMessage="#{youPortBundle.CreateCompanyHelpText_Provincia}" 
                                              converter="#{provinciasConverter}" 
                                              style="width: 275px;">
                                 <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
@@ -57,7 +57,7 @@
                                                itemLabel="#{provincia.provincia}"/>
                             </p:selectOneMenu>  
 
-                            <p:tooltip for="idCity" value="#{companyController.getComponentMessages('city', youPortBundle.EditCompanyHelpText_Provincia)}"/>
+                            <p:tooltip for="idCity" value="#{companyController.getComponentMessages('city', youPortBundle.CreateCompanyHelpText_Provincia)}"/>
                         </h:panelGroup>
 
 

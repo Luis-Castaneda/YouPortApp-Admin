@@ -49,7 +49,7 @@ public class ViewController extends AbstractController<View> {
         if (this.getSelected() != null) {
             FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("MenuOption_items", this.getSelected().getMenuOptionList());
         }
-        return "/admin/MenuOption/index";
+        return "/admin/menuOption/index";
     }
 
 }

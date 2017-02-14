@@ -15,29 +15,29 @@
                 <h:panelGroup id="display" style="text-align: left">
                     <p:panelGrid columns="2" columnClasses="column" rendered="#{companyController.selected != null}">
 
-                        <h:outputText value="#{youPortBundle.ViewCompanyLabel_idCompany}"/>
-                        <h:outputText value="#{companyController.selected.idCompany}" title="#{youPortBundle.ViewCompanyTitle_idCompany}"/>
+                        <h:outputText value="#{youPortBundle.CreateCompanyLabel_idCompany}"/>
+                        <h:outputText value="#{companyController.selected.idCompany}" title="#{youPortBundle.CreateCompanyTitle_idCompany}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewCompanyLabel_name}"/>
-                        <h:outputText value="#{companyController.selected.name}" title="#{youPortBundle.ViewCompanyTitle_name}"/>
+                        <h:outputText value="#{youPortBundle.CreateCompanyLabel_name}"/>
+                        <h:outputText value="#{companyController.selected.name}" title="#{youPortBundle.CreateCompanyTitle_name}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewCompanyLabel_address}"/>
-                        <h:outputText value="#{companyController.selected.address}" title="#{youPortBundle.ViewCompanyTitle_address}"/>
+                        <h:outputText value="#{youPortBundle.CreateCompanyLabel_address}"/>
+                        <h:outputText value="#{companyController.selected.address}" title="#{youPortBundle.CreateCompanyTitle_address}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewCompanyLabel_zipCode}"/>
-                        <h:outputText value="#{companyController.selected.zipCode}" title="#{youPortBundle.ViewCompanyTitle_zipCode}"/>
+                        <h:outputText value="#{youPortBundle.CreateCompanyLabel_zipCode}"/>
+                        <h:outputText value="#{companyController.selected.zipCode}" title="#{youPortBundle.CreateCompanyTitle_zipCode}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewCompanyLabel_stateProvince}"/>
-                        <h:outputText value="#{companyController.selected.stateProvince}" title="#{youPortBundle.ViewCompanyTitle_stateProvince}"/>
+                        <h:outputText value="#{youPortBundle.CreateCompanyLabel_stateProvince}"/>
+                        <h:outputText value="#{companyController.selected.stateProvince}" title="#{youPortBundle.CreateCompanyTitle_stateProvince}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewCompanyLabel_city}"/>
-                        <h:outputText value="#{companyController.selected.idCity.provincia}" title="#{youPortBundle.ViewCompanyTitle_city}"/>
+                        <h:outputText value="#{youPortBundle.CreateCompanyLabel_city}"/>
+                        <h:outputText value="#{companyController.selected.idCity.provincia}" title="#{youPortBundle.CreateCompanyTitle_city}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewCompanyLabel_phoneOfficeOne}"/>
-                        <h:outputText value="#{companyController.selected.phoneOfficeOne}" title="#{youPortBundle.ViewCompanyTitle_phoneOfficeOne}"/>
+                        <h:outputText value="#{youPortBundle.CreateCompanyLabel_phoneOfficeOne}"/>
+                        <h:outputText value="#{companyController.selected.phoneOfficeOne}" title="#{youPortBundle.CreateCompanyTitle_phoneOfficeOne}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewCompanyLabel_phoneOfficeTwo}"/>
-                        <h:outputText value="#{companyController.selected.phoneOfficeTwo}" title="#{youPortBundle.ViewCompanyTitle_phoneOfficeTwo}"/>
+                        <h:outputText value="#{youPortBundle.CreateCompanyLabel_phoneOfficeTwo}"/>
+                        <h:outputText value="#{companyController.selected.phoneOfficeTwo}" title="#{youPortBundle.CreateCompanyTitle_phoneOfficeTwo}"/>
 
                         <p:outputLabel value="#{youPortBundle.CreateCompanyLabel_urlImage}"  />
                         <h:outputText value="#{companyController.selected.urlImage}" title="#{youPortBundle.CreateCompanyTitle_urlImage}" />
@@ -49,7 +49,7 @@
                         <p:outputLabel value="#{youPortBundle.CreateCompanyLabel_fax}"  />
                         <h:outputText value="#{companyController.selected.fax}" title="#{youPortBundle.CreateCompanyTitle_fax}" />
                         
-                        <h:outputText value="#{youPortBundle.ViewCompanyLabel_idTheme}"/>
+                        <h:outputText value="#{youPortBundle.CreateCompanyLabel_idTheme}"/>
                         <h:outputText value="#{companyController.selected.idTheme.nameTheme}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{youPortBundle.Close}" onclick="PF('CompanyViewDialog').hide()"/>

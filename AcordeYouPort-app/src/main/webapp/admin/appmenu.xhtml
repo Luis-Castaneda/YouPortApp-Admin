@@ -11,6 +11,16 @@
             <p:menubar >
                 <p:menuitem value="#{youPortBundle.Home}" outcome="/admin/index" icon="ui-icon-home"/>
                 <p:submenu label="#{youPortBundle.Maintenance}" class="pedro">
+
+                    <p:menuitem value="#{youPortBundle.UserHeading}..." outcome="/admin/user/index" />
+                    <p:menuitem value="#{youPortBundle.UserStatusHeading}..." outcome="/admin/userStatus/index" />
+                    <p:menuitem value="#{youPortBundle.UserTypeHeading}..." outcome="/admin/userType/index" />
+                    <p:menuitem value="#{youPortBundle.ConfigurationMasterHeading}..." outcome="/admin/configurationMaster/index" />
+                    <p:menuitem value="#{youPortBundle.TypeViewHeading}..." outcome="/admin/typeView/index" />
+
+                </p:submenu>
+
+                <p:submenu label="#{youPortBundle.application}" class="pedro">
                     <p:menuitem value="#{youPortBundle.MenuOptionHeading}..." outcome="/admin/menuOption/index"/>
                     <p:menuitem value="#{youPortBundle.CompanyHeading}..." outcome="/admin/company/index" />
                     <p:menuitem value="#{youPortBundle.ContactHeading}..." outcome="/admin/contact/index" />
@@ -18,12 +28,6 @@
                     <p:menuitem value="#{youPortBundle.SectionMenuCompanyHeading}..." outcome="/admin/sectionMenuCompany/index" />
                     <p:menuitem value="#{youPortBundle.ServicesHeading}..." outcome="/admin/services/index" />
                     <p:menuitem value="#{youPortBundle.ServicesCompanyHeading}..." outcome="/admin/servicesCompany/index" />
-                    <p:menuitem value="#{youPortBundle.ThemeHeading}..." outcome="/admin/theme/index" />
-                    <p:menuitem value="#{youPortBundle.UserHeading}..." outcome="/admin/user/index" />
-                    <p:menuitem value="#{youPortBundle.UserStatusHeading}..." outcome="/admin/userStatus/index" />
-                    <p:menuitem value="#{youPortBundle.UserTypeHeading}..." outcome="/admin/userType/index" />
-                    <p:menuitem value="#{youPortBundle.ConfigurationMasterHeading}..." outcome="/admin/configurationMaster/index" />
-                    <p:menuitem value="#{youPortBundle.TypeViewHeading}..." outcome="/admin/typeView/index" />
                     <p:menuitem value="#{youPortBundle.ViewHeading}..." outcome="/admin/view/index" />
                     <p:menuitem value="#{youPortBundle.TypePromotionHeading}..." outcome="/admin/typePromotion/index" />
                     <p:menuitem value="#{youPortBundle.PromotionHeading}..." outcome="/admin/promotion/index" />

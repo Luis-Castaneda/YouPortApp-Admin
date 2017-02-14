@@ -15,13 +15,13 @@
                 <h:panelGroup id="display" style="text-align: left">
                     <p:panelGrid columns="2" columnClasses="column" rendered="#{userStatusController.selected != null}">
 
-                        <h:outputText value="#{youPortBundle.ViewUserStatusLabel_idUserStatus}"/>
-                        <h:outputText value="#{userStatusController.selected.idUserStatus}" title="#{youPortBundle.ViewUserStatusTitle_idUserStatus}"/>
+                        <h:outputText value="#{youPortBundle.CreateUserStatusLabel_idUserStatus}"/>
+                        <h:outputText value="#{userStatusController.selected.idUserStatus}" title="#{youPortBundle.CreateUserStatusTitle_idUserStatus}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewUserStatusLabel_statusName}"/>
-                        <h:outputText value="#{userStatusController.selected.statusName}" title="#{youPortBundle.ViewUserStatusTitle_statusName}"/>
+                        <h:outputText value="#{youPortBundle.CreateUserStatusLabel_statusName}"/>
+                        <h:outputText value="#{userStatusController.selected.statusName}" title="#{youPortBundle.CreateUserStatusTitle_statusName}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewUserStatusLabel_enabled}"/>
+                        <h:outputText value="#{youPortBundle.CreateUserStatusLabel_enabled}"/>
                         <h:selectBooleanCheckbox id="enabled" value="#{userStatusController.selected.enabled}" title="#{youPortBundle.EditUserStatusTitle_enabled}"  disabled="true"/>
                     </p:panelGrid>
                     <p:commandButton value="#{youPortBundle.Close}" onclick="PF('UserStatusViewDialog').hide()"/>

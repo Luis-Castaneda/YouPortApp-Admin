@@ -61,7 +61,7 @@
 
                     <p:column sortBy="#{item.idUser}" filterBy="#{item.idUser}">
                         <f:facet name="header">
-                            <h:outputText value="#{youPortBundle.ListUserTitle_idUser}"/>
+                            <h:outputText value="#{youPortBundle.CreateUserTitle_idUser}"/>
                         </f:facet>
                         <h:outputText value="#{item.idUser}"/>
                     </p:column>
@@ -69,7 +69,7 @@
 
                     <p:column sortBy="#{item.name}" filterBy="#{item.name}">
                         <f:facet name="header">
-                            <h:outputText value="#{youPortBundle.ListUserTitle_name}"/>
+                            <h:outputText value="#{youPortBundle.CreateUserTitle_name}"/>
                         </f:facet>
                         <h:outputText value="#{item.name}"/>
                     </p:column>
@@ -77,7 +77,7 @@
 
                     <p:column sortBy="#{item.surname}" filterBy="#{item.surname}">
                         <f:facet name="header">
-                            <h:outputText value="#{youPortBundle.ListUserTitle_surname}"/>
+                            <h:outputText value="#{youPortBundle.CreateUserTitle_surname}"/>
                         </f:facet>
                         <h:outputText value="#{item.surname}"/>
                     </p:column>
@@ -85,7 +85,7 @@
 
                     <p:column sortBy="#{item.password}" filterBy="#{item.password}">
                         <f:facet name="header">
-                            <h:outputText value="#{youPortBundle.ListUserTitle_password}"/>
+                            <h:outputText value="#{youPortBundle.CreateUserTitle_password}"/>
                         </f:facet>
                         <h:outputText value="#{item.password}"/>
                     </p:column>
@@ -93,43 +93,20 @@
 
                     <p:column sortBy="#{item.enabled}" filterBy="#{item.enabled}">
                         <f:facet name="header">
-                            <h:outputText value="#{youPortBundle.ListUserTitle_enabled}"/>
+                            <h:outputText value="#{youPortBundle.CreateUserTitle_enabled}"/>
                         </f:facet>
-                        <h:selectBooleanCheckbox id="enabled" value="#{item.enabled}" title="#{youPortBundle.EditUserTitle_enabled}"  disabled="true"/>
+                        <h:selectBooleanCheckbox id="enabled" value="#{item.enabled}" title="#{youPortBundle.CreateUserTitle_enabled}"  disabled="true"/>
                     </p:column>
 
 
                     <p:column sortBy="#{item.email}" filterBy="#{item.email}">
                         <f:facet name="header">
-                            <h:outputText value="#{youPortBundle.ListUserTitle_email}"/>
+                            <h:outputText value="#{youPortBundle.CreateUserTitle_email}"/>
                         </f:facet>
                         <h:outputText value="#{item.email}"/>
                     </p:column>
 
-                    <!--
-                                        <p:column sortBy="#{item.phone}" filterBy="#{item.phone}">
-                                            <f:facet name="header">
-                                                <h:outputText value="#{youPortBundle.ListUserTitle_phone}"/>
-                                            </f:facet>
-                                            <h:outputText value="#{item.phone}"/>
-                                        </p:column>
-                    -->
-                    <!--
-                                        <p:column sortBy="#{item.idUserStatus.statusName}" filterBy="#{item.idUserStatus.statusName}">
-                                            <f:facet name="header">
-                                                <h:outputText value="#{youPortBundle.ListUserTitle_idUserStatus}"/>
-                                            </f:facet>
-                                            <h:outputText value="#{item.idUserStatus.statusName}"/>
-                                        </p:column>
-                    -->
-                    <!--
-                                        <p:column sortBy="#{item.idUserType.description}" filterBy="#{item.idUserType.description}">
-                                            <f:facet name="header">
-                                                <h:outputText value="#{youPortBundle.ListUserTitle_idUserType}"/>
-                                            </f:facet>
-                                            <h:outputText value="#{item.idUserType.description}"/>
-                                        </p:column>
-                    -->
+                   
 
                 </p:dataTable>
 

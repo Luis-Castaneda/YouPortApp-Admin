@@ -15,27 +15,27 @@
                     <p:panelGrid  columns="2" columnClasses="column" rendered="#{menuOptionController.selected != null}" style="text-align: left;">
 
 
-<!--                        <h:outputLabel value="#{youPortBundle.EditMenuOptionLabel_menuOptionPK_idMenu}" for="menuOptionPK_idMenu" />
+<!--                        <h:outputLabel value="#{youPortBundle.CreateMenuOptionLabel_menuOptionPK_idMenu}" for="menuOptionPK_idMenu" />
                         <h:outputText id="menuOptionPK_idMenu" value="#{menuOptionController.selected.menuOptionPK.idMenu}" />
 
 
-                        <h:outputLabel value="#{youPortBundle.EditMenuOptionLabel_menuOptionPK_idView}" for="menuOptionPK_idView" />
+                        <h:outputLabel value="#{youPortBundle.CreateMenuOptionLabel_menuOptionPK_idView}" for="menuOptionPK_idView" />
                         <h:outputText id="menuOptionPK_idView" value="#{menuOptionController.selected.menuOptionPK.idView}" />
 
 
-                        <h:outputLabel value="#{youPortBundle.EditMenuOptionLabel_menuOptionPK_idMenutype}" for="menuOptionPK_idMenutype" />
+                        <h:outputLabel value="#{youPortBundle.CreateMenuOptionLabel_menuOptionPK_idMenutype}" for="menuOptionPK_idMenutype" />
                         <h:outputText id="menuOptionPK_idMenutype" value="#{menuOptionController.selected.menuOptionPK.idMenutype}" />-->
 
-                        <p:outputLabel value="#{youPortBundle.EditMenuOptionLabel_name}" for="name" />
-                        <p:inputText id="name" value="#{menuOptionController.selected.name}" title="#{youPortBundle.EditMenuOptionTitle_name}" size="45" maxlength="100"/>
+                        <p:outputLabel value="#{youPortBundle.CreateMenuOptionLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{menuOptionController.selected.name}" title="#{youPortBundle.CreateMenuOptionTitle_name}" size="45" maxlength="100"/>
 
-                        <p:outputLabel value="#{youPortBundle.EditMenuOptionLabel_descriptionLong}" for="descriptionLong" />
-                        <p:inputTextarea id="descriptionLong" value="#{menuOptionController.selected.descriptionLong}" title="#{youPortBundle.EditMenuOptionTitle_descriptionLong}" style="width: 297px"  maxlength="200"/>
+                        <p:outputLabel value="#{youPortBundle.CreateMenuOptionLabel_descriptionLong}" for="descriptionLong" />
+                        <p:inputTextarea id="descriptionLong" value="#{menuOptionController.selected.descriptionLong}" title="#{youPortBundle.CreateMenuOptionTitle_descriptionLong}" style="width: 297px"  maxlength="200"/>
 
-                        <p:outputLabel value="#{youPortBundle.EditMenuOptionLabel_descriptionShort}" for="descriptionShort" />
-                        <p:inputText id="descriptionShort" value="#{menuOptionController.selected.descriptionShort}" title="#{youPortBundle.EditMenuOptionTitle_descriptionShort}" size="45" maxlength="30"/>
+                        <p:outputLabel value="#{youPortBundle.CreateMenuOptionLabel_descriptionShort}" for="descriptionShort" />
+                        <p:inputText id="descriptionShort" value="#{menuOptionController.selected.descriptionShort}" title="#{youPortBundle.CreateMenuOptionTitle_descriptionShort}" size="45" maxlength="30"/>
 
-                        <p:outputLabel value="#{youPortBundle.EditMenuOptionLabel_urlImageNormal}" for="urlImageNormal" />
+                        <p:outputLabel value="#{youPortBundle.CreateMenuOptionLabel_urlImageNormal}" for="urlImageNormal" />
                         <h:panelGroup id="imageNormal">
 
                             <h:panelGroup  >
@@ -68,10 +68,10 @@
                             <p:tooltip for="urlImageNormal" value="#{menuOptionController.getComponentMessages('urlImageNormal', youPortBundle.CreateCompanyHelpText_urlImage)}"/>
                         </h:panelGroup>
 
-                        <p:outputLabel value="#{youPortBundle.EditMenuOptionLabel_enabled}" for="enabled" />
+                        <p:outputLabel value="#{youPortBundle.CreateMenuOptionLabel_enabled}" for="enabled" />
                         <p:selectBooleanCheckbox id="enabled" value="#{menuOptionController.selected.enabled}" />
 
-                        <p:outputLabel value="#{youPortBundle.EditMenuOptionLabel_urlImageOver}" for="urlImageOver" />
+                        <p:outputLabel value="#{youPortBundle.CreateMenuOptionLabel_urlImageOver}" for="urlImageOver" />
                         <h:panelGroup id="imageOver">
 
                             <h:panelGroup  >
@@ -105,9 +105,9 @@
                         </h:panelGroup>
 
 
-                        <h:outputLabel value="#{youPortBundle.EditMenuOptionLabel_view}" for="view" />
+                        <h:outputLabel value="#{youPortBundle.CreateMenuOptionLabel_view}" for="view" />
 
-                        <p:selectOneMenu id="view" value="#{menuOptionController.selected.view}" required="true" requiredMessage="#{youPortBundle.EditMenuOptionRequiredMessage_view}" converter="#{viewConverter}" style="width: 300px;">
+                        <p:selectOneMenu id="view" value="#{menuOptionController.selected.view}" required="true" requiredMessage="#{youPortBundle.CreateMenuOptionRequiredMessage_view}" converter="#{viewConverter}" style="width: 300px;">
                             <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
                             <f:selectItems value="#{viewController.items}"
                                            var="viewItem"
@@ -119,9 +119,9 @@
 
 
 
-                        <h:outputLabel value="#{youPortBundle.EditMenuOptionLabel_menuType}" for="menuType" />
+                        <h:outputLabel value="#{youPortBundle.CreateMenuOptionLabel_menuType}" for="menuType" />
 
-                        <p:selectOneMenu id="menuType" value="#{menuOptionController.selected.menuType}" required="true" requiredMessage="#{youPortBundle.EditMenuOptionRequiredMessage_menuType}" converter="#{menuTypeConverter}" style="width: 300px;" >
+                        <p:selectOneMenu id="menuType" value="#{menuOptionController.selected.menuType}" required="true" requiredMessage="#{youPortBundle.CreateMenuOptionRequiredMessage_menuType}" converter="#{menuTypeConverter}" style="width: 300px;" >
                             <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
                             <f:selectItems value="#{menuTypeController.items}"
                                            var="menuTypeItem"

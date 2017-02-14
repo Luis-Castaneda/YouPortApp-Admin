@@ -15,28 +15,28 @@
                 <h:panelGroup id="display"  style="text-align: left">
                     <p:panelGrid columns="2" columnClasses="column" rendered="#{contactController.selected != null}">
 
-                        <h:outputText value="#{youPortBundle.ViewContactLabel_idContact}"/>
-                        <h:outputText value="#{contactController.selected.idContact}" title="#{youPortBundle.ViewContactTitle_idContact}"/>
+                        <h:outputText value="#{youPortBundle.CreateContactLabel_idContact}"/>
+                        <h:outputText value="#{contactController.selected.idContact}" title="#{youPortBundle.CreateContactTitle_idContact}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewContactLabel_nameContact}"/>
-                        <h:outputText value="#{contactController.selected.nameContact}" title="#{youPortBundle.ViewContactTitle_nameContact}"/>
+                        <h:outputText value="#{youPortBundle.CreateContactLabel_nameContact}"/>
+                        <h:outputText value="#{contactController.selected.nameContact}" title="#{youPortBundle.CreateContactTitle_nameContact}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewContactLabel_phoneContact}"/>
-                        <h:outputText value="#{contactController.selected.phoneContact}" title="#{youPortBundle.ViewContactTitle_phoneContact}"/>
+                        <h:outputText value="#{youPortBundle.CreateContactLabel_phoneContact}"/>
+                        <h:outputText value="#{contactController.selected.phoneContact}" title="#{youPortBundle.CreateContactTitle_phoneContact}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewContactLabel_addressContact}"/>
-                        <h:outputText value="#{contactController.selected.addressContact}" title="#{youPortBundle.ViewContactTitle_addressContact}"/>
+                        <h:outputText value="#{youPortBundle.CreateContactLabel_addressContact}"/>
+                        <h:outputText value="#{contactController.selected.addressContact}" title="#{youPortBundle.CreateContactTitle_addressContact}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewContactLabel_emailContact}"/>
-                        <h:outputText value="#{contactController.selected.emailContact}" title="#{youPortBundle.ViewContactTitle_emailContact}"/>
+                        <h:outputText value="#{youPortBundle.CreateContactLabel_emailContact}"/>
+                        <h:outputText value="#{contactController.selected.emailContact}" title="#{youPortBundle.CreateContactTitle_emailContact}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewContactLabel_fax}"/>
-                        <h:outputText value="#{contactController.selected.fax}" title="#{youPortBundle.ViewContactTitle_fax}"/>
+                        <h:outputText value="#{youPortBundle.CreateContactLabel_fax}"/>
+                        <h:outputText value="#{contactController.selected.fax}" title="#{youPortBundle.CreateContactTitle_fax}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewContactLabel_webSite}"/>
-                        <h:outputText value="#{contactController.selected.webSite}" title="#{youPortBundle.ViewContactTitle_webSite}"/>
+                        <h:outputText value="#{youPortBundle.CreateContactLabel_webSite}"/>
+                        <h:outputText value="#{contactController.selected.webSite}" title="#{youPortBundle.CreateContactTitle_webSite}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewContactLabel_idCompany}"/>
+                        <h:outputText value="#{youPortBundle.CreateContactLabel_idCompany}"/>
                         <h:outputText value="#{contactController.selected.idCompany.name}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{youPortBundle.Close}" onclick="PF('ContactViewDialog').hide()"/>

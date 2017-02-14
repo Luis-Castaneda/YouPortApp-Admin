@@ -59,7 +59,7 @@
 
                     <p:column sortBy="#{item.idServices}" filterBy="#{item.idServices}" style="width:120px;">
                         <f:facet name="header">
-                            <h:outputText value="#{youPortBundle.ListServicesTitle_idServices}"/>
+                            <h:outputText value="#{youPortBundle.CreateServicesTitle_idServices}"/>
                         </f:facet>
                         <h:outputText value="#{item.idServices}"/>
                     </p:column>
@@ -67,21 +67,21 @@
 
                     <p:column sortBy="#{item.nameServices}" filterBy="#{item.nameServices}">
                         <f:facet name="header">
-                            <h:outputText value="#{youPortBundle.ListServicesTitle_nameServices}"/>
+                            <h:outputText value="#{youPortBundle.CreateServicesTitle_nameServices}"/>
                         </f:facet>
                         <h:outputText value="#{item.nameServices}"/>
                     </p:column>
                     
                      <p:column sortBy="#{item.descriptionShort}" filterBy="#{item.descriptionShort}">
                         <f:facet name="header">
-                            <h:outputText value="#{youPortBundle.ListServicesTitle_descriptionShort}"/>
+                            <h:outputText value="#{youPortBundle.CreateServicesTitle_descriptionShort}"/>
                         </f:facet>
                         <h:outputText value="#{item.descriptionShort}"/>
                     </p:column>
                     
                      <p:column sortBy="#{item.descriptionLong}" filterBy="#{item.descriptionLong}">
                         <f:facet name="header">
-                            <h:outputText value="#{youPortBundle.ListServicesTitle_descriptionLong}"/>
+                            <h:outputText value="#{youPortBundle.CreateServicesTitle_descriptionLong}"/>
                         </f:facet>
                         <h:outputText value="#{item.descriptionLong}"/>
                     </p:column>
@@ -89,14 +89,14 @@
 
                     <p:column sortBy="#{item.enabled}" filterBy="#{item.enabled}" style="width:120px;">
                         <f:facet name="header">
-                            <h:outputText value="#{youPortBundle.ListServicesTitle_enabled}"/>
+                            <h:outputText value="#{youPortBundle.CreateServicesTitle_enabled}"/>
                         </f:facet>
                         <h:selectBooleanCheckbox id="enabled" value="#{item.enabled}" title="#{youPortBundle.EditServicesTitle_enabled}"  disabled="true"/>
                     </p:column>
                     
                     <p:column sortBy="#{item.urlImage}" filterBy="#{item.urlImage}">
                         <f:facet name="header">
-                            <h:outputText value="#{youPortBundle.ListServicesTitle_urlImage}"/>
+                            <h:outputText value="#{youPortBundle.CreateServicesTitle_urlImage}"/>
                         </f:facet>
                         <h:outputText value="#{item.urlImage}"/>
                     </p:column>

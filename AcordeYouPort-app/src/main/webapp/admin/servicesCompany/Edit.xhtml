@@ -15,15 +15,15 @@
                     <p:panelGrid  columns="2" columnClasses="column" rendered="#{servicesCompanyController.selected != null}" style="text-align: left">
 
 
-                        <h:outputLabel value="#{youPortBundle.EditServicesCompanyLabel_idServicesCompany}" for="idServicesCompany" />
+                        <h:outputLabel value="#{youPortBundle.CreateServicesCompanyLabel_idServicesCompany}" for="idServicesCompany" />
                         <h:panelGroup>
                             <h:outputText id="idServicesCompany" value="#{servicesCompanyController.selected.idServicesCompany}" />
-                            <p:tooltip for="idServicesCompany" value="#{servicesCompanyController.getComponentMessages('idServicesCompany', youPortBundle.EditServicesCompanyHelpText_idServicesCompany)}"/>
+                            <p:tooltip for="idServicesCompany" value="#{servicesCompanyController.getComponentMessages('idServicesCompany', youPortBundle.CreateServicesCompanyHelpText_idServicesCompany)}"/>
                         </h:panelGroup>
 
-                        <p:outputLabel value="#{youPortBundle.EditServicesCompanyLabel_idCompany}" for="idCompany" />
+                        <p:outputLabel value="#{youPortBundle.CreateServicesCompanyLabel_idCompany}" for="idCompany" />
                         <h:panelGroup>
-                            <p:selectOneMenu id="idCompany" value="#{servicesCompanyController.selected.idCompany}" required="true" requiredMessage="#{youPortBundle.EditServicesCompanyRequiredMessage_idCompany}" converter="#{companyConverter}" style="width: 295px">
+                            <p:selectOneMenu id="idCompany" value="#{servicesCompanyController.selected.idCompany}" required="true" requiredMessage="#{youPortBundle.CreateServicesCompanyRequiredMessage_idCompany}" converter="#{companyConverter}" style="width: 295px">
                                 <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
                                 <f:selectItems value="#{companyController.items}"
                                                var="idCompanyItem"
@@ -32,12 +32,12 @@
                                                />
 
                             </p:selectOneMenu>
-                            <p:tooltip for="idCompany" value="#{servicesCompanyController.getComponentMessages('idCompany', youPortBundle.EditServicesCompanyHelpText_idCompany)}"/>
+                            <p:tooltip for="idCompany" value="#{servicesCompanyController.getComponentMessages('idCompany', youPortBundle.CreateServicesCompanyHelpText_idCompany)}"/>
                         </h:panelGroup>
 
-                        <p:outputLabel value="#{youPortBundle.EditServicesCompanyLabel_idServices}" for="idServices" />
+                        <p:outputLabel value="#{youPortBundle.CreateServicesCompanyLabel_idServices}" for="idServices" />
                         <h:panelGroup>
-                            <p:selectOneMenu id="idServices" value="#{servicesCompanyController.selected.idServices}" required="true" requiredMessage="#{youPortBundle.EditServicesCompanyRequiredMessage_idServices}" converter="#{servicesConverter}" style="width: 295px">
+                            <p:selectOneMenu id="idServices" value="#{servicesCompanyController.selected.idServices}" required="true" requiredMessage="#{youPortBundle.CreateServicesCompanyRequiredMessage_idServices}" converter="#{servicesConverter}" style="width: 295px">
                                 <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
                                 <f:selectItems value="#{servicesController.items}"
                                                var="idServicesItem"
@@ -46,7 +46,7 @@
                                                />
 
                             </p:selectOneMenu>
-                            <p:tooltip for="idServices" value="#{servicesCompanyController.getComponentMessages('idServices', youPortBundle.EditServicesCompanyHelpText_idServices)}"/>
+                            <p:tooltip for="idServices" value="#{servicesCompanyController.getComponentMessages('idServices', youPortBundle.CreateServicesCompanyHelpText_idServices)}"/>
                         </h:panelGroup>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{servicesCompanyController.save}" value="#{youPortBundle.Save}" update="display,:ServicesCompanyListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('ServicesCompanyEditDialog'));">

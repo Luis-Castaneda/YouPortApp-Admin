@@ -26,7 +26,7 @@ public class TypePromotionController extends AbstractController<TypePromotion> {
         if (this.getSelected() != null) {
             FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("Promotion_items", this.getSelected().getPromotionList());
         }
-        return "/promotion/index";
+        return "/admin/promotion/index";
     }
 
 }

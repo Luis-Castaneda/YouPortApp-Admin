@@ -15,14 +15,14 @@
                     <p:panelGrid  columns="2" columnClasses="column" rendered="#{typePromotionController.selected != null}" style="text-align: left">
 
 
-                        <h:outputLabel value="#{youPortBundle.EditTypePromotionLabel_idTypePromotion}" for="idTypePromotion" />
+                        <h:outputLabel value="#{youPortBundle.CreateTypePromotionLabel_idTypePromotion}" for="idTypePromotion" />
                         <h:outputText id="idTypePromotion" value="#{typePromotionController.selected.idTypePromotion}" />
 
-                        <p:outputLabel value="#{youPortBundle.EditTypePromotionLabel_name}" for="name" />
-                        <p:inputText id="name" value="#{typePromotionController.selected.name}" title="#{youPortBundle.EditTypePromotionTitle_name}" size="45" maxlength="45"/>
+                        <p:outputLabel value="#{youPortBundle.CreateTypePromotionLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{typePromotionController.selected.name}" title="#{youPortBundle.CreateTypePromotionTitle_name}" size="45" maxlength="45"/>
 
-                        <p:outputLabel value="#{youPortBundle.EditTypePromotionLabel_description}" for="description" />
-                        <p:inputTextarea rows="4" cols="30" id="description" value="#{typePromotionController.selected.description}" title="#{youPortBundle.EditTypePromotionTitle_description}" />
+                        <p:outputLabel value="#{youPortBundle.CreateTypePromotionLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" id="description" value="#{typePromotionController.selected.description}" title="#{youPortBundle.CreateTypePromotionTitle_description}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{typePromotionController.save}" value="#{youPortBundle.Save}" update="display,:TypePromotionListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('TypePromotionEditDialog'));">
                         <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>

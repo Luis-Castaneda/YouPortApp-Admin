@@ -15,16 +15,16 @@
                     <p:panelGrid  columns="2" columnClasses="column" rendered="#{servicesController.selected != null}">
 
 
-                        <h:outputLabel value="#{youPortBundle.EditServicesLabel_idServices}" for="idServices" />
+                        <h:outputLabel value="#{youPortBundle.CreateServicesLabel_idServices}" for="idServices" />
                         <h:panelGroup>
                             <h:outputText id="idServices" value="#{servicesController.selected.idServices}" />
-                            <p:tooltip for="idServices" value="#{servicesController.getComponentMessages('idServices', youPortBundle.EditServicesHelpText_idServices)}"/>
+                            <p:tooltip for="idServices" value="#{servicesController.getComponentMessages('idServices', youPortBundle.CreateServicesHelpText_idServices)}"/>
                         </h:panelGroup>
 
-                        <p:outputLabel value="#{youPortBundle.EditServicesLabel_nameServices}" for="nameServices" />
+                        <p:outputLabel value="#{youPortBundle.CreateServicesLabel_nameServices}" for="nameServices" />
                         <h:panelGroup>
-                            <p:inputText id="nameServices" value="#{servicesController.selected.nameServices}" title="#{youPortBundle.EditServicesTitle_nameServices}" size="45" maxlength="100"/>
-                            <p:tooltip for="nameServices" value="#{servicesController.getComponentMessages('nameServices', youPortBundle.EditServicesHelpText_nameServices)}"/>
+                            <p:inputText id="nameServices" value="#{servicesController.selected.nameServices}" title="#{youPortBundle.CreateServicesTitle_nameServices}" size="45" maxlength="100"/>
+                            <p:tooltip for="nameServices" value="#{servicesController.getComponentMessages('nameServices', youPortBundle.CreateServicesHelpText_nameServices)}"/>
                         </h:panelGroup>
                         
                        
@@ -40,10 +40,10 @@
                             <p:tooltip for="descriptionLong" value="#{servicesController.getComponentMessages('descriptionLong', youPortBundle.CreateServicesHelpText_descriptionLong)}"/>
                         </h:panelGroup>
 
-                        <p:outputLabel value="#{youPortBundle.EditServicesLabel_enabled}" for="enabled" />
+                        <p:outputLabel value="#{youPortBundle.CreateServicesLabel_enabled}" for="enabled" />
                         <h:panelGroup>
                             <p:selectBooleanCheckbox id="enabled" value="#{servicesController.selected.enabled}" />
-                            <p:tooltip for="enabled" value="#{servicesController.getComponentMessages('enabled', youPortBundle.EditServicesHelpText_enabled)}"/>
+                            <p:tooltip for="enabled" value="#{servicesController.getComponentMessages('enabled', youPortBundle.CreateServicesHelpText_enabled)}"/>
                         </h:panelGroup>
                         
                         <p:outputLabel value="#{youPortBundle.CreateServicesLabel_urlImage}" for="urlImage" />

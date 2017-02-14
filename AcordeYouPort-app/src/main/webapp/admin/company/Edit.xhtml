@@ -15,44 +15,44 @@
                     <p:panelGrid  columns="2" columnClasses="column" rendered="#{companyController.selected != null}" style="text-align: left">
 
 
-                        <h:outputLabel value="#{youPortBundle.EditCompanyLabel_idCompany}" for="idCompany" />
+                        <h:outputLabel value="#{youPortBundle.CreateCompanyLabel_idCompany}" for="idCompany" />
                         <h:panelGroup>
                             <h:outputText id="idCompany" value="#{companyController.selected.idCompany}" />
-                            <p:tooltip for="idCompany" value="#{companyController.getComponentMessages('idCompany', youPortBundle.EditCompanyHelpText_idCompany)}"/>
+                            <p:tooltip for="idCompany" value="#{companyController.getComponentMessages('idCompany', youPortBundle.CreateCompanyHelpText_idCompany)}"/>
                         </h:panelGroup>
 
-                        <p:outputLabel value="#{youPortBundle.EditCompanyLabel_name}" for="name" />
+                        <p:outputLabel value="#{youPortBundle.CreateCompanyLabel_name}" for="name" />
                         <h:panelGroup>
-                            <p:inputText id="name" value="#{companyController.selected.name}" title="#{youPortBundle.EditCompanyTitle_name}" size="40" maxlength="45"/>
-                            <p:tooltip for="name" value="#{companyController.getComponentMessages('name', youPortBundle.EditCompanyHelpText_name)}"/>
+                            <p:inputText id="name" value="#{companyController.selected.name}" title="#{youPortBundle.CreateCompanyTitle_name}" size="40" maxlength="45"/>
+                            <p:tooltip for="name" value="#{companyController.getComponentMessages('name', youPortBundle.CreateCompanyHelpText_name)}"/>
                         </h:panelGroup>
 
-                        <p:outputLabel value="#{youPortBundle.EditCompanyLabel_address}" for="address" />
+                        <p:outputLabel value="#{youPortBundle.CreateCompanyLabel_address}" for="address" />
                         <h:panelGroup>
-                            <p:inputTextarea rows="4" cols="30" style="width: 265px" id="address" value="#{companyController.selected.address}" title="#{youPortBundle.EditCompanyTitle_address}" />
-                            <p:tooltip for="address" value="#{companyController.getComponentMessages('address', youPortBundle.EditCompanyHelpText_address)}"/>
+                            <p:inputTextarea rows="4" cols="30" style="width: 265px" id="address" value="#{companyController.selected.address}" title="#{youPortBundle.CreateCompanyTitle_address}" />
+                            <p:tooltip for="address" value="#{companyController.getComponentMessages('address', youPortBundle.CreateCompanyHelpText_address)}"/>
                         </h:panelGroup>
 
-                        <p:outputLabel value="#{youPortBundle.EditCompanyLabel_zipCode}" for="zipCode" />
+                        <p:outputLabel value="#{youPortBundle.CreateCompanyLabel_zipCode}" for="zipCode" />
                         <h:panelGroup>
-                            <p:inputText id="zipCode" value="#{companyController.selected.zipCode}" title="#{youPortBundle.EditCompanyTitle_zipCode}" size="40" maxlength="45"/>
-                            <p:tooltip for="zipCode" value="#{companyController.getComponentMessages('zipCode', youPortBundle.EditCompanyHelpText_zipCode)}"/>
+                            <p:inputText id="zipCode" value="#{companyController.selected.zipCode}" title="#{youPortBundle.CreateCompanyTitle_zipCode}" size="40" maxlength="45"/>
+                            <p:tooltip for="zipCode" value="#{companyController.getComponentMessages('zipCode', youPortBundle.CreateCompanyHelpText_zipCode)}"/>
                         </h:panelGroup>
 
-                        <p:outputLabel value="#{youPortBundle.EditCompanyLabel_stateProvince}" for="stateProvince" />
+                        <p:outputLabel value="#{youPortBundle.CreateCompanyLabel_stateProvince}" for="stateProvince" />
                         <h:panelGroup>
-                            <p:inputText id="stateProvince" value="#{companyController.selected.stateProvince}" title="#{youPortBundle.EditCompanyTitle_stateProvince}" size="40" maxlength="45"/>
-                            <p:tooltip for="stateProvince" value="#{companyController.getComponentMessages('stateProvince', youPortBundle.EditCompanyHelpText_stateProvince)}"/>
+                            <p:inputText id="stateProvince" value="#{companyController.selected.stateProvince}" title="#{youPortBundle.CreateCompanyTitle_stateProvince}" size="40" maxlength="45"/>
+                            <p:tooltip for="stateProvince" value="#{companyController.getComponentMessages('stateProvince', youPortBundle.CreateCompanyHelpText_stateProvince)}"/>
                         </h:panelGroup>
 
-                        <p:outputLabel value="#{youPortBundle.EditCompanyLabel_Provincia}" for="idCity" />
+                        <p:outputLabel value="#{youPortBundle.CreateCompanyLabel_Provincia}" for="idCity" />
                         <h:panelGroup>
-                            <!--<p:inputText id="city" value="#{companyController.selected.city}" title="#{youPortBundle.EditCompanyTitle_Provincia}" size="40" maxlength="45"/>-->
-                            <p:tooltip for="idCity" value="#{companyController.getComponentMessages('city', youPortBundle.EditCompanyHelpText_Provincia)}"/>
+                            <!--<p:inputText id="city" value="#{companyController.selected.city}" title="#{youPortBundle.CreateCompanyTitle_Provincia}" size="40" maxlength="45"/>-->
+                            <p:tooltip for="idCity" value="#{companyController.getComponentMessages('city', youPortBundle.CreateCompanyHelpText_Provincia)}"/>
                             <p:selectOneMenu id="idCity" 
                                              value="#{companyController.selected.idCity}" 
                                              required="true" 
-                                             requiredMessage="#{youPortBundle.EditCompanyHelpText_Provincia}" 
+                                             requiredMessage="#{youPortBundle.CreateCompanyHelpText_Provincia}" 
                                              converter="#{provinciasConverter}" 
                                              style="width: 275px;">
                                 <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
@@ -63,14 +63,14 @@
                             </p:selectOneMenu>                            
                         </h:panelGroup>
 
-<!--                        <p:outputLabel value="#{youPortBundle.EditCompanyLabel_Provincia}" for="city" />
+<!--                        <p:outputLabel value="#{youPortBundle.CreateCompanyLabel_Provincia}" for="city" />
 <h:panelGroup>
-    <p:inputText id="city" value="#{companyController.selected.city}" title="#{youPortBundle.EditCompanyTitle_Provincia}" size="40" maxlength="45"/>
-    <p:tooltip for="city" value="#{companyController.getComponentMessages('city', youPortBundle.EditCompanyHelpText_city)}"/>
+    <p:inputText id="city" value="#{companyController.selected.city}" title="#{youPortBundle.CreateCompanyTitle_Provincia}" size="40" maxlength="45"/>
+    <p:tooltip for="city" value="#{companyController.getComponentMessages('city', youPortBundle.CreateCompanyHelpText_city)}"/>
     <p:selectOneMenu id="city" 
                      value="#{companyController.provinciasList}" 
                      required="true" 
-                     requiredMessage="#{youPortBundle.EditCompanyRequiredMessage_idTheme}" 
+                     requiredMessage="#{youPortBundle.CreateCompanyRequiredMessage_idTheme}" 
                      converter="#{themeConverter}" 
                      style="width: 275px;">
         <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
@@ -82,7 +82,7 @@
                         -->
 
 
-<!--                            <p:selectOneMenu id="idTheme" value="#{companyController.selected.idTheme}" required="true" requiredMessage="#{youPortBundle.EditCompanyRequiredMessage_idTheme}" converter="#{themeConverter}" style="width: 275px;">
+<!--                            <p:selectOneMenu id="idTheme" value="#{companyController.selected.idTheme}" required="true" requiredMessage="#{youPortBundle.CreateCompanyRequiredMessage_idTheme}" converter="#{themeConverter}" style="width: 275px;">
     <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
     <f:selectItems value="#{themeController.items}"
                    var="idThemeItem"
@@ -91,16 +91,16 @@
 </p:selectOneMenu>-->
                         <!--</h:panelGroup>-->
 
-                        <p:outputLabel value="#{youPortBundle.EditCompanyLabel_phoneOfficeOne}" for="phoneOfficeOne" />
+                        <p:outputLabel value="#{youPortBundle.CreateCompanyLabel_phoneOfficeOne}" for="phoneOfficeOne" />
                         <h:panelGroup>
-                            <p:inputText id="phoneOfficeOne" value="#{companyController.selected.phoneOfficeOne}" title="#{youPortBundle.EditCompanyTitle_phoneOfficeOne}" size="40" maxlength="45"/>
-                            <p:tooltip for="phoneOfficeOne" value="#{companyController.getComponentMessages('phoneOfficeOne', youPortBundle.EditCompanyHelpText_phoneOfficeOne)}"/>
+                            <p:inputText id="phoneOfficeOne" value="#{companyController.selected.phoneOfficeOne}" title="#{youPortBundle.CreateCompanyTitle_phoneOfficeOne}" size="40" maxlength="45"/>
+                            <p:tooltip for="phoneOfficeOne" value="#{companyController.getComponentMessages('phoneOfficeOne', youPortBundle.CreateCompanyHelpText_phoneOfficeOne)}"/>
                         </h:panelGroup>
 
-                        <p:outputLabel value="#{youPortBundle.EditCompanyLabel_phoneOfficeTwo}" for="phoneOfficeTwo" />
+                        <p:outputLabel value="#{youPortBundle.CreateCompanyLabel_phoneOfficeTwo}" for="phoneOfficeTwo" />
                         <h:panelGroup>
-                            <p:inputText id="phoneOfficeTwo" value="#{companyController.selected.phoneOfficeTwo}" title="#{youPortBundle.EditCompanyTitle_phoneOfficeTwo}" size="40" maxlength="45"/>
-                            <p:tooltip for="phoneOfficeTwo" value="#{companyController.getComponentMessages('phoneOfficeTwo', youPortBundle.EditCompanyHelpText_phoneOfficeTwo)}"/>
+                            <p:inputText id="phoneOfficeTwo" value="#{companyController.selected.phoneOfficeTwo}" title="#{youPortBundle.CreateCompanyTitle_phoneOfficeTwo}" size="40" maxlength="45"/>
+                            <p:tooltip for="phoneOfficeTwo" value="#{companyController.getComponentMessages('phoneOfficeTwo', youPortBundle.CreateCompanyHelpText_phoneOfficeTwo)}"/>
                         </h:panelGroup>
 
                         <p:outputLabel value="#{youPortBundle.CreateCompanyLabel_urlImage}" for="urlImage" />
@@ -147,9 +147,9 @@
                             <p:tooltip for="fax" value="#{companyController.getComponentMessages('fax', youPortBundle.CreateCompanyHelpText_fax)}"/>
                         </h:panelGroup>
 
-                        <p:outputLabel value="#{youPortBundle.EditCompanyLabel_idTheme}" for="idTheme" />
+                        <p:outputLabel value="#{youPortBundle.CreateCompanyLabel_idTheme}" for="idTheme" />
                         <h:panelGroup>
-                            <p:selectOneMenu id="idTheme" value="#{companyController.selected.idTheme}" required="true" requiredMessage="#{youPortBundle.EditCompanyRequiredMessage_idTheme}" converter="#{themeConverter}" style="width: 275px;">
+                            <p:selectOneMenu id="idTheme" value="#{companyController.selected.idTheme}" required="true" requiredMessage="#{youPortBundle.CreateCompanyRequiredMessage_idTheme}" converter="#{themeConverter}" style="width: 275px;">
                                 <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
                                 <f:selectItems value="#{themeController.items}"
                                                var="idThemeItem"
@@ -158,7 +158,7 @@
                                                />
 
                             </p:selectOneMenu>
-                            <p:tooltip for="idTheme" value="#{companyController.getComponentMessages('idTheme', youPortBundle.EditCompanyHelpText_idTheme)}"/>
+                            <p:tooltip for="idTheme" value="#{companyController.getComponentMessages('idTheme', youPortBundle.CreateCompanyHelpText_idTheme)}"/>
                         </h:panelGroup>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{companyController.saveCompany('EDIT')}" value="#{youPortBundle.Save}" update="display,:CompanyListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('CompanyEditDialog'));">

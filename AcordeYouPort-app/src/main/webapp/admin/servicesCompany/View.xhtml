@@ -15,13 +15,13 @@
                 <h:panelGroup id="display" style="text-align: left">
                     <p:panelGrid columns="2" columnClasses="column" rendered="#{servicesCompanyController.selected != null}">
 
-                        <h:outputText value="#{youPortBundle.ViewServicesCompanyLabel_idServicesCompany}"/>
-                        <h:outputText value="#{servicesCompanyController.selected.idServicesCompany}" title="#{youPortBundle.ViewServicesCompanyTitle_idServicesCompany}"/>
+                        <h:outputText value="#{youPortBundle.CreateServicesCompanyLabel_idServicesCompany}"/>
+                        <h:outputText value="#{servicesCompanyController.selected.idServicesCompany}" title="#{youPortBundle.CreateServicesCompanyTitle_idServicesCompany}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewServicesCompanyLabel_idCompany}"/>
+                        <h:outputText value="#{youPortBundle.CreateServicesCompanyLabel_idCompany}"/>
                         <h:outputText value="#{servicesCompanyController.selected.idCompany.name}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewServicesCompanyLabel_idServices}"/>
+                        <h:outputText value="#{youPortBundle.CreateServicesCompanyLabel_idServices}"/>
                         <h:outputText value="#{servicesCompanyController.selected.idServices.nameServices}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{youPortBundle.Close}" onclick="PF('ServicesCompanyViewDialog').hide()"/>

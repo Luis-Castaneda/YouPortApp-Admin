@@ -15,30 +15,30 @@
                 <h:panelGroup id="display" style="text-align: left">
                     <p:panelGrid columns="2" columnClasses="column" rendered="#{sectionCompanyController.selected != null}">
 
-                        <h:outputText value="#{youPortBundle.ViewSectionCompanyLabel_idSectionCompany}"/>
-                        <h:outputText value="#{sectionCompanyController.selected.idSectionCompany}" title="#{youPortBundle.ViewSectionCompanyTitle_idSectionCompany}"/>
+                        <h:outputText value="#{youPortBundle.CreateSectionCompanyLabel_idSectionCompany}"/>
+                        <h:outputText value="#{sectionCompanyController.selected.idSectionCompany}" title="#{youPortBundle.CreateSectionCompanyTitle_idSectionCompany}"/>
 
-<!--                        <h:outputText value="#{youPortBundle.ViewSectionCompanyLabel_title}"/>
-                        <h:outputText value="#{sectionCompanyController.selected.title}" title="#{youPortBundle.ViewSectionCompanyTitle_title}"/>-->
+<!--                        <h:outputText value="#{youPortBundle.CreateSectionCompanyLabel_title}"/>
+                        <h:outputText value="#{sectionCompanyController.selected.title}" title="#{youPortBundle.CreateSectionCompanyTitle_title}"/>-->
 
 
-                        <h:outputText value="#{youPortBundle.ViewSectionCompanyLabel_paragraph}"/>
+                        <h:outputText value="#{youPortBundle.CreateSectionCompanyTitle_paragraph}"/>
 
                         <h:outputLink value="#" onclick="PF('lighbox2').show();" >
                             <h:outputText value="View Content" />
                         </h:outputLink>
 
-                                     <!--<h:outputText value="#{sectionCompanyController.selected.paragraph}" title="#{youPortBundle.ViewSectionCompanyTitle_paragraph}"/>-->
+                                     <!--<h:outputText value="#{sectionCompanyController.selected.paragraph}" title="#{youPortBundle.CreateSectionCompanyTitle_paragraph}"/>-->
 
 
-<!--                        <h:outputText value="#{youPortBundle.ViewSectionCompanyLabel_urlImage}"/>
-                        <h:outputText value="#{sectionCompanyController.selected.urlImage}" title="#{youPortBundle.ViewSectionCompanyTitle_urlImage}"/>-->
+<!--                        <h:outputText value="#{youPortBundle.CreateSectionCompanyLabel_urlImage}"/>
+                        <h:outputText value="#{sectionCompanyController.selected.urlImage}" title="#{youPortBundle.CreateSectionCompanyTitle_urlImage}"/>-->
 
 
-                        <h:outputText value="#{youPortBundle.ViewSectionCompanyLabel_idSection}"/>
+                        <h:outputText value="#{youPortBundle.CreateSectionCompanyLabel_idSection}"/>
                         <h:outputText value="#{sectionCompanyController.selected.idSection.name}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewSectionCompanyLabel_idCompany}"/>
+                        <h:outputText value="#{youPortBundle.CreateSectionCompanyLabel_idCompany}"/>
                         <h:outputText value="#{sectionCompanyController.selected.idCompany.name}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{youPortBundle.Close}" onclick="PF('SectionCompanyViewDialog').hide()"/>

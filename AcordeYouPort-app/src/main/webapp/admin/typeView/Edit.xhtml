@@ -15,14 +15,14 @@
                     <p:panelGrid  columns="2" columnClasses="column" rendered="#{typeViewController.selected != null}">
 
 
-                        <h:outputLabel value="#{youPortBundle.EditTypeViewLabel_idTypeView}" for="idTypeView" />
+                        <h:outputLabel value="#{youPortBundle.CreateTypeViewLabel_idTypeView}" for="idTypeView" />
                         <h:outputText id="idTypeView" value="#{typeViewController.selected.idTypeView}" />
 
-                        <p:outputLabel value="#{youPortBundle.EditTypeViewLabel_nameType}" for="nameType" />
-                        <p:inputText id="nameType" value="#{typeViewController.selected.nameType}" title="#{youPortBundle.EditTypeViewTitle_nameType}" size="45" maxlength="45"/>
+                        <p:outputLabel value="#{youPortBundle.CreateTypeViewLabel_nameType}" for="nameType" />
+                        <p:inputText id="nameType" value="#{typeViewController.selected.nameType}" title="#{youPortBundle.CreateTypeViewTitle_nameType}" size="45" maxlength="45"/>
 
-                        <p:outputLabel value="#{youPortBundle.EditTypeViewLabel_description}" for="description" />
-                        <p:inputTextarea rows="4" cols="30" style="width: 275px;" id="description" value="#{typeViewController.selected.description}" title="#{youPortBundle.EditTypeViewTitle_description}" />
+                        <p:outputLabel value="#{youPortBundle.CreateTypeViewLabel_description}" for="description" />
+                        <p:inputTextarea rows="4" cols="30" style="width: 275px;" id="description" value="#{typeViewController.selected.description}" title="#{youPortBundle.CreateTypeViewTitle_description}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{typeViewController.save}" value="#{youPortBundle.Save}" update="display,:TypeViewListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('TypeViewEditDialog'));">
                         <p:confirm header="#{youPortBundle.ConfirmationHeader}" message="#{youPortBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>

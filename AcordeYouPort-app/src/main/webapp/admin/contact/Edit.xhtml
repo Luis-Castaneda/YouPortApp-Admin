@@ -15,51 +15,51 @@
                     <p:panelGrid  columns="2" columnClasses="column" rendered="#{contactController.selected != null}">
 
 
-                        <h:outputLabel value="#{youPortBundle.EditContactLabel_idContact}" for="idContact" />
+                        <h:outputLabel value="#{youPortBundle.CreateContactLabel_idContact}" for="idContact" />
                         <h:panelGroup>
                             <h:outputText id="idContact" value="#{contactController.selected.idContact}" />
-                            <p:tooltip for="idContact" value="#{contactController.getComponentMessages('idContact', youPortBundle.EditContactHelpText_idContact)}"/>
+                            <p:tooltip for="idContact" value="#{contactController.getComponentMessages('idContact', youPortBundle.CreateContactHelpText_idContact)}"/>
                         </h:panelGroup>
 
-                        <p:outputLabel value="#{youPortBundle.EditContactLabel_nameContact}" for="nameContact" />
+                        <p:outputLabel value="#{youPortBundle.CreateContactLabel_nameContact}" for="nameContact" />
                         <h:panelGroup>
-                            <p:inputText id="nameContact" value="#{contactController.selected.nameContact}" title="#{youPortBundle.EditContactTitle_nameContact}" size="40" maxlength="45"/>
-                            <p:tooltip for="nameContact" value="#{contactController.getComponentMessages('nameContact', youPortBundle.EditContactHelpText_nameContact)}"/>
+                            <p:inputText id="nameContact" value="#{contactController.selected.nameContact}" title="#{youPortBundle.CreateContactTitle_nameContact}" size="40" maxlength="45"/>
+                            <p:tooltip for="nameContact" value="#{contactController.getComponentMessages('nameContact', youPortBundle.CreateContactHelpText_nameContact)}"/>
                         </h:panelGroup>
 
-                        <p:outputLabel value="#{youPortBundle.EditContactLabel_phoneContact}" for="phoneContact" />
+                        <p:outputLabel value="#{youPortBundle.CreateContactLabel_phoneContact}" for="phoneContact" />
                         <h:panelGroup>
-                            <p:inputText id="phoneContact" value="#{contactController.selected.phoneContact}" title="#{youPortBundle.EditContactTitle_phoneContact}" size="40" maxlength="45"/>
-                            <p:tooltip for="phoneContact" value="#{contactController.getComponentMessages('phoneContact', youPortBundle.EditContactHelpText_phoneContact)}"/>
+                            <p:inputText id="phoneContact" value="#{contactController.selected.phoneContact}" title="#{youPortBundle.CreateContactTitle_phoneContact}" size="40" maxlength="45"/>
+                            <p:tooltip for="phoneContact" value="#{contactController.getComponentMessages('phoneContact', youPortBundle.CreateContactHelpText_phoneContact)}"/>
                         </h:panelGroup>
 
-                        <p:outputLabel value="#{youPortBundle.EditContactLabel_addressContact}" for="addressContact" />
+                        <p:outputLabel value="#{youPortBundle.CreateContactLabel_addressContact}" for="addressContact" />
                         <h:panelGroup>
-                            <p:inputTextarea rows="4" cols="30" style="width: 265px" id="addressContact" value="#{contactController.selected.addressContact}" title="#{youPortBundle.EditContactTitle_addressContact}" />
-                            <p:tooltip for="addressContact" value="#{contactController.getComponentMessages('addressContact', youPortBundle.EditContactHelpText_addressContact)}"/>
+                            <p:inputTextarea rows="4" cols="30" style="width: 265px" id="addressContact" value="#{contactController.selected.addressContact}" title="#{youPortBundle.CreateContactTitle_addressContact}" />
+                            <p:tooltip for="addressContact" value="#{contactController.getComponentMessages('addressContact', youPortBundle.CreateContactHelpText_addressContact)}"/>
                         </h:panelGroup>
 
-                        <p:outputLabel value="#{youPortBundle.EditContactLabel_emailContact}" for="emailContact" />
+                        <p:outputLabel value="#{youPortBundle.CreateContactLabel_emailContact}" for="emailContact" />
                         <h:panelGroup>
-                            <p:inputText id="emailContact" value="#{contactController.selected.emailContact}" title="#{youPortBundle.EditContactTitle_emailContact}" size="40" maxlength="60"/>
-                            <p:tooltip for="emailContact" value="#{contactController.getComponentMessages('emailContact', youPortBundle.EditContactHelpText_emailContact)}"/>
+                            <p:inputText id="emailContact" value="#{contactController.selected.emailContact}" title="#{youPortBundle.CreateContactTitle_emailContact}" size="40" maxlength="60"/>
+                            <p:tooltip for="emailContact" value="#{contactController.getComponentMessages('emailContact', youPortBundle.CreateContactHelpText_emailContact)}"/>
                         </h:panelGroup>
 
-                        <p:outputLabel value="#{youPortBundle.EditContactLabel_fax}" for="fax" />
+                        <p:outputLabel value="#{youPortBundle.CreateContactLabel_fax}" for="fax" />
                         <h:panelGroup>
-                            <p:inputText id="fax" value="#{contactController.selected.fax}" title="#{youPortBundle.EditContactTitle_fax}" size="40" maxlength="45"/>
-                            <p:tooltip for="fax" value="#{contactController.getComponentMessages('fax', youPortBundle.EditContactHelpText_fax)}"/>
+                            <p:inputText id="fax" value="#{contactController.selected.fax}" title="#{youPortBundle.CreateContactTitle_fax}" size="40" maxlength="45"/>
+                            <p:tooltip for="fax" value="#{contactController.getComponentMessages('fax', youPortBundle.CreateContactHelpText_fax)}"/>
                         </h:panelGroup>
 
-                        <p:outputLabel value="#{youPortBundle.EditContactLabel_webSite}" for="webSite" />
+                        <p:outputLabel value="#{youPortBundle.CreateContactLabel_webSite}" for="webSite" />
                         <h:panelGroup>
-                            <p:inputText id="webSite" value="#{contactController.selected.webSite}" title="#{youPortBundle.EditContactTitle_webSite}" size="40" maxlength="100"/>
-                            <p:tooltip for="webSite" value="#{contactController.getComponentMessages('webSite', youPortBundle.EditContactHelpText_webSite)}"/>
+                            <p:inputText id="webSite" value="#{contactController.selected.webSite}" title="#{youPortBundle.CreateContactTitle_webSite}" size="40" maxlength="100"/>
+                            <p:tooltip for="webSite" value="#{contactController.getComponentMessages('webSite', youPortBundle.CreateContactHelpText_webSite)}"/>
                         </h:panelGroup>
 
-                        <p:outputLabel value="#{youPortBundle.EditContactLabel_idCompany}" for="idCompany" />
+                        <p:outputLabel value="#{youPortBundle.CreateContactLabel_idCompany}" for="idCompany" />
                         <h:panelGroup>
-                            <p:selectOneMenu id="idCompany" value="#{contactController.selected.idCompany}" required="true" requiredMessage="#{youPortBundle.EditContactRequiredMessage_idCompany}" converter="#{companyConverter}" style="width: 275px">
+                            <p:selectOneMenu id="idCompany" value="#{contactController.selected.idCompany}" required="true" requiredMessage="#{youPortBundle.CreateContactRequiredMessage_idCompany}" converter="#{companyConverter}" style="width: 275px">
                                 <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
                                 <f:selectItems value="#{companyController.items}"
                                                var="idCompanyItem"
@@ -68,7 +68,7 @@
                                                />
 
                             </p:selectOneMenu>
-                            <p:tooltip for="idCompany" value="#{contactController.getComponentMessages('idCompany', youPortBundle.EditContactHelpText_idCompany)}"/>
+                            <p:tooltip for="idCompany" value="#{contactController.getComponentMessages('idCompany', youPortBundle.CreateContactHelpText_idCompany)}"/>
                         </h:panelGroup>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{contactController.save}" value="#{youPortBundle.Save}" update="display,:ContactListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('ContactEditDialog'));">

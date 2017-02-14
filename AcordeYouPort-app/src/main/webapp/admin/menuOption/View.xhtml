@@ -15,37 +15,37 @@
                 <h:panelGroup id="display" style="text-align: left;">
                     <p:panelGrid columns="2" columnClasses="column" rendered="#{menuOptionController.selected != null}">
 
-                        <h:outputText value="#{youPortBundle.ViewMenuOptionLabel_menuOptionPK_idMenu}"/>
-                        <h:outputText value="#{menuOptionController.selected.idMenu}" title="#{youPortBundle.ViewMenuOptionTitle_menuOptionPK_idMenu}"/>
+                        <h:outputText value="#{youPortBundle.CreateMenuOptionLabel_menuOptionPK_idMenu}"/>
+                        <h:outputText value="#{menuOptionController.selected.idMenu}" title="#{youPortBundle.CreateMenuOptionTitle_menuOptionPK_idMenu}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewMenuOptionLabel_menuOptionPK_idView}"/>
-                        <h:outputText value="#{menuOptionController.selected.view.name}" title="#{youPortBundle.ViewMenuOptionTitle_menuOptionPK_idView}"/>
+                        <h:outputText value="#{youPortBundle.CreateMenuOptionLabel_menuOptionPK_idView}"/>
+                        <h:outputText value="#{menuOptionController.selected.view.name}" title="#{youPortBundle.CreateMenuOptionTitle_menuOptionPK_idView}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewMenuOptionLabel_menuOptionPK_idMenutype}"/>
-                        <h:outputText value="#{menuOptionController.selected.menuType.nameType}" title="#{youPortBundle.ViewMenuOptionTitle_menuOptionPK_idMenutype}"/>
+                        <h:outputText value="#{youPortBundle.CreateMenuOptionLabel_menuOptionPK_idMenutype}"/>
+                        <h:outputText value="#{menuOptionController.selected.menuType.nameType}" title="#{youPortBundle.CreateMenuOptionTitle_menuOptionPK_idMenutype}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewMenuOptionLabel_name}"/>
-                        <h:outputText value="#{menuOptionController.selected.name}" title="#{youPortBundle.ViewMenuOptionTitle_name}"/>
+                        <h:outputText value="#{youPortBundle.CreateMenuOptionLabel_name}"/>
+                        <h:outputText value="#{menuOptionController.selected.name}" title="#{youPortBundle.CreateMenuOptionTitle_name}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewMenuOptionLabel_descriptionLong}"/>
-                        <h:outputText value="#{menuOptionController.selected.descriptionLong}" title="#{youPortBundle.ViewMenuOptionTitle_descriptionLong}"/>
+                        <h:outputText value="#{youPortBundle.CreateMenuOptionLabel_descriptionLong}"/>
+                        <h:outputText value="#{menuOptionController.selected.descriptionLong}" title="#{youPortBundle.CreateMenuOptionTitle_descriptionLong}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewMenuOptionLabel_descriptionShort}"/>
-                        <h:outputText value="#{menuOptionController.selected.descriptionShort}" title="#{youPortBundle.ViewMenuOptionTitle_descriptionShort}"/>
+                        <h:outputText value="#{youPortBundle.CreateMenuOptionLabel_descriptionShort}"/>
+                        <h:outputText value="#{menuOptionController.selected.descriptionShort}" title="#{youPortBundle.CreateMenuOptionTitle_descriptionShort}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewMenuOptionLabel_urlImageNormal}"/>
-                        <h:outputText value="#{menuOptionController.selected.urlImageNormal}" title="#{youPortBundle.ViewMenuOptionTitle_urlImageNormal}"/>
+                        <h:outputText value="#{youPortBundle.CreateMenuOptionLabel_urlImageNormal}"/>
+                        <h:outputText value="#{menuOptionController.selected.urlImageNormal}" title="#{youPortBundle.CreateMenuOptionTitle_urlImageNormal}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewMenuOptionLabel_enabled}"/>
+                        <h:outputText value="#{youPortBundle.CreateMenuOptionLabel_enabled}"/>
                         <h:selectBooleanCheckbox id="enabled" value="#{menuOptionController.selected.enabled}" title="#{youPortBundle.EditMenuOptionTitle_enabled}"  disabled="true"/>
 
-                        <h:outputText value="#{youPortBundle.ViewMenuOptionLabel_urlImageOver}"/>
-                        <h:outputText value="#{menuOptionController.selected.urlImageOver}" title="#{youPortBundle.ViewMenuOptionTitle_urlImageOver}"/>
+                        <h:outputText value="#{youPortBundle.CreateMenuOptionLabel_urlImageOver}"/>
+                        <h:outputText value="#{menuOptionController.selected.urlImageOver}" title="#{youPortBundle.CreateMenuOptionTitle_urlImageOver}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewMenuOptionLabel_view}"/>
+                        <h:outputText value="#{youPortBundle.CreateMenuOptionLabel_view}"/>
                         <h:outputText value="#{menuOptionController.selected.view.name}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewMenuOptionLabel_menuType}"/>
+                        <h:outputText value="#{youPortBundle.CreateMenuOptionLabel_menuType}"/>
                         <h:outputText value="#{menuOptionController.selected.menuType.nameType}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{youPortBundle.Close}" onclick="PF('MenuOptionViewDialog').hide()"/>

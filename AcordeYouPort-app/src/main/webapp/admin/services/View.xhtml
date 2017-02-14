@@ -15,11 +15,11 @@
                 <h:panelGroup id="display" style="text-align: left">
                     <p:panelGrid columns="2" columnClasses="column" rendered="#{servicesController.selected != null}">
 
-                        <h:outputText value="#{youPortBundle.ViewServicesLabel_idServices}"/>
-                        <h:outputText value="#{servicesController.selected.idServices}" title="#{youPortBundle.ViewServicesTitle_idServices}"/>
+                        <h:outputText value="#{youPortBundle.CreateServicesLabel_idServices}"/>
+                        <h:outputText value="#{servicesController.selected.idServices}" title="#{youPortBundle.CreateServicesTitle_idServices}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewServicesLabel_nameServices}"/>
-                        <h:outputText value="#{servicesController.selected.nameServices}" title="#{youPortBundle.ViewServicesTitle_nameServices}"/>
+                        <h:outputText value="#{youPortBundle.CreateServicesLabel_nameServices}"/>
+                        <h:outputText value="#{servicesController.selected.nameServices}" title="#{youPortBundle.CreateServicesTitle_nameServices}"/>
                         
                         <h:outputText value="#{youPortBundle.CreateServicesLabel_descriptionLong}"/>
                         <h:outputText value="#{servicesController.selected.descriptionLong}" title="#{youPortBundle.CreateServicesTitle_descriptionLong}"/>
@@ -30,7 +30,7 @@
                         <h:outputText value="#{youPortBundle.CreateServicesLabel_urlImage}"/>
                         <h:outputText value="#{servicesController.selected.urlImage}" title="#{youPortBundle.CreateServicesTitle_urlImage}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewServicesLabel_enabled}"/>
+                        <h:outputText value="#{youPortBundle.CreateServicesLabel_enabled}"/>
                         <h:selectBooleanCheckbox id="enabled" value="#{servicesController.selected.enabled}" title="#{youPortBundle.EditServicesTitle_enabled}"  disabled="true"/>
                     </p:panelGrid>
                     <p:commandButton value="#{youPortBundle.Close}" onclick="PF('ServicesViewDialog').hide()"/>

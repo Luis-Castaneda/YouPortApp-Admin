@@ -62,7 +62,7 @@
 
                     <p:column sortBy="#{item.idUserStatus}" filterBy="#{item.idUserStatus}">
                         <f:facet name="header">
-                            <h:outputText value="#{youPortBundle.ListUserStatusTitle_idUserStatus}"/>
+                            <h:outputText value="#{youPortBundle.CreateUserStatusTitle_idUserStatus}"/>
                         </f:facet>
                         <h:outputText value="#{item.idUserStatus}"/>
                     </p:column>
@@ -70,7 +70,7 @@
 
                     <p:column sortBy="#{item.statusName}" filterBy="#{item.statusName}">
                         <f:facet name="header">
-                            <h:outputText value="#{youPortBundle.ListUserStatusTitle_statusName}"/>
+                            <h:outputText value="#{youPortBundle.CreateUserStatusTitle_statusName}"/>
                         </f:facet>
                         <h:outputText value="#{item.statusName}"/>
                     </p:column>
@@ -78,7 +78,7 @@
 
                     <p:column sortBy="#{item.enabled}" filterBy="#{item.enabled}">
                         <f:facet name="header">
-                            <h:outputText value="#{youPortBundle.ListUserStatusTitle_enabled}"/>
+                            <h:outputText value="#{youPortBundle.CreateUserStatusTitle_enabled}"/>
                         </f:facet>
                         <h:selectBooleanCheckbox id="enabled" value="#{item.enabled}" title="#{youPortBundle.EditUserStatusTitle_enabled}"  disabled="true"/>
                     </p:column>

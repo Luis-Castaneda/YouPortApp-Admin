@@ -15,32 +15,32 @@
                 <h:panelGroup id="display" style="text-align: left">
                     <p:panelGrid columns="2" columnClasses="column" rendered="#{userController.selected != null}">
 
-                        <h:outputText value="#{youPortBundle.ViewUserLabel_idUser}"/>
-                        <h:outputText value="#{userController.selected.idUser}" title="#{youPortBundle.ViewUserTitle_idUser}"/>
+                        <h:outputText value="#{youPortBundle.CreateUserLabel_idUser}"/>
+                        <h:outputText value="#{userController.selected.idUser}" title="#{youPortBundle.CreateUserTitle_idUser}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewUserLabel_name}"/>
-                        <h:outputText value="#{userController.selected.name}" title="#{youPortBundle.ViewUserTitle_name}"/>
+                        <h:outputText value="#{youPortBundle.CreateUserLabel_name}"/>
+                        <h:outputText value="#{userController.selected.name}" title="#{youPortBundle.CreateUserTitle_name}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewUserLabel_surname}"/>
-                        <h:outputText value="#{userController.selected.surname}" title="#{youPortBundle.ViewUserTitle_surname}"/>
+                        <h:outputText value="#{youPortBundle.CreateUserLabel_surname}"/>
+                        <h:outputText value="#{userController.selected.surname}" title="#{youPortBundle.CreateUserTitle_surname}"/>
 
                        
-                        <h:outputText value="#{youPortBundle.ViewUserLabel_password}"/>
-                        <h:outputText value="#{userController.selected.password}" title="#{youPortBundle.ViewUserTitle_password}"/>
+                        <h:outputText value="#{youPortBundle.CreateUserLabel_password}"/>
+                        <h:outputText value="#{userController.selected.password}" title="#{youPortBundle.CreateUserTitle_password}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewUserLabel_enabled}"/>
+                        <h:outputText value="#{youPortBundle.CreateUserLabel_enabled}"/>
                         <h:selectBooleanCheckbox id="enabled" value="#{userController.selected.enabled}" title="#{youPortBundle.EditUserTitle_enabled}"  disabled="true"/>
 
-                        <h:outputText value="#{youPortBundle.ViewUserLabel_email}"/>
-                        <h:outputText value="#{userController.selected.email}" title="#{youPortBundle.ViewUserTitle_email}"/>
+                        <h:outputText value="#{youPortBundle.CreateUserLabel_email}"/>
+                        <h:outputText value="#{userController.selected.email}" title="#{youPortBundle.CreateUserTitle_email}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewUserLabel_phone}"/>
-                        <h:outputText value="#{userController.selected.phone}" title="#{youPortBundle.ViewUserTitle_phone}"/>
+                        <h:outputText value="#{youPortBundle.CreateUserLabel_phone}"/>
+                        <h:outputText value="#{userController.selected.phone}" title="#{youPortBundle.CreateUserTitle_phone}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewUserLabel_idUserStatus}"/>
+                        <h:outputText value="#{youPortBundle.CreateUserLabel_idUserStatus}"/>
                         <h:outputText value="#{userController.selected.idUserStatus.statusName}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewUserLabel_idUserType}"/>
+                        <h:outputText value="#{youPortBundle.CreateUserLabel_idUserType}"/>
                         <h:outputText value="#{userController.selected.idUserType.description}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{youPortBundle.Close}" onclick="PF('UserViewDialog').hide()"/>

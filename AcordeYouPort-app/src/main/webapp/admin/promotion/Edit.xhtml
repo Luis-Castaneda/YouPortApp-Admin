@@ -15,16 +15,16 @@
                     <p:panelGrid  columns="2" columnClasses="column" rendered="#{promotionController.selected != null}" style="text-align: left">
 
 
-                        <h:outputLabel value="#{youPortBundle.EditPromotionLabel_idPromotion}" for="idPromotion" />
+                        <h:outputLabel value="#{youPortBundle.CreatePromotionLabel_idPromotion}" for="idPromotion" />
                         <h:outputText id="idPromotion" value="#{promotionController.selected.idPromotion}" />
 
-                        <p:outputLabel value="#{youPortBundle.EditPromotionLabel_namePromotion}" for="namePromotion" />
-                        <p:inputText id="namePromotion" value="#{promotionController.selected.namePromotion}" title="#{youPortBundle.EditPromotionTitle_namePromotion}" size="45" maxlength="100"/>
+                        <p:outputLabel value="#{youPortBundle.CreatePromotionLabel_namePromotion}" for="namePromotion" />
+                        <p:inputText id="namePromotion" value="#{promotionController.selected.namePromotion}" title="#{youPortBundle.CreatePromotionTitle_namePromotion}" size="45" maxlength="100"/>
 
-                        <p:outputLabel value="#{youPortBundle.EditPromotionLabel_description}" for="description" />
-                        <p:inputTextarea rows="4"  style="width: 297px;" cols="30" id="description" value="#{promotionController.selected.description}" title="#{youPortBundle.EditPromotionTitle_description}" />
+                        <p:outputLabel value="#{youPortBundle.CreatePromotionLabel_description}" for="description" />
+                        <p:inputTextarea rows="4"  style="width: 297px;" cols="30" id="description" value="#{promotionController.selected.description}" title="#{youPortBundle.CreatePromotionTitle_description}" />
 
-                        <p:outputLabel value="#{youPortBundle.EditPromotionLabel_urlImagel}" for="urlImagel" />
+                        <p:outputLabel value="#{youPortBundle.CreatePromotionLabel_urlImagel}" for="urlImagel" />
                         <h:panelGroup id="image">
 
                             <h:panelGroup  >
@@ -56,8 +56,8 @@
                             <p:tooltip for="urlImagel" value="#{promotionController.getComponentMessages('urlImagel', youPortBundle.CreateServicesHelpText_urlImage)}"/>
                         </h:panelGroup>
 
-                        <p:outputLabel value="#{youPortBundle.EditPromotionLabel_idTypePromotion}" for="idTypePromotion" />
-                        <p:selectOneMenu id="idTypePromotion" value="#{promotionController.selected.idTypePromotion}" required="true" requiredMessage="#{youPortBundle.EditPromotionRequiredMessage_idTypePromotion}" converter="#{typePromotionConverter}" style="width: 305px;">
+                        <p:outputLabel value="#{youPortBundle.CreatePromotionLabel_idTypePromotion}" for="idTypePromotion" />
+                        <p:selectOneMenu id="idTypePromotion" value="#{promotionController.selected.idTypePromotion}" required="true" requiredMessage="#{youPortBundle.CreatePromotionRequiredMessage_idTypePromotion}" converter="#{typePromotionConverter}" style="width: 305px;">
                             <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
                             <f:selectItems value="#{typePromotionController.items}"
                                            var="idTypePromotionItem"
@@ -67,8 +67,8 @@
 
                         </p:selectOneMenu>
 
-                        <p:outputLabel value="#{youPortBundle.EditPromotionLabel_idCompany}" for="idCompany" />
-                        <p:selectOneMenu id="idCompany" value="#{promotionController.selected.idCompany}" required="true" requiredMessage="#{youPortBundle.EditPromotionRequiredMessage_idCompany}" converter="#{companyConverter}" style="width: 305px;">
+                        <p:outputLabel value="#{youPortBundle.CreatePromotionLabel_idCompany}" for="idCompany" />
+                        <p:selectOneMenu id="idCompany" value="#{promotionController.selected.idCompany}" required="true" requiredMessage="#{youPortBundle.CreatePromotionRequiredMessage_idCompany}" converter="#{companyConverter}" style="width: 305px;">
                             <f:selectItem itemLabel="#{youPortBundle.SelectOneMessage}"/>
                             <f:selectItems value="#{companyController.items}"
                                            var="idCompanyItem"

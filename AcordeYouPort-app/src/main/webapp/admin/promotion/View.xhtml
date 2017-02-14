@@ -15,22 +15,22 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" columnClasses="column" rendered="#{promotionController.selected != null}" style="text-align: left">
 
-                        <h:outputText value="#{youPortBundle.ViewPromotionLabel_idPromotion}"/>
-                        <h:outputText value="#{promotionController.selected.idPromotion}" title="#{youPortBundle.ViewPromotionTitle_idPromotion}"/>
+                        <h:outputText value="#{youPortBundle.CreatePromotionLabel_idPromotion}"/>
+                        <h:outputText value="#{promotionController.selected.idPromotion}" title="#{youPortBundle.CreatePromotionTitle_idPromotion}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewPromotionLabel_namePromotion}"/>
-                        <h:outputText value="#{promotionController.selected.namePromotion}" title="#{youPortBundle.ViewPromotionTitle_namePromotion}"/>
+                        <h:outputText value="#{youPortBundle.CreatePromotionLabel_namePromotion}"/>
+                        <h:outputText value="#{promotionController.selected.namePromotion}" title="#{youPortBundle.CreatePromotionTitle_namePromotion}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewPromotionLabel_description}"/>
-                        <h:outputText value="#{promotionController.selected.description}" title="#{youPortBundle.ViewPromotionTitle_description}"/>
+                        <h:outputText value="#{youPortBundle.CreatePromotionLabel_description}"/>
+                        <h:outputText value="#{promotionController.selected.description}" title="#{youPortBundle.CreatePromotionTitle_description}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewPromotionLabel_urlImagel}"/>
-                        <h:outputText value="#{promotionController.selected.urlImagel}" title="#{youPortBundle.ViewPromotionTitle_urlImagel}"/>
+                        <h:outputText value="#{youPortBundle.CreatePromotionLabel_urlImagel}"/>
+                        <h:outputText value="#{promotionController.selected.urlImagel}" title="#{youPortBundle.CreatePromotionTitle_urlImagel}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewPromotionLabel_idTypePromotion}"/>
+                        <h:outputText value="#{youPortBundle.CreatePromotionLabel_idTypePromotion}"/>
                         <h:outputText value="#{promotionController.selected.idTypePromotion.name}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewPromotionLabel_idCompany}"/>
+                        <h:outputText value="#{youPortBundle.CreatePromotionLabel_idCompany}"/>
                         <h:outputText value="#{promotionController.selected.idCompany.name}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{youPortBundle.Close}" onclick="PF('PromotionViewDialog').hide()"/>

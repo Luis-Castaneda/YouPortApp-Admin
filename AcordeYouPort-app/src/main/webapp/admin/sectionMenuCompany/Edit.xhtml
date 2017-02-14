@@ -15,28 +15,28 @@
                     <p:panelGrid  columns="2" columnClasses="column" rendered="#{sectionMenuCompanyController.selected != null}">
 
 
-                        <h:outputLabel value="#{youPortBundle.EditSectionMenuCompanyLabel_idSection}" for="idSection" />
+                        <h:outputLabel value="#{youPortBundle.CreateSectionMenuCompanyLabel_idSection}" for="idSection" />
                         <h:panelGroup>
                             <h:outputText id="idSection" value="#{sectionMenuCompanyController.selected.idSection}" />
-                            <p:tooltip for="idSection" value="#{sectionMenuCompanyController.getComponentMessages('idSection', youPortBundle.EditSectionMenuCompanyHelpText_idSection)}"/>
+                            <p:tooltip for="idSection" value="#{sectionMenuCompanyController.getComponentMessages('idSection', youPortBundle.CreateSectionMenuCompanyHelpText_idSection)}"/>
                         </h:panelGroup>
 
-                        <p:outputLabel value="#{youPortBundle.EditSectionMenuCompanyLabel_name}" for="name" />
+                        <p:outputLabel value="#{youPortBundle.CreateSectionMenuCompanyLabel_name}" for="name" />
                         <h:panelGroup>
-                            <p:inputText id="name" value="#{sectionMenuCompanyController.selected.name}" title="#{youPortBundle.EditSectionMenuCompanyTitle_name}" size="45" maxlength="45"/>
-                            <p:tooltip for="name" value="#{sectionMenuCompanyController.getComponentMessages('name', youPortBundle.EditSectionMenuCompanyHelpText_name)}"/>
+                            <p:inputText id="name" value="#{sectionMenuCompanyController.selected.name}" title="#{youPortBundle.CreateSectionMenuCompanyTitle_name}" size="45" maxlength="45"/>
+                            <p:tooltip for="name" value="#{sectionMenuCompanyController.getComponentMessages('name', youPortBundle.CreateSectionMenuCompanyHelpText_name)}"/>
                         </h:panelGroup>
 
-                        <p:outputLabel value="#{youPortBundle.EditSectionMenuCompanyLabel_description}" for="description" />
+                        <p:outputLabel value="#{youPortBundle.CreateSectionMenuCompanyLabel_description}" for="description" />
                         <h:panelGroup>
-                            <p:inputTextarea rows="4" cols="30" style="width: 297px;" id="description" value="#{sectionMenuCompanyController.selected.description}" title="#{youPortBundle.EditSectionMenuCompanyTitle_description}" />
-                            <p:tooltip for="description" value="#{sectionMenuCompanyController.getComponentMessages('description', youPortBundle.EditSectionMenuCompanyHelpText_description)}"/>
+                            <p:inputTextarea rows="4" cols="30" style="width: 297px;" id="description" value="#{sectionMenuCompanyController.selected.description}" title="#{youPortBundle.CreateSectionMenuCompanyTitle_description}" />
+                            <p:tooltip for="description" value="#{sectionMenuCompanyController.getComponentMessages('description', youPortBundle.CreateSectionMenuCompanyHelpText_description)}"/>
                         </h:panelGroup>
 
-                        <p:outputLabel value="#{youPortBundle.EditSectionMenuCompanyLabel_enabled}" for="enabled" />
+                        <p:outputLabel value="#{youPortBundle.CreateSectionMenuCompanyLabel_enabled}" for="enabled" />
                         <h:panelGroup>
                             <p:selectBooleanCheckbox id="enabled" value="#{sectionMenuCompanyController.selected.enabled}" />
-                            <p:tooltip for="enabled" value="#{sectionMenuCompanyController.getComponentMessages('enabled', youPortBundle.EditSectionMenuCompanyHelpText_enabled)}"/>
+                            <p:tooltip for="enabled" value="#{sectionMenuCompanyController.getComponentMessages('enabled', youPortBundle.CreateSectionMenuCompanyHelpText_enabled)}"/>
                         </h:panelGroup>
 
                        

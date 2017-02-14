@@ -12,19 +12,19 @@
 
             <h:form id="ViewViewForm">
 
-                <h:panelGroup id="display">
+                <h:panelGroup id="display" style="text-align: left">
                     <p:panelGrid columns="2" columnClasses="column" rendered="#{viewController.selected != null}">
 
-                        <h:outputText value="#{youPortBundle.ViewViewLabel_idView}"/>
-                        <h:outputText value="#{viewController.selected.idView}" title="#{youPortBundle.ViewViewTitle_idView}"/>
+                        <h:outputText value="#{youPortBundle.CreateViewLabel_idView}"/>
+                        <h:outputText value="#{viewController.selected.idView}" title="#{youPortBundle.CreateViewTitle_idView}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewViewLabel_name}"/>
-                        <h:outputText value="#{viewController.selected.name}" title="#{youPortBundle.ViewViewTitle_name}"/>
+                        <h:outputText value="#{youPortBundle.CreateViewLabel_name}"/>
+                        <h:outputText value="#{viewController.selected.name}" title="#{youPortBundle.CreateViewTitle_name}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewViewLabel_url}"/>
-                        <h:outputText value="#{viewController.selected.url}" title="#{youPortBundle.ViewViewTitle_url}"/>
+                        <h:outputText value="#{youPortBundle.CreateViewLabel_url}"/>
+                        <h:outputText value="#{viewController.selected.url}" title="#{youPortBundle.CreateViewTitle_url}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewViewLabel_typeView}"/>
+                        <h:outputText value="#{youPortBundle.CreateViewLabel_typeView}"/>
                         <h:outputText value="#{viewController.selected.typeView.nameType}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{youPortBundle.Close}" onclick="PF('ViewViewDialog').hide()"/>

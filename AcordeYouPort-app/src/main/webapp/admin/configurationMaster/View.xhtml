@@ -15,17 +15,17 @@
                 <h:panelGroup id="display" style="text-align: left">
                     <p:panelGrid columns="2" columnClasses="column" rendered="#{configurationMasterController.selected != null}">
 
-                        <h:outputText value="#{youPortBundle.ViewConfigurationMasterLabel_idConfigurationMaster}"/>
-                        <h:outputText value="#{configurationMasterController.selected.idConfigurationMaster}" title="#{youPortBundle.ViewConfigurationMasterTitle_idConfigurationMaster}"/>
+                        <h:outputText value="#{youPortBundle.CreateConfigurationMasterLabel_idConfigurationMaster}"/>
+                        <h:outputText value="#{configurationMasterController.selected.idConfigurationMaster}" title="#{youPortBundle.CreateConfigurationMasterTitle_idConfigurationMaster}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewConfigurationMasterLabel_nameParameter}"/>
-                        <h:outputText value="#{configurationMasterController.selected.nameParameter}" title="#{youPortBundle.ViewConfigurationMasterTitle_nameParameter}"/>
+                        <h:outputText value="#{youPortBundle.CreateConfigurationMasterLabel_nameParameter}"/>
+                        <h:outputText value="#{configurationMasterController.selected.nameParameter}" title="#{youPortBundle.CreateConfigurationMasterTitle_nameParameter}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewConfigurationMasterLabel_valueParameter}"/>
-                        <h:outputText value="#{configurationMasterController.selected.valueParameter}" title="#{youPortBundle.ViewConfigurationMasterTitle_valueParameter}"/>
+                        <h:outputText value="#{youPortBundle.CreateConfigurationMasterLabel_valueParameter}"/>
+                        <h:outputText value="#{configurationMasterController.selected.valueParameter}" title="#{youPortBundle.CreateConfigurationMasterTitle_valueParameter}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewConfigurationMasterLabel_description}"/>
-                        <h:outputText value="#{configurationMasterController.selected.description}" title="#{youPortBundle.ViewConfigurationMasterTitle_description}"/>
+                        <h:outputText value="#{youPortBundle.CreateConfigurationMasterLabel_description}"/>
+                        <h:outputText value="#{configurationMasterController.selected.description}" title="#{youPortBundle.CreateConfigurationMasterTitle_description}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{youPortBundle.Close}" onclick="PF('ConfigurationMasterViewDialog').hide()"/>
                 </h:panelGroup>

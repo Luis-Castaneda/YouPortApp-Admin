@@ -15,14 +15,14 @@
                 <h:panelGroup id="display" style="text-align: left">
                     <p:panelGrid columns="2" columnClasses="column" rendered="#{userTypeController.selected != null}">
 
-                        <h:outputText value="#{youPortBundle.ViewUserTypeLabel_idUserType}"/>
-                        <h:outputText value="#{userTypeController.selected.idUserType}" title="#{youPortBundle.ViewUserTypeTitle_idUserType}"/>
+                        <h:outputText value="#{youPortBundle.CreateUserTypeLabel_idUserType}"/>
+                        <h:outputText value="#{userTypeController.selected.idUserType}" title="#{youPortBundle.CreateUserTypeTitle_idUserType}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewUserTypeLabel_type}"/>
-                        <h:outputText value="#{userTypeController.selected.type}" title="#{youPortBundle.ViewUserTypeTitle_type}"/>
+                        <h:outputText value="#{youPortBundle.CreateUserTypeLabel_type}"/>
+                        <h:outputText value="#{userTypeController.selected.type}" title="#{youPortBundle.CreateUserTypeTitle_type}"/>
 
-                        <h:outputText value="#{youPortBundle.ViewUserTypeLabel_description}"/>
-                        <h:outputText value="#{userTypeController.selected.description}" title="#{youPortBundle.ViewUserTypeTitle_description}"/>
+                        <h:outputText value="#{youPortBundle.CreateUserTypeLabel_description}"/>
+                        <h:outputText value="#{userTypeController.selected.description}" title="#{youPortBundle.CreateUserTypeTitle_description}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{youPortBundle.Close}" onclick="PF('UserTypeViewDialog').hide()"/>
                 </h:panelGroup>
